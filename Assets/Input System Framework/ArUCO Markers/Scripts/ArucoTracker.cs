@@ -65,29 +65,28 @@ public class ArucoTracker : MonoBehaviour
         try
         {
             _unityCoordinateSystem = PerceptionInterop.GetSceneCoordinateSystem(Pose.identity) as SpatialCoordinateSystem;
-            status.text = status.text + "Successfully cached pointer to Unity spatial coordinate system.";
+            status.text = "Successfully cached pointer to Unity spatial coordinate system.";
         }
         catch (Exception ex)
         {
-            status.text = status.text + $"Failed to get Unity spatial coordinate system: {ex.Message}.\n";
+            status.text =  $"Failed to get Unity spatial coordinate system: {ex.Message}.\n";
         }
 
         // Configure the dll with input parameters
         var layout = boardPositions.GetLayout();
         
-        status.text = status.text + "Setting dll\n";
+        status.text = "Setting dll\n";
         try
         {
             //This will never be null, I think
             detector = new ArucoDetector((int)ArUcoDictionaryName, layout);
-            status.text = status.text + "Im trying\n";
+           
             camIntrinsics = null;
         }
         catch(Exception e){
-            status.text = status.text + $"{e.Message}\n";
+            status.text = $"{e.Message}\n";
         }
         mediaCapturer.onFrameArrived += HandleArUcoTracking;
-        //hheea
 #endif
     }
 
@@ -150,11 +149,11 @@ public class ArucoTracker : MonoBehaviour
                 break;
 
             case ArUcoUtils.ArUcoTrackingType.None:
-                status.text = status.text + $"Not running tracking...\n";
+                status.text = $"Not running tracking...\n";
                 break;
 
             default:
-                status.text = status.text + $"No option selected for tracking...\n";
+                status.text = $"No option selected for tracking...\n";
                 break;
         }
 
@@ -162,7 +161,7 @@ public class ArucoTracker : MonoBehaviour
         {
                 UnityEngine.WSA.Application.InvokeOnAppThread(() =>
                 {
-                    status.text = status.text + $"markers found = {markers.Count}\n";
+                    status.text = $"markers found = {markers.Count}";
                     onDetectionFinished?.Invoke(markers);
                 }, false);
         }
