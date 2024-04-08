@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using TMPro;
 
+
 #if ENABLE_WINMD_SUPPORT
 using Windows.Media;
 using Windows.Media.Capture;
@@ -42,6 +43,9 @@ public class MediaCapturer : MonoBehaviour
     [SerializeField] MediaCaptureProfiles mediaCaptureProfiles;
     [SerializeField] MediaCaptureFPS fpsProfile;
     [SerializeField] TMP_Text debugTmp;
+    [SerializeField] TMP_Text averageFpsText;
+
+    Timer timer = new Timer();
 #if ENABLE_WINMD_SUPPORT
     
     public event Action<MediaFrameReference> onFrameArrived;
@@ -124,7 +128,7 @@ public class MediaCapturer : MonoBehaviour
                     width = 1280;
                     height = 720;
                     isHL1 = true;
-                    Debug.Log("InitializeMediaFrameReaderAsync: Using the HoloLens 1 settings for initialization.");
+                    UnityEngine.Debug.Log("InitializeMediaFrameReaderAsync: Using the HoloLens 1 settings for initialization.");
 
                     break;
                 default:
@@ -155,7 +159,8 @@ public class MediaCapturer : MonoBehaviour
 
         _mediaFrameReader.FrameArrived += ProcessFrame;
         await _mediaFrameReader.StartAsync();
-            
+        
+        timer.Start();
         IsCapturing = true;
 #endif
     }
@@ -205,6 +210,14 @@ public class MediaCapturer : MonoBehaviour
         var frameRef = frameReader.TryAcquireLatestFrame();
         onFrameArrived?.Invoke(frameRef);
         frameRef?.Dispose();
+
+        //For debugging
+        timer.CountFrame();
+        //This InvokeOnAppThread is used to return control to unity for updating debug text
+        UnityEngine.WSA.Application.InvokeOnAppThread(() =>
+            {
+                averageFpsText.text = $"Media Capturer Fps: {timer.AverageFPS}";
+            }, false);
     }
 
 

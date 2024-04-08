@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using UnityEngine;
 using TMPro;
 using Microsoft.MixedReality.OpenXR;
+using System.Diagnostics;
+
 #if ENABLE_WINMD_SUPPORT
 using Windows.Graphics.Imaging;
 using Windows.Perception.Spatial;
@@ -18,6 +20,7 @@ public class ArucoTracker : MonoBehaviour
     [SerializeField] MediaCapturer mediaCapturer;
     
     public TMP_Text status;
+    public TMP_Text processTimeText;
     public int minimumMarkersForDetection = 5;
     public int processAfterNumFrames = 1;
     public ArUcoUtils.ArUcoDictionaryName ArUcoDictionaryName = ArUcoUtils.ArUcoDictionaryName.DICT_6X6_50;
@@ -28,7 +31,7 @@ public class ArucoTracker : MonoBehaviour
 
     private int count = 0;
     private Dictionary<int, Marker> markersInUnity = new Dictionary<int, Marker>();
-
+    Stopwatch watch = new Stopwatch();
 
 #if ENABLE_WINMD_SUPPORT
     /// <summary>
@@ -60,6 +63,7 @@ public class ArucoTracker : MonoBehaviour
 
     private void StartTracking()
     {
+
 #if ENABLE_WINMD_SUPPORT
         // Get the unity spatial coordinate system
         try
@@ -92,7 +96,7 @@ public class ArucoTracker : MonoBehaviour
 
     private void StopTracking()
     {
-#if ENABLE_WINMD_SUPPORT
+        #if ENABLE_WINMD_SUPPORT
         mediaCapturer.onFrameArrived -= HandleArUcoTracking;
 #endif
     }
@@ -138,6 +142,8 @@ public class ArucoTracker : MonoBehaviour
         }
 
         IReadOnlyDictionary<int, Marker> markers = null;
+
+        watch.Restart();
         switch (ArUcoTrackingType)
         {
             case ArUcoUtils.ArUcoTrackingType.Markers:
@@ -157,15 +163,20 @@ public class ArucoTracker : MonoBehaviour
                 break;
         }
 
+        softwareBitmap.Dispose();
+        watch.Stop();
+        var processTime = watch.ElapsedMilliseconds;
+
         if (markers != null)
         {
-                UnityEngine.WSA.Application.InvokeOnAppThread(() =>
-                {
-                    status.text = $"markers found = {markers.Count}";
-                    onDetectionFinished?.Invoke(markers);
-                }, false);
+            UnityEngine.WSA.Application.InvokeOnAppThread(() =>
+            {
+                status.text = $"markers found = {markers.Count}";
+                processTimeText.text = $"CV processing Time: {processTime}";
+                onDetectionFinished?.Invoke(markers);
+            }, false);
         }
-        softwareBitmap.Dispose();
+
     }
 
     private IReadOnlyDictionary<int, Marker> DetectMarkers(SoftwareBitmap softwareBitmap)
