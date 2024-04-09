@@ -2883,7 +2883,7 @@ MonoBehaviour:
   height: 0
   width: 0
   fps: 30
-  mediaCaptureProfiles: 3
+  mediaCaptureProfiles: 0
   fpsProfile: 2
   debugTmp: {fileID: 212683561}
   averageFpsText: {fileID: 1870370586}
