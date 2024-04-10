@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7e4095c5609075846b657c8917aae797, type: 2}
+  - {fileID: 2100000, guid: c6bd404f506e1894289fde7b1689f901, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -144,7 +144,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7e4095c5609075846b657c8917aae797, type: 2}
+  - {fileID: 2100000, guid: c6bd404f506e1894289fde7b1689f901, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -246,6 +246,7 @@ GameObject:
   - component: {fileID: 4333590349882473668}
   - component: {fileID: 9011544653707682601}
   - component: {fileID: 682565665379759918}
+  - component: {fileID: 3817651459007630912}
   m_Layer: 0
   m_Name: BigSwitch
   m_TagString: Untagged
@@ -263,7 +264,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.17, y: 0.28, z: 1}
+  m_LocalScale: {x: 0.17, y: 0.27999997, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4024435027689097796}
@@ -366,7 +367,7 @@ MonoBehaviour:
   rotateAccordingToSurface: 1
   magneticSurfaces:
   - serializedVersion: 2
-    m_Bits: 4294967241
+    m_Bits: 4294967232
   debugEnabled: 1
   onPlacingStarted:
     m_PersistentCalls:
@@ -384,7 +385,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -395,6 +396,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1.0000001, z: 0.01}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3817651459007630912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6806672240265104500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7c1a08acc8b9d64c9989e1f742a6c2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pins:
+  - {fileID: 8982228381490743992}
+  - {fileID: 9078881635309595684}
+  - {fileID: 9026408284753237820}
+  - {fileID: 8544555830180128230}
 --- !u!1 &7423147244987484202
 GameObject:
   m_ObjectHideFlags: 0
@@ -456,7 +474,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7e4095c5609075846b657c8917aae797, type: 2}
+  - {fileID: 2100000, guid: c6bd404f506e1894289fde7b1689f901, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -539,7 +557,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7e4095c5609075846b657c8917aae797, type: 2}
+  - {fileID: 2100000, guid: c6bd404f506e1894289fde7b1689f901, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -637,10 +655,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2147483775
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -691,10 +709,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2147483775
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -745,10 +763,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2147483775
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -799,10 +817,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2147483775
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
