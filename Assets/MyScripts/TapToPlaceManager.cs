@@ -4,36 +4,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TapToPlaceManager : MonoBehaviour
+public class PlacementManager : MonoBehaviour
 {
     [SerializeField] GameObject[] placedComponentObjects;
-    //[SerializeField] GameObject placementSurface;
-
+    [SerializeField] GameObject labBench;
+    private Collider _benchCollider;
     private bool localToggle = true;
 
-    public void ToggleTapToPlace(bool forceToggle = true)
+
+    private void Start()
     {
-        if (forceToggle == false) { localToggle = false; }
-        else localToggle = true;
-
-        foreach (GameObject obj in placedComponentObjects)
-        {
-            obj.GetComponent<TapToPlace>().enabled = localToggle;
-            obj.GetComponent<SolverHandler>().enabled = localToggle;
-
-        }
+        _benchCollider = labBench.GetComponent<Collider>();
     }
 
-    //Call when placement of objects is finished
-    public void OnComponentPlacementFinished()
+    //Call when bench is placed in space
+    //
+    public void OnBenchPlacementFinished(bool forceToggle = true)
     {
-
-        ToggleTapToPlace(false);
-        //foreach (GameObject obj in placedComponentObjects)
-        //{
-        //    obj.transform.parent = placementSurface.transform;
-        //}
-
+        _benchCollider.enabled = forceToggle;
 
     }
 }
