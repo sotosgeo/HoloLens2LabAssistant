@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Switch : MonoBehaviour
+public class Switch : LabComponent
 {
 
-    [SerializeField] GameObject[] pins;
+    
     
 }
