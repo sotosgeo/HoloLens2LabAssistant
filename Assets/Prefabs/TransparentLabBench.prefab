@@ -443,7 +443,7 @@ GameObject:
   - component: {fileID: 1895225592274084781}
   - component: {fileID: 2181961416181309368}
   m_Layer: 0
-  m_Name: LabBench 1
+  m_Name: TransparentLabBench
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
