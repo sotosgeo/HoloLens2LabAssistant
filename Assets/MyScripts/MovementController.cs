@@ -4,20 +4,12 @@ using UnityEngine;
 
 public class MovementController : MonoBehaviour
 {
-    [SerializeField] private float _movementValue;
+    [SerializeField] private float _movementValue = 0.1f;
+    [SerializeField] private float _rotationValue = 1f;
     [SerializeField] Transform objectToMoveTransform;
+    [SerializeField] private float _incrementValue = 0.1f;
 
-
-    private void Start()
-    {
-
-    }
-    private void Update()
-    {
-
-    }
-
-
+    
 
     public void MoveUp()
     {
@@ -47,6 +39,27 @@ public class MovementController : MonoBehaviour
     public void MoveBack()
     {
         objectToMoveTransform.localPosition += Vector3.back * _movementValue;
+    }
+
+    public void RotateLeft()
+    {
+        objectToMoveTransform.Rotate(Vector3.up * _rotationValue, Space.Self);
+    }
+
+    public void RotateRight()
+    {
+        objectToMoveTransform.Rotate(Vector3.up * (-_rotationValue), Space.Self);
+    }
+
+
+    public void IncreaseMovementValue()
+    {
+
+    }
+
+    public void DecreaseMovementValue()
+    {
+
     }
 
 }
