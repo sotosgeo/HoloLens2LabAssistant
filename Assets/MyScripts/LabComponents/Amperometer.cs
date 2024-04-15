@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerNetwork : MonoBehaviour
+public class Amperometer : MonoBehaviour
 {
-    [SerializeField] GameObject[] networkPins;
-    [SerializeField] GameObject networkVisualization;
+    [SerializeField] GameObject[] amperometerPins;
+
+    [SerializeField] GameObject amperometerVisualization;
     [SerializeField] GameObject[] pinsVisualization;
     [SerializeField] GameObject Manipulation;
-
-
 
 }
