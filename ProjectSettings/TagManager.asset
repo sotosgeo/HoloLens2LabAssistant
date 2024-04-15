@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Network
+  - Switch
+  - Amperometer
+  - Voltimeter
+  - DC_Board
+  - Resistance
   layers:
   - Default
   - TransparentFX
