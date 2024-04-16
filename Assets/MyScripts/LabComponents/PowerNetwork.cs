@@ -5,9 +5,7 @@ using UnityEngine;
 public class PowerNetwork : MonoBehaviour
 {
     [SerializeField] GameObject[] networkPins;
-    [SerializeField] GameObject networkVisualization;
     [SerializeField] GameObject[] pinsVisualization;
-    [SerializeField] GameObject Manipulation;
 
 
 
