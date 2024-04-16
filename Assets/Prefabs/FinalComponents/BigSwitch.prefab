@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6582537386095953857}
   - component: {fileID: 8851139312436108969}
+  - component: {fileID: 2088459043}
   m_Layer: 6
   m_Name: PositiveOut
   m_TagString: Untagged
@@ -41,11 +42,27 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 331481365556066084}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.04, y: 0.03, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0.02}
+--- !u!114 &2088459043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 331481365556066084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f35cfb03218d8b1419119f9472e4ec12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pinVisual: {fileID: 8340489328372860396}
+  defaultMaterial: {fileID: 2100000, guid: 0af8d1e6d7540734087f7c01b77eaee2, type: 2}
+  collisionDetectedMaterial: {fileID: 2100000, guid: d236d89f17d25f846a55e0125b3acc3a, type: 2}
+  connectionFinalizedMaterial: {fileID: 2100000, guid: 3dbf937dee12f0a4294bfc0fb6d4a8dd, type: 2}
 --- !u!1 &349843258919271015
 GameObject:
   m_ObjectHideFlags: 0
@@ -56,6 +73,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8243097659625970735}
   - component: {fileID: 5821555720861181222}
+  - component: {fileID: 619928586}
   m_Layer: 6
   m_Name: PositiveIn
   m_TagString: Untagged
@@ -87,11 +105,27 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 349843258919271015}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.04, y: 0.03, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0.02}
+--- !u!114 &619928586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 349843258919271015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f35cfb03218d8b1419119f9472e4ec12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pinVisual: {fileID: 2268121644371589365}
+  defaultMaterial: {fileID: 2100000, guid: 0af8d1e6d7540734087f7c01b77eaee2, type: 2}
+  collisionDetectedMaterial: {fileID: 2100000, guid: d236d89f17d25f846a55e0125b3acc3a, type: 2}
+  connectionFinalizedMaterial: {fileID: 2100000, guid: 3dbf937dee12f0a4294bfc0fb6d4a8dd, type: 2}
 --- !u!1 &1095591114662764559
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,6 +136,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8727467595022189059}
   - component: {fileID: 8806596567080031605}
+  - component: {fileID: 2088459042}
   m_Layer: 6
   m_Name: NegativeIn
   m_TagString: Untagged
@@ -133,11 +168,27 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1095591114662764559}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.04, y: 0.03, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0.02}
+--- !u!114 &2088459042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095591114662764559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f35cfb03218d8b1419119f9472e4ec12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pinVisual: {fileID: 6763219923937656861}
+  defaultMaterial: {fileID: 2100000, guid: 0af8d1e6d7540734087f7c01b77eaee2, type: 2}
+  collisionDetectedMaterial: {fileID: 2100000, guid: d236d89f17d25f846a55e0125b3acc3a, type: 2}
+  connectionFinalizedMaterial: {fileID: 2100000, guid: 3dbf937dee12f0a4294bfc0fb6d4a8dd, type: 2}
 --- !u!1 &1417417547952895066
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,6 +539,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3657137151802397981}
   - component: {fileID: 2199798009375662426}
+  - component: {fileID: 2088459041}
   m_Layer: 6
   m_Name: NegativeOut
   m_TagString: Untagged
@@ -519,11 +571,27 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3098477572830762681}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.04, y: 0.03, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0.02}
+--- !u!114 &2088459041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3098477572830762681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f35cfb03218d8b1419119f9472e4ec12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pinVisual: {fileID: 1417417547952895066}
+  defaultMaterial: {fileID: 2100000, guid: 0af8d1e6d7540734087f7c01b77eaee2, type: 2}
+  collisionDetectedMaterial: {fileID: 2100000, guid: d236d89f17d25f846a55e0125b3acc3a, type: 2}
+  connectionFinalizedMaterial: {fileID: 2100000, guid: 3dbf937dee12f0a4294bfc0fb6d4a8dd, type: 2}
 --- !u!1 &5258497612783884632
 GameObject:
   m_ObjectHideFlags: 0

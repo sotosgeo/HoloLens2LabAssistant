@@ -19,8 +19,7 @@ public class ArucoTracker : MonoBehaviour
 {
     [SerializeField] MediaCapturer mediaCapturer;
     
-    public TMP_Text status;
-    public TMP_Text processTimeText;
+   
     public int minimumMarkersForDetection = 5;
     public int processAfterNumFrames = 1;
     public ArUcoUtils.ArUcoDictionaryName ArUcoDictionaryName = ArUcoUtils.ArUcoDictionaryName.DICT_6X6_50;
@@ -32,6 +31,10 @@ public class ArucoTracker : MonoBehaviour
     private int count = 0;
     private Dictionary<int, Marker> markersInUnity = new Dictionary<int, Marker>();
     Stopwatch watch = new Stopwatch();
+
+    public TMP_Text status;
+    public TMP_Text processTimeText;
+
 
 #if ENABLE_WINMD_SUPPORT
     /// <summary>
