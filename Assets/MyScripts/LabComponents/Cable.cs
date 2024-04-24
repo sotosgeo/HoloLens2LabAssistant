@@ -1,28 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
-public class Pin : MonoBehaviour
+public class Cable : MonoBehaviour
 {
-    [SerializeField] GameObject pinVisual;
-    [SerializeField] Material defaultMaterial;
-    [SerializeField] Material collisionDetectedMaterial;
-    [SerializeField] Material connectionFinalizedMaterial;
-    public string pinId;
+    public int cableId = 0;
+    public Pin pinStart;
+    public Pin pinEnd;
+
+    public GameObject pinConnectedTo;
+
 
     Coroutine collisionTimer;
-    
-
-
-    //Starts a timer when OnTriggerEnter is triggered that makes the connection
-    //after a certain connectionTime has passed
     private IEnumerator CollisionTimer(Collider other)
     {
         yield return new WaitForSeconds(ConnectionManager.connectionTime);
-        pinVisual.GetComponent<MeshRenderer>().material = connectionFinalizedMaterial;
         Debug.Log("Collision Finalized with " + other.gameObject.name);
-        
+        pinConnectedTo = other.gameObject;
     }
 
 
@@ -31,24 +26,25 @@ public class Pin : MonoBehaviour
         //When a collision is detected between this and another Collider 
         Debug.Log("Collision Detected with " + other.gameObject.name);
         collisionTimer = StartCoroutine(CollisionTimer(other));
-        if (pinVisual != null)
-        {
-            pinVisual.GetComponent<MeshRenderer>().material = collisionDetectedMaterial;
-        }
+        //if (pinVisual != null)
+        //{
+        //    pinVisual.GetComponent<MeshRenderer>().material = collisionDetectedMaterial;
+        //}
     }
 
 
     private void OnTriggerExit(Collider other)
     {
         Debug.Log("Collision Stopped with" + other.gameObject.name);
-        pinVisual.GetComponent<MeshRenderer>().material = defaultMaterial;
+        //pinVisual.GetComponent<MeshRenderer>().material = defaultMaterial;
         if (collisionTimer != null)
         {
             StopCoroutine(collisionTimer);
             collisionTimer = null;
         }
-       
+        pinConnectedTo = null;
     }
+
 
 
 }
