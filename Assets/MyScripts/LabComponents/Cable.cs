@@ -6,7 +6,10 @@ using UnityEngine;
 public class Cable : MonoBehaviour
 {
     public int cableId = 0;
-    public Pin cableStart;
-    public Pin cableEnd;
+    public CablePin cableStart;
+    public CablePin cableEnd;
     
+
+
+
 }

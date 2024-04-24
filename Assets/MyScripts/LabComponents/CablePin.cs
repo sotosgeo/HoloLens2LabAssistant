@@ -9,16 +9,16 @@ public class CablePin : MonoBehaviour
     [SerializeField] Material connectionDetectedMaterial;
     [SerializeField] Material connectionFinalizedMaterial;
 
-    public GameObject pinConnectedTo;
+    public string pinConnectedTo = null;
     Coroutine collisionTimer;
-    public string pinId;
 
     private IEnumerator CollisionTimer(Collider other)
     {
+
         yield return new WaitForSeconds(ConnectionManager.connectionTime);
         pinVisual.GetComponent<MeshRenderer>().material = connectionFinalizedMaterial;
         Debug.Log("Collision Finalized with " + other.gameObject.GetComponent<Pin>().pinId);
-        pinConnectedTo = other.gameObject;
+        pinConnectedTo = other.gameObject.GetComponent<Pin>().pinId;
     }
 
 
