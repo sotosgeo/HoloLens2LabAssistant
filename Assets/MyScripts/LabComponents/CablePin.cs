@@ -12,6 +12,18 @@ public class CablePin : MonoBehaviour
     public string pinConnectedTo = null;
     Coroutine collisionTimer;
 
+
+
+
+
+
+
+
+
+
+
+
+
     private IEnumerator CollisionTimer(Collider other)
     {
 
