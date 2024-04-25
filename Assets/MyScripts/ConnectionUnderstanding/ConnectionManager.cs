@@ -9,34 +9,66 @@ public class ConnectionManager : MonoBehaviour
 {
     public static float connectionTime = 3;
 
+    private Dictionary<String, String[]> motorExcitementDict = new()
+    {
+        //Network
+        { "networkPos", new[]{"switchPosIn"}},
+        { "networkNeg", new[]{"switchnNegIn"} },
+        //Switch
+        { "switchPosIn", new[]{"networkPos", "switchPosOut"} },
+        { "switchNegIn" , new[]{"networkNeg, switchNegOut"}},
+        { "switchPosOut" , new[]{"switchPosIn, resPos"}},
+        { "switchNegOut" , new[]{"switchNegIn", "resNeg"}},
+        //VariableResistance
+        { "resPos" , new[]{"switchPosOut","amperIn"}},
+        { "resGnd" , new[]{"resNeg","motorK"}},
+        { "resNeg" , new[]{"resGnd","switchNegOut"}},
+        //Amperometer
+        { "amperIn" , new[]{"amperOut","resPos" }},
+        { "amperOut" , new[]{"amperIn","motorJ" }},
+        //Motor
+        { "motorJ" , new[]{"amperOut"}},
+        { "motorK" , new[]{"motorK"}}
+
+    };
+    
+
+
 
     private void Start()
     {
-        string component1 = "switch1";
-        string component2 = "switch2";
-        var motorExcitementGraph = new BidirectionalGraph<string, TaggedEdge<string,string>>();
-        motorExcitementGraph.AddVertex(component1);
-        motorExcitementGraph.AddVertex(component2);
-        var edge1 = new TaggedEdge<string, string>(component1, component2, "cable1");
-        motorExcitementGraph.AddEdge(edge1);
 
-        PrintGraph(motorExcitementGraph);
+        
+        var motorExcitementGraph = motorExcitementDict.ToDelegateVertexAndEdgeListGraph(kv => Array.ConvertAll(kv.Value, v => new TaggedEdge<String,String>(kv.Key, v,"cable")));
+       
+        
+       
+
+
+        
+        
+
+
+        PrintBidirectionalGraph(motorExcitementGraph);
+       
     }
 
 
 
-    void PrintGraph(BidirectionalGraph<string, TaggedEdge<string,string>> graph)
+    void PrintBidirectionalGraph(DelegateVertexAndEdgeListGraph<string, TaggedEdge<string,string>> graph)
     {
         foreach (string vertex in graph.Vertices)
         {
-            Debug.Log(vertex);
-            foreach (TaggedEdge<string,string> edge in graph.InEdges(vertex))
+            
+            foreach (TaggedEdge<string,string> edge in graph.OutEdges(vertex))
             {
+                
                 Debug.Log(edge);
-                Debug.Log(edge.Tag);
             }
         }
     }
+
+   
     //Starting Graph edges need to be just simple string? maybe just cable for all of them
     //The Runtime graph needs to add specific cable id to each edge etc "cable1", "cable2" etc
     //Vertices -> String -> pinId

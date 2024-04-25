@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 4955852979505557520}
   - component: {fileID: 2414769879663748297}
   m_Layer: 0
-  m_Name: Pin1
+  m_Name: ResPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,7 +147,7 @@ MonoBehaviour:
   connectionDetectedMaterial: {fileID: 2100000, guid: d236d89f17d25f846a55e0125b3acc3a, type: 2}
   connectionFinalizedMaterial: {fileID: 2100000, guid: 3dbf937dee12f0a4294bfc0fb6d4a8dd, type: 2}
   pinConnectedTo: {fileID: 0}
-  pinId: varRes1
+  pinId: resPos
 --- !u!1 &4955852979947196987
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,7 +160,7 @@ GameObject:
   - component: {fileID: 4955852979947196985}
   - component: {fileID: 3267224523083937771}
   m_Layer: 0
-  m_Name: Pin3
+  m_Name: ResNeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -212,7 +212,7 @@ MonoBehaviour:
   connectionDetectedMaterial: {fileID: 2100000, guid: d236d89f17d25f846a55e0125b3acc3a, type: 2}
   connectionFinalizedMaterial: {fileID: 2100000, guid: 3dbf937dee12f0a4294bfc0fb6d4a8dd, type: 2}
   pinConnectedTo: {fileID: 0}
-  pinId: varRes3
+  pinId: resNeg
 --- !u!1 &4955852980071286197
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 4955852980071286195}
   - component: {fileID: 1206328216508192201}
   m_Layer: 0
-  m_Name: Pin2
+  m_Name: ResGnd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -277,7 +277,7 @@ MonoBehaviour:
   connectionDetectedMaterial: {fileID: 2100000, guid: d236d89f17d25f846a55e0125b3acc3a, type: 2}
   connectionFinalizedMaterial: {fileID: 2100000, guid: 3dbf937dee12f0a4294bfc0fb6d4a8dd, type: 2}
   pinConnectedTo: {fileID: 0}
-  pinId: varRes2
+  pinId: resGnd
 --- !u!1 &4955852980589446870
 GameObject:
   m_ObjectHideFlags: 0
@@ -561,7 +561,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.225, y: 0.185, z: 0.225}
+  m_Size: {x: 0.23, y: 0.185, z: 0.23}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7776759577964897655
 MonoBehaviour:
@@ -683,8 +683,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5afd5316c63705643b3daba5a6e923bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowTetherWhenManipulating: 0
-  IsBoundsHandles: 0
+  ShowTetherWhenManipulating: 1
+  IsBoundsHandles: 1
 --- !u!114 &1070858751155263938
 MonoBehaviour:
   m_ObjectHideFlags: 0
