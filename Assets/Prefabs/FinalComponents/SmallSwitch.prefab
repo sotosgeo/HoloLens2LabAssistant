@@ -43,6 +43,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1665939531647766070}
   - component: {fileID: 6367663265417266688}
+  - component: {fileID: 8315530056847597271}
   m_Layer: 6
   m_Name: PositiveOut
   m_TagString: Untagged
@@ -79,6 +80,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.04, y: 0.03, z: 0.1}
   m_Center: {x: 0, y: -0.0038475879, z: 0.02}
+--- !u!114 &8315530056847597271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973657008492433571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 277bf028f02e1ae4db5a8dfdf3962f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pinVisual: {fileID: 6959110703070698347}
+  defaultMaterial: {fileID: 2100000, guid: 0af8d1e6d7540734087f7c01b77eaee2, type: 2}
+  connectionDetectedMaterial: {fileID: 2100000, guid: d236d89f17d25f846a55e0125b3acc3a, type: 2}
+  connectionFinalizedMaterial: {fileID: 2100000, guid: 3dbf937dee12f0a4294bfc0fb6d4a8dd, type: 2}
+  pinConnectedTo: {fileID: 0}
+  pinId: swithcPosOut
 --- !u!1 &2470631226444244742
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,16 +262,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7c1a08acc8b9d64c9989e1f742a6c2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  switchPins:
-  - {fileID: 8138917014634624200}
-  - {fileID: 1973657008492433571}
-  - {fileID: 5841235309107469303}
-  - {fileID: 8663661348082985443}
-  pinVisualization:
-  - {fileID: 8732596599388737096}
-  - {fileID: 6959110703070698347}
-  - {fileID: 6923539559950622949}
-  - {fileID: 3170484305767134928}
+  switchComponentInput: {fileID: 0}
+  switchComponentOutput: {fileID: 0}
+  switchInputPins: {fileID: 0}
+  switchOutputPins: {fileID: 0}
+  switchId: 0
 --- !u!1 &5739377919307389517
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,6 +466,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8659974431539759785}
   - component: {fileID: 1686978569793810187}
+  - component: {fileID: 9134175794081764415}
   m_Layer: 6
   m_Name: NegativeIn
   m_TagString: Untagged
@@ -488,6 +503,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.04, y: 0.03, z: 0.1}
   m_Center: {x: 0, y: 0.002489619, z: 0.02}
+--- !u!114 &9134175794081764415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5841235309107469303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 277bf028f02e1ae4db5a8dfdf3962f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pinVisual: {fileID: 6923539559950622949}
+  defaultMaterial: {fileID: 2100000, guid: 0af8d1e6d7540734087f7c01b77eaee2, type: 2}
+  connectionDetectedMaterial: {fileID: 2100000, guid: d236d89f17d25f846a55e0125b3acc3a, type: 2}
+  connectionFinalizedMaterial: {fileID: 2100000, guid: 3dbf937dee12f0a4294bfc0fb6d4a8dd, type: 2}
+  pinConnectedTo: {fileID: 0}
+  pinId: switchNegIn
 --- !u!1 &6272301378475497565
 GameObject:
   m_ObjectHideFlags: 0
@@ -1767,6 +1800,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1322436848262577209}
   - component: {fileID: 6327401768672714119}
+  - component: {fileID: 2717306911251191781}
   m_Layer: 6
   m_Name: PositiveIn
   m_TagString: Untagged
@@ -1803,6 +1837,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.04, y: 0.03, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0.02}
+--- !u!114 &2717306911251191781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8138917014634624200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 277bf028f02e1ae4db5a8dfdf3962f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pinVisual: {fileID: 8732596599388737096}
+  defaultMaterial: {fileID: 2100000, guid: 0af8d1e6d7540734087f7c01b77eaee2, type: 2}
+  connectionDetectedMaterial: {fileID: 2100000, guid: d236d89f17d25f846a55e0125b3acc3a, type: 2}
+  connectionFinalizedMaterial: {fileID: 2100000, guid: 3dbf937dee12f0a4294bfc0fb6d4a8dd, type: 2}
+  pinConnectedTo: {fileID: 0}
+  pinId: switchPosIn
 --- !u!1 &8508399837233362256
 GameObject:
   m_ObjectHideFlags: 0
@@ -1896,6 +1948,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8627770898507822387}
   - component: {fileID: 1271152689005246628}
+  - component: {fileID: 2595023862451951749}
   m_Layer: 6
   m_Name: NegativeOut
   m_TagString: Untagged
@@ -1932,6 +1985,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.04, y: 0.03, z: 0.1}
   m_Center: {x: 0, y: -0.0038475841, z: 0.02}
+--- !u!114 &2595023862451951749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8663661348082985443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 277bf028f02e1ae4db5a8dfdf3962f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pinVisual: {fileID: 3170484305767134928}
+  defaultMaterial: {fileID: 2100000, guid: 0af8d1e6d7540734087f7c01b77eaee2, type: 2}
+  connectionDetectedMaterial: {fileID: 2100000, guid: d236d89f17d25f846a55e0125b3acc3a, type: 2}
+  connectionFinalizedMaterial: {fileID: 2100000, guid: 3dbf937dee12f0a4294bfc0fb6d4a8dd, type: 2}
+  pinConnectedTo: {fileID: 0}
+  pinId: switchNegOut
 --- !u!1 &8732596599388737096
 GameObject:
   m_ObjectHideFlags: 0

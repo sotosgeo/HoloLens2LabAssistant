@@ -93,6 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4955852979505557521}
   - component: {fileID: 4955852979505557520}
+  - component: {fileID: 2414769879663748297}
   m_Layer: 0
   m_Name: Pin1
   m_TagString: Untagged
@@ -129,6 +130,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.02, y: 0.1, z: 0.01}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2414769879663748297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4955852979505557522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 277bf028f02e1ae4db5a8dfdf3962f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pinVisual: {fileID: 4955852980787679623}
+  defaultMaterial: {fileID: 2100000, guid: 0af8d1e6d7540734087f7c01b77eaee2, type: 2}
+  connectionDetectedMaterial: {fileID: 2100000, guid: d236d89f17d25f846a55e0125b3acc3a, type: 2}
+  connectionFinalizedMaterial: {fileID: 2100000, guid: 3dbf937dee12f0a4294bfc0fb6d4a8dd, type: 2}
+  pinConnectedTo: {fileID: 0}
+  pinId: varRes1
 --- !u!1 &4955852979947196987
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,6 +158,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4955852979947196986}
   - component: {fileID: 4955852979947196985}
+  - component: {fileID: 3267224523083937771}
   m_Layer: 0
   m_Name: Pin3
   m_TagString: Untagged
@@ -175,6 +195,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.02, y: 0.1, z: 0.01}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3267224523083937771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4955852979947196987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 277bf028f02e1ae4db5a8dfdf3962f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pinVisual: {fileID: 4955852979320168171}
+  defaultMaterial: {fileID: 2100000, guid: 0af8d1e6d7540734087f7c01b77eaee2, type: 2}
+  connectionDetectedMaterial: {fileID: 2100000, guid: d236d89f17d25f846a55e0125b3acc3a, type: 2}
+  connectionFinalizedMaterial: {fileID: 2100000, guid: 3dbf937dee12f0a4294bfc0fb6d4a8dd, type: 2}
+  pinConnectedTo: {fileID: 0}
+  pinId: varRes3
 --- !u!1 &4955852980071286197
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,6 +223,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4955852980071286196}
   - component: {fileID: 4955852980071286195}
+  - component: {fileID: 1206328216508192201}
   m_Layer: 0
   m_Name: Pin2
   m_TagString: Untagged
@@ -221,6 +260,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.02, y: 0.1, z: 0.01}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1206328216508192201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4955852980071286197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 277bf028f02e1ae4db5a8dfdf3962f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pinVisual: {fileID: 4955852981259677626}
+  defaultMaterial: {fileID: 2100000, guid: 0af8d1e6d7540734087f7c01b77eaee2, type: 2}
+  connectionDetectedMaterial: {fileID: 2100000, guid: d236d89f17d25f846a55e0125b3acc3a, type: 2}
+  connectionFinalizedMaterial: {fileID: 2100000, guid: 3dbf937dee12f0a4294bfc0fb6d4a8dd, type: 2}
+  pinConnectedTo: {fileID: 0}
+  pinId: varRes2
 --- !u!1 &4955852980589446870
 GameObject:
   m_ObjectHideFlags: 0
