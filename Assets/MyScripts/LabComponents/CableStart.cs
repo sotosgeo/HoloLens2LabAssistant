@@ -2,8 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class CablePin : MonoBehaviour
+public class CableStart : MonoBehaviour
 {
     [SerializeField] GameObject pinVisual;
     [SerializeField] Material defaultMaterial;
@@ -13,18 +14,20 @@ public class CablePin : MonoBehaviour
     public string pinConnectedTo = null;
     Coroutine collisionTimer;
 
-
-    public Cable myCable;
+    public Action<string> OnConnectionFinalized;
 
 
     private IEnumerator CollisionTimer(Collider other)
     {
-
         yield return new WaitForSeconds(ConnectionManager.connectionTime);
+
+        //After Timer Passed
+        pinConnectedTo = other.gameObject.GetComponent<Pin>().pinId;
         pinVisual.GetComponent<MeshRenderer>().material = connectionFinalizedMaterial;
-        //Debug.Log("Collision Finalized with " + other.gameObject.GetComponent<Pin>().pinId);
         //Trigger event and send the pinId that this cable was connected to
+        OnConnectionFinalized?.Invoke(pinConnectedTo);
     }
+
 
 
     private void OnTriggerEnter(Collider other)
