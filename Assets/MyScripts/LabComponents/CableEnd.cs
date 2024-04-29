@@ -16,6 +16,7 @@ public class CableEnd : MonoBehaviour
 
 
     public Action<string> OnConnectionFinalized;
+    public Action<string> OnConnectionStopped;
 
 
     private IEnumerator CollisionTimer(Collider other)
@@ -26,7 +27,7 @@ public class CableEnd : MonoBehaviour
         pinConnectedTo = other.gameObject.GetComponent<Pin>().pinId;
         pinVisual.GetComponent<MeshRenderer>().material = connectionFinalizedMaterial;
         //Trigger event and send the pinId that this cable was connected to
-        OnConnectionFinalized?.Invoke(pinConnectedTo);    
+        OnConnectionFinalized?.Invoke(pinConnectedTo);
     }
 
 
@@ -45,6 +46,8 @@ public class CableEnd : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         //Debug.Log("Collision Stopped with" + other.gameObject.GetComponent<Pin>().pinId);
+        
+        
         pinVisual.GetComponent<MeshRenderer>().material = defaultMaterial;
         if (collisionTimer != null)
         {
@@ -52,6 +55,7 @@ public class CableEnd : MonoBehaviour
             collisionTimer = null;
         }
         pinConnectedTo = null;
+        OnConnectionStopped?.Invoke(pinConnectedTo);
     }
 
 }

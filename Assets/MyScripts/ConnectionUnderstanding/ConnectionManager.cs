@@ -9,12 +9,13 @@ public class ConnectionManager : MonoBehaviour
 {
     public static float connectionTime = 3;
 
-   
+    
 
+    AdjacencyGraph<string, TaggedEdge<string, string>> currentGraph = new AdjacencyGraph<string, TaggedEdge<string, string>>();
     private void Start()
     {
-        CablePin cablePin = GetComponent<CablePin>();
-        var motorExcitementEdges= new[] { 
+
+        var motorExcitementEdges = new[] { 
             //J to Pos
             new TaggedEdge<string,string>("motorJ", "amperOut","cable") ,
             new TaggedEdge<string,string>("amperOut", "amperIn","cable"),
@@ -36,16 +37,36 @@ public class ConnectionManager : MonoBehaviour
         var motorExcitementGraph = motorExcitementEdges.ToAdjacencyGraph<string, TaggedEdge<string, string>>();
 
         //PrintGraph(motorExcitementGraph);
+
+
+
+
+
     }
 
-
-
-    public void OnConnectionMade()
+    private void OnEnable()
     {
-
+        
     }
 
+    private void OnDisable()
+    {
+       
+    }
 
+    public void OnConnectionMade(string cableStart, string cableEnd, int cableId)
+    {
+        var newEdge = new TaggedEdge<string, string>(cableStart, cableEnd, "cable" + cableId);
+        currentGraph.AddVerticesAndEdge(newEdge);
+        PrintGraph(currentGraph);
+    }
+
+    public void OnConnectionRemoved(string cableStart, string cableEnd, int cableId)
+    {
+        currentGraph.RemoveEdge(new TaggedEdge<string, string>(cableStart, cableEnd, "cable" + cableId));
+        PrintGraph(currentGraph);
+        
+    }
 
     void PrintGraph(AdjacencyGraph<string, TaggedEdge<string, string>> graph)
     {

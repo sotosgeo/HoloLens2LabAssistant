@@ -15,7 +15,7 @@ public class CableStart : MonoBehaviour
     Coroutine collisionTimer;
 
     public Action<string> OnConnectionFinalized;
-
+    public Action<string> OnConnectionStopped;
 
     private IEnumerator CollisionTimer(Collider other)
     {
@@ -46,6 +46,7 @@ public class CableStart : MonoBehaviour
     {
         //Debug.Log("Collision Stopped with" + other.gameObject.GetComponent<Pin>().pinId);
         pinVisual.GetComponent<MeshRenderer>().material = defaultMaterial;
+        OnConnectionStopped?.Invoke(pinConnectedTo);
         if (collisionTimer != null)
         {
             StopCoroutine(collisionTimer);
