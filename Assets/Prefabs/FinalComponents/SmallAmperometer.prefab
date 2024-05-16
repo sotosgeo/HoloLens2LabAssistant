@@ -421,7 +421,7 @@ GameObject:
   - component: {fileID: 8994023953953756562}
   - component: {fileID: 309189922413922008}
   m_Layer: 6
-  m_Name: Negative
+  m_Name: amperOut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -473,7 +473,7 @@ MonoBehaviour:
   connectionDetectedMaterial: {fileID: 2100000, guid: d236d89f17d25f846a55e0125b3acc3a, type: 2}
   connectionFinalizedMaterial: {fileID: 2100000, guid: 3dbf937dee12f0a4294bfc0fb6d4a8dd, type: 2}
   pinConnectedTo: {fileID: 0}
-  pinId: amperNeg
+  pinId: amperOut
 --- !u!1 &3135383148727043862
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,7 +486,7 @@ GameObject:
   - component: {fileID: 6860723994851925347}
   - component: {fileID: 7280182296383082196}
   m_Layer: 6
-  m_Name: Positive
+  m_Name: amperIn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -538,7 +538,7 @@ MonoBehaviour:
   connectionDetectedMaterial: {fileID: 2100000, guid: d236d89f17d25f846a55e0125b3acc3a, type: 2}
   connectionFinalizedMaterial: {fileID: 2100000, guid: 3dbf937dee12f0a4294bfc0fb6d4a8dd, type: 2}
   pinConnectedTo: {fileID: 0}
-  pinId: amperPos
+  pinId: amperIn
 --- !u!1 &3740604917495010025
 GameObject:
   m_ObjectHideFlags: 0

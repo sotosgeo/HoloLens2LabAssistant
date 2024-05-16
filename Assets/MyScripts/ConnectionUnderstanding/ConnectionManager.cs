@@ -1,13 +1,113 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using System.ComponentModel.Design;
+using TMPro;
+
 
 public class ConnectionManager : MonoBehaviour
 {
     public static float connectionTime = 3;
 
+    [SerializeField] TextMeshPro connectionText;
 
 
+    public class Connection : IEquatable<Connection>
+    {
+
+        public string PinA { get; private set; }
+        public string PinB { get; private set; }
+        public int ConnectingCable { get; private set; }
+
+
+        public Connection(string pinA, string pinB, int connectingCable)
+        {
+            PinA = pinA;
+            PinB = pinB;
+            ConnectingCable = connectingCable;
+        }
+
+        public override string ToString()
+        {
+            return PinA.ToString() + " - > " + PinB.ToString() + " via cable " + ConnectingCable.ToString();
+        }
+
+
+        public bool Equals(Connection other)
+        {
+            return other != null && GetType() == other.GetType() && PinA == other.PinA && PinB == other.PinB;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Connection);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(PinA, PinB);
+        }
+    }
+
+    List<Connection> motorExcitementConnections = new List<Connection>()
+        {
+            new Connection("motorJ","amperOut",0),
+
+        };
+
+    List<Connection> currentConnections = new();
+    private void Start()
+    {
+
+        currentConnections.Clear();
+
+    }
+
+    private void OnEnable()
+    {
+
+    }
+
+    private void OnDisable()
+    {
+
+    }
+
+  
+
+    public void OnConnectionMade(string cableStart, string cableEnd, int cableId)
+    {
+        var newConnection = new Connection(cableStart, cableEnd, cableId);
+        currentConnections.Add(newConnection);
+        PrintConnections();
+
+    }
+
+    public void OnConnectionRemoved(string cableStart, string cableEnd, int cableId)
+    {
+
+        if (currentConnections.Contains(new Connection(cableStart, cableEnd, cableId)))
+        {
+            currentConnections.Remove(new Connection(cableStart, cableEnd, cableId));
+        }
+
+        PrintConnections();
+    }
+
+
+    void PrintConnections()
+    {
+        connectionText.text = "";
+        foreach (var connection in currentConnections)
+        {
+            
+            connectionText.text += connection.ToString() + '\n';
+        }
+    }
 
 
 }
+
+
+

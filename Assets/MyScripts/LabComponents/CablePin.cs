@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,35 +10,35 @@ public class CablePin : MonoBehaviour
     [SerializeField] Material connectionDetectedMaterial;
     [SerializeField] Material connectionFinalizedMaterial;
 
-    public string pinConnectedTo = null;
+    public GameObject pinConnectedTo = null;
     Coroutine collisionTimer;
 
+    public Action<GameObject> OnConnectionFinalized;
+    public Action<GameObject> OnConnectionStopped;
 
 
-
-
-
-
-
-
-
-
-
+    private void Start()
+    {
+        pinVisual.GetComponent<MeshRenderer>().material = defaultMaterial;
+    }
 
     private IEnumerator CollisionTimer(Collider other)
     {
-
         yield return new WaitForSeconds(ConnectionManager.connectionTime);
+
+        //After Timer Passed
+        pinConnectedTo = other.gameObject;
         pinVisual.GetComponent<MeshRenderer>().material = connectionFinalizedMaterial;
-        Debug.Log("Collision Finalized with " + other.gameObject.GetComponent<Pin>().pinId);
-        pinConnectedTo = other.gameObject.GetComponent<Pin>().pinId;
+        //Trigger event and send the pinId that this cable was connected to
+        OnConnectionFinalized?.Invoke(pinConnectedTo);
     }
+
 
 
     private void OnTriggerEnter(Collider other)
     {
         //When a collision is detected between this and another Collider 
-        Debug.Log("Collision Detected with " + other.gameObject.GetComponent<Pin>().pinId);
+        //Debug.Log("Collision Detected with " + other.gameObject.GetComponent<Pin>().pinId);
         collisionTimer = StartCoroutine(CollisionTimer(other));
         if (pinVisual != null)
         {
@@ -48,14 +49,17 @@ public class CablePin : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("Collision Stopped with" + other.gameObject.GetComponent<Pin>().pinId);
-        pinVisual.GetComponent<MeshRenderer>().material = defaultMaterial;
+        
+
+        OnConnectionStopped?.Invoke(pinConnectedTo);
         if (collisionTimer != null)
         {
             StopCoroutine(collisionTimer);
             collisionTimer = null;
         }
-        pinConnectedTo = null;
+        
+
+        pinVisual.GetComponent<MeshRenderer>().material = defaultMaterial;
     }
 
 }
