@@ -8,7 +8,7 @@ public class Cable : MonoBehaviour
 {
     public int cableId = 0;
 
-    //public ConnectionManager connectionManager;
+    
     [SerializeField] CablePin myCableStart;
     [SerializeField] CablePin myCableEnd;
     [SerializeField] ConnectionManager myConnectionManager;
@@ -86,7 +86,7 @@ public class Cable : MonoBehaviour
        
         if (cableStartConnected & cableEndConnected)
         {
-            Debug.Log("Connection Detected Between " + cableStartConnectedTo + " and " + cableEndConnectedTo + " via cable " + cableId.ToString());
+            Debug.Log("Connection Detected Between " + cableStartConnectedTo + " and " + cableEndConnectedTo + "  via cable " + cableId.ToString());
             myConnectionManager.OnConnectionMade(cableStartConnectedTo, cableEndConnectedTo,cableId);
             _cableConnected = true;
         }
@@ -94,7 +94,7 @@ public class Cable : MonoBehaviour
 
         if ((cableStartConnected == false | cableEndConnected == false) & _cableConnected)
         {
-            Debug.Log("Connection removed between" + cableStartConnectedTo + " and " + cableEndConnectedTo + " via cable " + cableId.ToString());
+            Debug.Log("Connection removed between" + cableStartConnectedTo + " and " + cableEndConnectedTo + "  via cable " + cableId.ToString());
             myConnectionManager.OnConnectionRemoved(cableStartConnectedTo, cableEndConnectedTo, cableId);
             _cableConnected = false;
         }
