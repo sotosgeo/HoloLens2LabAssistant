@@ -28,14 +28,14 @@ public class Cable : MonoBehaviour
 
     private void OnCableStartConnected(GameObject pinConnectedTo)
     {
-        cableStartConnectedTo = pinConnectedTo.ToString();
+        cableStartConnectedTo = pinConnectedTo.GetComponent<Pin>().pinId;
         cableStartConnected = true;
         ConnectionCheck();
     }
 
     private void OnCableEndConnected(GameObject pinConnectedTo)
     {
-        cableEndConnectedTo = pinConnectedTo.ToString();
+        cableEndConnectedTo = pinConnectedTo.GetComponent<Pin>().pinId;
         cableEndConnected = true;
         ConnectionCheck();
     }

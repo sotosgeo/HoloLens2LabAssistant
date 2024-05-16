@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.ComponentModel.Design;
+using TMPro;
 
 
 public class ConnectionManager : MonoBehaviour
 {
     public static float connectionTime = 3;
+
+    [SerializeField] TextMeshPro connectionText;
 
     //Knows the correct Connection, and 
 
@@ -31,7 +34,7 @@ public class ConnectionManager : MonoBehaviour
 
         public override string ToString()
         {
-            return PinA.ToString() + " - > " + PinB.ToString() + "via cable" + ConnectingCable.ToString();
+            return PinA.ToString() + " - > " + PinB.ToString() + " via cable " + ConnectingCable.ToString();
         }
 
 
@@ -75,19 +78,13 @@ public class ConnectionManager : MonoBehaviour
 
     }
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.F)) 
-        {
-            PrintConnections();
-        }
-    }
+  
 
     public void OnConnectionMade(string cableStart, string cableEnd, int cableId)
     {
         var newConnection = new Connection(cableStart, cableEnd, cableId);
         currentConnections.Add(newConnection);
-        
+        PrintConnections();
 
     }
 
@@ -98,16 +95,18 @@ public class ConnectionManager : MonoBehaviour
         {
             currentConnections.Remove(new Connection(cableStart, cableEnd, cableId));
         }
-        
 
+        PrintConnections();
     }
 
 
     void PrintConnections()
     {
+        connectionText.text = "";
         foreach (var connection in currentConnections)
         {
-            Debug.Log(connection.ToString());
+            
+            connectionText.text += connection.ToString() + '\n';
         }
     }
 
