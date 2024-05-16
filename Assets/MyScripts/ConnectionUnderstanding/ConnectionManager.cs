@@ -12,10 +12,6 @@ public class ConnectionManager : MonoBehaviour
 
     [SerializeField] TextMeshPro connectionText;
 
-    //Knows the correct Connection, and 
-
-    //AdjacencyGraph<string, TaggedEdge<string, string>> currentGraph = new AdjacencyGraph<string, TaggedEdge<string, string>>();
-
 
     public class Connection : IEquatable<Connection>
     {
