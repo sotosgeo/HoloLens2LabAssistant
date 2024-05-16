@@ -1038,7 +1038,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3529052895509477623, guid: 3d8a8bbbf8658e646bc51ca5d3c3decd, type: 3}
       propertyPath: m_Name
-      value: NetworkPos
+      value: networkPos
       objectReference: {fileID: 0}
     - target: {fileID: 3529052896631040068, guid: 3d8a8bbbf8658e646bc51ca5d3c3decd, type: 3}
       propertyPath: m_RootOrder
@@ -3367,6 +3367,10 @@ PrefabInstance:
     - target: {fileID: 2088459042, guid: 6bbb7ea71b46fc94bbc4452583a07771, type: 3}
       propertyPath: pinId
       value: switchPosOut
+      objectReference: {fileID: 0}
+    - target: {fileID: 349843258919271015, guid: 6bbb7ea71b46fc94bbc4452583a07771, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2741431988647967915, guid: 6bbb7ea71b46fc94bbc4452583a07771, type: 3}
       propertyPath: m_Name

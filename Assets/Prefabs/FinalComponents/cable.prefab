@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 2760628278091536472}
   - component: {fileID: 2760628278091536471}
   - component: {fileID: 2760628278091536474}
-  - component: {fileID: 5449012285705003679}
+  - component: {fileID: 6728285133413957841}
   m_Layer: 7
   m_Name: CableEnd
   m_TagString: Untagged
@@ -319,7 +319,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowTetherWhenManipulating: 1
   IsBoundsHandles: 0
---- !u!114 &5449012285705003679
+--- !u!114 &6728285133413957841
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -328,14 +328,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2760628278091536466}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c52c96662a3d8a642b5aee3c6f15b688, type: 3}
+  m_Script: {fileID: 11500000, guid: aa8ee043ba7a68b4fa0270f7ba262a5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pinVisual: {fileID: 2760628277197172993}
   defaultMaterial: {fileID: 2100000, guid: 0af8d1e6d7540734087f7c01b77eaee2, type: 2}
   connectionDetectedMaterial: {fileID: 2100000, guid: d236d89f17d25f846a55e0125b3acc3a, type: 2}
   connectionFinalizedMaterial: {fileID: 2100000, guid: 3dbf937dee12f0a4294bfc0fb6d4a8dd, type: 2}
-  pinConnectedTo: 
+  pinConnectedTo: {fileID: 0}
 --- !u!1 &2760628278128390909
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,7 +351,7 @@ GameObject:
   - component: {fileID: 2760628278128390883}
   - component: {fileID: 2760628278128390882}
   - component: {fileID: 2760628278128390885}
-  - component: {fileID: 2474476987461300591}
+  - component: {fileID: 7157880357534322740}
   m_Layer: 7
   m_Name: CableStart
   m_TagString: Untagged
@@ -489,7 +489,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowTetherWhenManipulating: 1
   IsBoundsHandles: 0
---- !u!114 &2474476987461300591
+--- !u!114 &7157880357534322740
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -498,14 +498,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2760628278128390909}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c2d744de98089046a789603b7b53bb6, type: 3}
+  m_Script: {fileID: 11500000, guid: aa8ee043ba7a68b4fa0270f7ba262a5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pinVisual: {fileID: 2760628277212517304}
   defaultMaterial: {fileID: 2100000, guid: 0af8d1e6d7540734087f7c01b77eaee2, type: 2}
   connectionDetectedMaterial: {fileID: 2100000, guid: d236d89f17d25f846a55e0125b3acc3a, type: 2}
   connectionFinalizedMaterial: {fileID: 2100000, guid: 3dbf937dee12f0a4294bfc0fb6d4a8dd, type: 2}
-  pinConnectedTo: 
+  pinConnectedTo: {fileID: 0}
 --- !u!1 &2760628278232133445
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,8 +553,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cableId: 1
-  connectionManager: {fileID: 0}
-  myCableStart: {fileID: 2474476987461300591}
-  myCableEnd: {fileID: 5449012285705003679}
+  myCableStart: {fileID: 7157880357534322740}
+  myCableEnd: {fileID: 6728285133413957841}
+  myConnectionManager: {fileID: 0}
   cableStartConnectedTo: 
   cableEndConnectedTo: 

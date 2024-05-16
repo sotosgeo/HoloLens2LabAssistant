@@ -11,18 +11,18 @@ public class CableStart : MonoBehaviour
     [SerializeField] Material connectionDetectedMaterial;
     [SerializeField] Material connectionFinalizedMaterial;
 
-    public string pinConnectedTo = null;
+    public GameObject pinConnectedTo = null;
     Coroutine collisionTimer;
 
-    public Action<string> OnConnectionFinalized;
-    public Action<string> OnConnectionStopped;
+    public Action<GameObject> OnConnectionFinalized;
+    public Action<GameObject> OnConnectionStopped;
 
     private IEnumerator CollisionTimer(Collider other)
     {
         yield return new WaitForSeconds(ConnectionManager.connectionTime);
 
         //After Timer Passed
-        pinConnectedTo = other.gameObject.GetComponent<Pin>().pinId;
+        pinConnectedTo = other.gameObject;
         pinVisual.GetComponent<MeshRenderer>().material = connectionFinalizedMaterial;
         //Trigger event and send the pinId that this cable was connected to
         OnConnectionFinalized?.Invoke(pinConnectedTo);

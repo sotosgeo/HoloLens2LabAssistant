@@ -9,8 +9,8 @@ public class Cable : MonoBehaviour
     public int cableId = 0;
 
     //public ConnectionManager connectionManager;
-    [SerializeField] CableStart myCableStart;
-    [SerializeField] CableEnd myCableEnd;
+    [SerializeField] CablePin myCableStart;
+    [SerializeField] CablePin myCableEnd;
     [SerializeField] ConnectionManager myConnectionManager;
 
 
@@ -23,39 +23,37 @@ public class Cable : MonoBehaviour
     public string cableStartConnectedTo = null;
     public string cableEndConnectedTo = null;
 
-    private void OnCableStartConnected(string pinConnectedTo)
+    private bool _cableConnected = false;
+
+
+    private void OnCableStartConnected(GameObject pinConnectedTo)
     {
-        cableStartConnectedTo = pinConnectedTo;
+        cableStartConnectedTo = pinConnectedTo.ToString();
         cableStartConnected = true;
         ConnectionCheck();
     }
 
-    private void OnCableEndConnected(string pinConnectedTo)
+    private void OnCableEndConnected(GameObject pinConnectedTo)
     {
-        cableEndConnectedTo = pinConnectedTo;
+        cableEndConnectedTo = pinConnectedTo.ToString();
         cableEndConnected = true;
         ConnectionCheck();
     }
 
-    private void OnCableStartDisconnected(string pinConnectedTo)
-    {
-        cableStartConnectedTo = null;
+    private void OnCableStartDisconnected(GameObject pinConnectedTo)
+    { 
         cableStartConnected = false;
         ConnectionCheck();
+        cableStartConnectedTo = null;
     }
 
-    private void OnCableEndDisonnected(string pinConnectedTo)
+    private void OnCableEndDisonnected(GameObject pinConnectedTo)
     {
-        cableEndConnectedTo = null;
         cableEndConnected = false;
         ConnectionCheck();
+        cableEndConnectedTo = null;
     }
 
-
-    private void Start()
-    {
-
-    }
 
     private void OnEnable()
     {
@@ -77,19 +75,28 @@ public class Cable : MonoBehaviour
         myCableEnd.OnConnectionStopped -= OnCableEndDisonnected;
 
     }
+    private void Update()
+    {
+        
+    }
 
 
     private void ConnectionCheck()
     {
+       
         if (cableStartConnected & cableEndConnected)
         {
-            Debug.Log("Connection Detected Between " + cableStartConnectedTo + " and " + cableEndConnectedTo + " via cable " + cableId);
+            Debug.Log("Connection Detected Between " + cableStartConnectedTo + " and " + cableEndConnectedTo + " via cable " + cableId.ToString());
             myConnectionManager.OnConnectionMade(cableStartConnectedTo, cableEndConnectedTo,cableId);
+            _cableConnected = true;
         }
-        else if (cableStartConnected == false & cableEndConnected == false)
+
+
+        if ((cableStartConnected == false | cableEndConnected == false) & _cableConnected)
         {
-            Debug.Log("Connection removed between" + cableStartConnectedTo + " and " + cableEndConnectedTo + " via cable " + cableId);
+            Debug.Log("Connection removed between" + cableStartConnectedTo + " and " + cableEndConnectedTo + " via cable " + cableId.ToString());
             myConnectionManager.OnConnectionRemoved(cableStartConnectedTo, cableEndConnectedTo, cableId);
+            _cableConnected = false;
         }
     }
 }
