@@ -1691,7 +1691,7 @@ MonoBehaviour:
   activation: 3
   flattenAxis: 4
   uniformScaleOnFlattenedAxis: 1
-  boxPadding: {x: 0, y: 0, z: 0.01}
+  boxPadding: {x: 0, y: 0, z: 0.1}
   boxDisplayConfiguration: {fileID: 11400000, guid: c2b8a0ee1166d2f43a8acffd135b182c, type: 2}
   linksConfiguration: {fileID: 0}
   scaleHandlesConfiguration: {fileID: 11400000, guid: 937499e8c23a2814696107c1544583ae, type: 2}

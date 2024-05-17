@@ -16,7 +16,7 @@ MonoBehaviour:
   handleGrabbedMaterial: {fileID: 2100000, guid: bf37b5eab60b288498d02fd524325d10, type: 2}
   handlePrefab: {fileID: 1361136173122186969, guid: ba9083550f965e545a628b53bfa80c9e, type: 3}
   handleSize: 0.016
-  colliderPadding: {x: 0.016, y: 0.016, z: 0.016}
+  colliderPadding: {x: 0, y: 0, z: 0}
   drawTetherWhenManipulating: 1
   handlesIgnoreCollider: {fileID: 0}
   handleSlatePrefab: {fileID: 1134031327877807717, guid: c45e552a6d92491468c421c35c5dd63d, type: 3}
