@@ -14,8 +14,7 @@ public class Cable : MonoBehaviour
     [SerializeField] ConnectionManager myConnectionManager;
 
 
-    public Action<String, String, int> OnCableConnected;
-    public Action<String,String,int> OnCableDisconnected;
+  
 
     private bool cableStartConnected = false;
     private bool cableEndConnected = false;

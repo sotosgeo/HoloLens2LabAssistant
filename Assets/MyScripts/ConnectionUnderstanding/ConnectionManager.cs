@@ -17,7 +17,7 @@ public class ConnectionManager : MonoBehaviour
 
         
 
-    List<Connection> motorExcitementConnections = new List<Connection>()
+    List<Connection> motorExcitementConnections = new()
         {
             new Connection("networkPos","switchPosIn",0),
             new Connection("networkNeg","switchNegIn",0),
@@ -34,6 +34,7 @@ public class ConnectionManager : MonoBehaviour
         };
 
 
+    
 
 
     List<Connection> currentConnections = new();
@@ -41,13 +42,14 @@ public class ConnectionManager : MonoBehaviour
     List<Connection> wrongConnections = new();
     List<Connection> missingConnections = new();
 
-    //List<Connection> testConnections = new()
-    //{
-    //    new Connection("networkPos","switchPosIn",5), //Should be correct
-    //    new Connection("resPos","switchPosOut",2), //Should be correct (just different order)
-    //    new Connection("amperIn","motorJ",0), //Should be incorrect
-    //    //all the others should be missing
-    //};
+    List<Connection> testConnections = new()
+    {
+        new Connection("networkPos","switchPosIn",5), //Should be correct
+        new Connection("resPos","switchPosOut",2), //Should be correct (just different order)
+        new Connection("amperIn","motorJ",0), //Should be incorrect
+        //all the others should be missing
+    };
+
     private void Start()
     {
         currentConnections.Clear();
@@ -57,7 +59,7 @@ public class ConnectionManager : MonoBehaviour
         Debug.Log(motorExcitementConnections.Contains(new("networkPos", "switchPosIn", 3)));
 
         //CheckConnection(testConnections);
-
+        
     }
 
     public void CheckCurrentConnection()
