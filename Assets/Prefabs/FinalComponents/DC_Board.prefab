@@ -427,7 +427,7 @@ GameObject:
   - component: {fileID: 2340274393591914498}
   - component: {fileID: 1522677392}
   m_Layer: 6
-  m_Name: J
+  m_Name: motorJ
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -447,7 +447,7 @@ Transform:
   m_Children:
   - {fileID: 1921430951}
   m_Father: {fileID: 6704846925378643791}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &2340274393591914498
 BoxCollider:
@@ -528,16 +528,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5814c0549b80de640948fb39f8a6ad86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dcBoardPins:
-  - {fileID: 5321164010127318298}
-  - {fileID: 7750274201553516036}
-  - {fileID: 2340274393591914499}
-  - {fileID: 4625817917571699266}
-  pinsVisualization:
-  - {fileID: 4945546267602424287}
-  - {fileID: 948714861}
-  - {fileID: 1921430950}
-  - {fileID: 1492001098}
+  J: {fileID: 1522677392}
+  K: {fileID: 529631950}
+  Ga: {fileID: 1522677394}
+  Hb: {fileID: 1522677393}
+  greekName: "\u039A\u03B9\u03BD\u03B7\u03C4\u03AE\u03C1\u03B1\u03C2"
 --- !u!1 &3991698480735306295
 GameObject:
   m_ObjectHideFlags: 0
@@ -633,7 +628,7 @@ GameObject:
   - component: {fileID: 1041697328239068897}
   - component: {fileID: 529631950}
   m_Layer: 6
-  m_Name: K
+  m_Name: motorK
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -653,7 +648,7 @@ Transform:
   m_Children:
   - {fileID: 1492001099}
   m_Father: {fileID: 6704846925378643791}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1041697328239068897
 BoxCollider:
@@ -781,7 +776,7 @@ GameObject:
   - component: {fileID: 3262768231739958499}
   - component: {fileID: 1522677394}
   m_Layer: 6
-  m_Name: Ga
+  m_Name: motorGa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -801,7 +796,7 @@ Transform:
   m_Children:
   - {fileID: 3331787430993394717}
   m_Father: {fileID: 6704846925378643791}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &3262768231739958499
 BoxCollider:
@@ -1196,10 +1191,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8188327290058205215}
-  - {fileID: 6243517409467039949}
   - {fileID: 6305029910670790530}
   - {fileID: 4842706596031101743}
+  - {fileID: 8188327290058205215}
+  - {fileID: 6243517409467039949}
   m_Father: {fileID: 4296388428643925390}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1302,7 +1297,7 @@ GameObject:
   - component: {fileID: 2829938825774396781}
   - component: {fileID: 1522677393}
   m_Layer: 6
-  m_Name: Hb
+  m_Name: motorHb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1322,7 +1317,7 @@ Transform:
   m_Children:
   - {fileID: 948714862}
   m_Father: {fileID: 6704846925378643791}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &2829938825774396781
 BoxCollider:

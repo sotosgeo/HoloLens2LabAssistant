@@ -1,22 +1,14 @@
+using Assets.MyScripts;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LabComponent : MonoBehaviour
-{
+public abstract class LabComponent : MonoBehaviour { 
 
 
-    [SerializeField] GameObject[] ComponentPins;
-
-    
-    void Start()
-    {
-        
-    }
+    public GameObject[] ComponentPins;
 
     
-    void Update()
-    {
-        
-    }
+    
+    
 }

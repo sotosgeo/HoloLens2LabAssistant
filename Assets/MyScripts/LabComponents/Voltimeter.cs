@@ -1,12 +1,12 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Voltimeter : MonoBehaviour
+public class Voltimeter : LabComponent
 {
-    [SerializeField] GameObject[] voltimeterPins;
-    [SerializeField] GameObject[] pinsVisualization;
+    public Pin voltimeterIn;
+    public Pin voltimeterOut;
 
-
+    public string greekName = "Βολτόμετρο";
     
 }

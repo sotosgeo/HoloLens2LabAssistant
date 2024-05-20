@@ -259,7 +259,7 @@ GameObject:
   - component: {fileID: 3529052895509477621}
   - component: {fileID: 766681247}
   m_Layer: 6
-  m_Name: Positive
+  m_Name: networkPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -373,7 +373,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c6bd404f506e1894289fde7b1689f901, type: 2}
+  - {fileID: 2100000, guid: c66936cac20300b4092d9057bd00aee2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1016,10 +1016,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28bd4f7d7deeb0244af588314c35f590, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  networkPins:
-  - {fileID: 3529052895509477623}
-  - {fileID: 3529052896682832917}
-  connectedTo: {fileID: 0}
+  NetworkPos: {fileID: 766681247}
+  NetworkNeg: {fileID: 766681246}
+  greekName: "\u0394\u03AF\u03BA\u03C4\u03C5\u03BF"
 --- !u!1 &3529052896638286666
 GameObject:
   m_ObjectHideFlags: 0
@@ -1449,7 +1448,7 @@ GameObject:
   - component: {fileID: 3529052896682832915}
   - component: {fileID: 766681246}
   m_Layer: 6
-  m_Name: Negative
+  m_Name: networkNeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1736,7 +1735,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28bd4f7d7deeb0244af588314c35f590, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  networkPins:
-  - {fileID: 0}
-  - {fileID: 0}
-  connectedTo: {fileID: 0}
+  NetworkPos: {fileID: 0}
+  NetworkNeg: {fileID: 0}
+  greekName: "\u0394\u03AF\u03BA\u03C4\u03C5\u03BF"

@@ -379,7 +379,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1646678037609835938}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.493, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -403,12 +403,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4da4eae0c99cb0d4cb0be89291082fbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amperometerPins:
-  - {fileID: 3135383148727043862}
-  - {fileID: 2639657860262264005}
-  pinsVisualization:
-  - {fileID: 790726503523334704}
-  - {fileID: 460634721677595797}
+  amperIn: {fileID: 7280182296383082196}
+  amperOut: {fileID: 309189922413922008}
+  greekName: "\u0391\u03BC\u03C0\u03B5\u03C1\u03CC\u03BC\u03B5\u03C4\u03C1\u03BF"
 --- !u!1 &2639657860262264005
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,7 +432,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2639657860262264005}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0295, y: -0.0954, z: -0.0266}
+  m_LocalPosition: {x: 0.0295, y: 0, z: -0.0266}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -473,7 +470,7 @@ MonoBehaviour:
   connectionDetectedMaterial: {fileID: 2100000, guid: d236d89f17d25f846a55e0125b3acc3a, type: 2}
   connectionFinalizedMaterial: {fileID: 2100000, guid: 3dbf937dee12f0a4294bfc0fb6d4a8dd, type: 2}
   pinConnectedTo: {fileID: 0}
-  pinId: amperOut
+  pinId: amper1Out
 --- !u!1 &3135383148727043862
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,7 +497,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3135383148727043862}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0282, y: -0.0952, z: 0}
+  m_LocalPosition: {x: -0.0282, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -538,7 +535,7 @@ MonoBehaviour:
   connectionDetectedMaterial: {fileID: 2100000, guid: d236d89f17d25f846a55e0125b3acc3a, type: 2}
   connectionFinalizedMaterial: {fileID: 2100000, guid: 3dbf937dee12f0a4294bfc0fb6d4a8dd, type: 2}
   pinConnectedTo: {fileID: 0}
-  pinId: amperIn
+  pinId: amper1In
 --- !u!1 &3740604917495010025
 GameObject:
   m_ObjectHideFlags: 0
@@ -1633,7 +1630,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7631083352220115294}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

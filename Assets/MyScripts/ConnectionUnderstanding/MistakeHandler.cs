@@ -1,6 +1,7 @@
 ﻿using Microsoft.MixedReality.Toolkit.UI;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MistakeHandler : MonoBehaviour
@@ -14,7 +15,7 @@ public class MistakeHandler : MonoBehaviour
     private int numOfMissingConnections = 0;
     private int timesAskedForHelp;
 
-   
+
 
     [SerializeField]
     [Tooltip("Assign DialogLarge_192x192.prefab")]
@@ -56,12 +57,12 @@ public class MistakeHandler : MonoBehaviour
     }
 
 
-  
+
 
 
     public void OpenHelp0Dialog()
     {
-        Dialog myDialog = Dialog.Open(DialogPrefabSmall, DialogButtonType.Yes | DialogButtonType.No, "Help", $"There are {numOfWrongConnections} incorrectly connected cables. \nYou are missing {numOfMissingConnections} connections.\nDo you need more help?", true);
+        Dialog myDialog = Dialog.Open(DialogPrefabSmall, DialogButtonType.Yes | DialogButtonType.No, "Βοήθεια", $"Υπάρχουν {numOfWrongConnections} λάθος συνδεδεμένα καλώδια. \nΛείπουν {numOfMissingConnections} συνδέσεις.\nΧρειάζεσαι περισσότερη βοήθεια;", true);
         if (myDialog != null)
         {
             myDialog.OnClosed += OnClosedDialogEvent;
@@ -70,7 +71,8 @@ public class MistakeHandler : MonoBehaviour
 
     public void OpenHelp1Dialog()
     {
-        Dialog myDialog = Dialog.Open(DialogPrefabSmall, DialogButtonType.Yes | DialogButtonType.No, "Help", $"You have done mistakes here and here. \nDo you need more help?", true);
+        string help1Text = "";
+        Dialog myDialog = Dialog.Open(DialogPrefabMedium, DialogButtonType.Yes | DialogButtonType.No, "Βοήθεια", help1Text + "\nΧρειάζεσαι περισσότερη βοήθεια;", true);
         if (myDialog != null)
         {
             myDialog.OnClosed += OnClosedDialogEvent;
@@ -99,10 +101,10 @@ public class MistakeHandler : MonoBehaviour
             helpLevel++;
             GetHelp(helpLevel);
         }
-        if(obj.Result == DialogButtonType.No)
+        if (obj.Result == DialogButtonType.No)
         {
             helpLevel = 0;
-            
+
         }
     }
 
@@ -110,20 +112,22 @@ public class MistakeHandler : MonoBehaviour
     private void HelpLevel0()
     {
         OpenHelp0Dialog();
-        
+
     }
 
 
     private void HelpLevel1()
     {
+        
         OpenHelp1Dialog();
     }
 
     private void HelpLevel2()
     {
         OpenHelp2Dialog();
-        
+
     }
+
 
 
     private void GetHelp(int myHelpLevel)
@@ -147,29 +151,42 @@ public class MistakeHandler : MonoBehaviour
     }
 
 
-    private void ShowMistakes(List<Connection> wrongConnections, List<Connection> missingConnections)
+    private void FindMistakes(List<Connection> wrongConnections, List<Connection> missingConnections)
     {
-        
+
         timesAskedForHelp++;
+        //Level 1 Mistakes
         numOfWrongConnections = wrongConnections.Count;
         numOfMissingConnections = missingConnections.Count;
 
+        List<GameObject> wrongComponents = new();
+        //Level 2 Mistakes
+
+        foreach (Connection connection in wrongConnections)
+        {
+            wrongComponents.Add(connection.PinA.transform.parent.parent.gameObject);
+            Debug.Log(connection.PinA.transform.parent.parent.gameObject);
+        }
+
+        //Level 3 Mistakes
+
+
         if (numOfWrongConnections > 0 | numOfMissingConnections > 0)
         {
-           GetHelp(helpLevel);
+            GetHelp(helpLevel);
         }
         else
         {
             OpenCorrectDialogSmall();
         }
 
-        
+
 
     }
 
    
 
-    void Start()
+     void Start()
     {
         timesAskedForHelp = 0;
         helpLevel = 0;
@@ -177,12 +194,12 @@ public class MistakeHandler : MonoBehaviour
 
     private void OnEnable()
     {
-        connectionManager.OnConnectionCheck += ShowMistakes;
+        connectionManager.OnConnectionCheck += FindMistakes;
     }
 
     private void OnDisable()
     {
-        connectionManager.OnConnectionCheck -= ShowMistakes;
+        connectionManager.OnConnectionCheck -= FindMistakes;
     }
 
 }

@@ -2770,17 +2770,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 187374591}
     m_Modifications:
-    - target: {fileID: 309189922413922008, guid: 7d7871bd7b17f2d4684709023596f7b4, type: 3}
-      propertyPath: pinId
-      value: amper1Out
-      objectReference: {fileID: 0}
     - target: {fileID: 1509659094326994699, guid: 7d7871bd7b17f2d4684709023596f7b4, type: 3}
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1509659094326994699, guid: 7d7871bd7b17f2d4684709023596f7b4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.423
+      value: 0.42299998
       objectReference: {fileID: 0}
     - target: {fileID: 1509659094326994699, guid: 7d7871bd7b17f2d4684709023596f7b4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2822,18 +2818,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Amperometer
       objectReference: {fileID: 0}
-    - target: {fileID: 2639657860262264005, guid: 7d7871bd7b17f2d4684709023596f7b4, type: 3}
-      propertyPath: m_Name
-      value: amperOut
-      objectReference: {fileID: 0}
-    - target: {fileID: 3135383148727043862, guid: 7d7871bd7b17f2d4684709023596f7b4, type: 3}
-      propertyPath: m_Name
-      value: amperIn
-      objectReference: {fileID: 0}
-    - target: {fileID: 7280182296383082196, guid: 7d7871bd7b17f2d4684709023596f7b4, type: 3}
-      propertyPath: pinId
-      value: amper1In
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d7871bd7b17f2d4684709023596f7b4, type: 3}
 --- !u!4 &706185228 stripped
@@ -2853,38 +2837,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 187374591}
     m_Modifications:
-    - target: {fileID: 766681246, guid: 3d8a8bbbf8658e646bc51ca5d3c3decd, type: 3}
-      propertyPath: pinId
-      value: networkNeg
-      objectReference: {fileID: 0}
-    - target: {fileID: 766681246, guid: 3d8a8bbbf8658e646bc51ca5d3c3decd, type: 3}
-      propertyPath: maxTime
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 766681247, guid: 3d8a8bbbf8658e646bc51ca5d3c3decd, type: 3}
-      propertyPath: pinId
-      value: networkPos
-      objectReference: {fileID: 0}
-    - target: {fileID: 766681247, guid: 3d8a8bbbf8658e646bc51ca5d3c3decd, type: 3}
-      propertyPath: maxTime
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3529052895130294688, guid: 3d8a8bbbf8658e646bc51ca5d3c3decd, type: 3}
-      propertyPath: pinsVisualization.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3529052895321139258, guid: 3d8a8bbbf8658e646bc51ca5d3c3decd, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 1482c5e97be93d946aa08fa5e39bffae, type: 2}
-    - target: {fileID: 3529052895509477623, guid: 3d8a8bbbf8658e646bc51ca5d3c3decd, type: 3}
-      propertyPath: m_Name
-      value: networkPos
-      objectReference: {fileID: 0}
-    - target: {fileID: 3529052895599803703, guid: 3d8a8bbbf8658e646bc51ca5d3c3decd, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: c66936cac20300b4092d9057bd00aee2, type: 2}
     - target: {fileID: 3529052896631040068, guid: 3d8a8bbbf8658e646bc51ca5d3c3decd, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -2933,11 +2885,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Network
       objectReference: {fileID: 0}
-    - target: {fileID: 3529052896682832917, guid: 3d8a8bbbf8658e646bc51ca5d3c3decd, type: 3}
-      propertyPath: m_Name
-      value: networkNeg
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3529052895130294688, guid: 3d8a8bbbf8658e646bc51ca5d3c3decd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3d8a8bbbf8658e646bc51ca5d3c3decd, type: 3}
 --- !u!4 &766681243 stripped
 Transform:
@@ -2949,6 +2898,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3529052896631040071, guid: 3d8a8bbbf8658e646bc51ca5d3c3decd, type: 3}
   m_PrefabInstance: {fileID: 766681242}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &766681245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 766681244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c004433f0baaaa449a9989793d6a6b46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ComponentPins:
+  - {fileID: 0}
+  - {fileID: 0}
+  greekName: "\u0394\u03B9\u03B1\u03BA\u03CC\u03C0\u03C4\u03B7\u03C2"
 --- !u!1 &785069477
 GameObject:
   m_ObjectHideFlags: 0
@@ -5234,10 +5199,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 187374591}
     m_Modifications:
-    - target: {fileID: 2340274393591914499, guid: 24386d1b4855eb74eb2d6d61b736a218, type: 3}
-      propertyPath: m_Name
-      value: motorJ
-      objectReference: {fileID: 0}
     - target: {fileID: 3518444010515146548, guid: 24386d1b4855eb74eb2d6d61b736a218, type: 3}
       propertyPath: m_Name
       value: DC_Board
@@ -5285,18 +5246,6 @@ PrefabInstance:
     - target: {fileID: 4296388428643925390, guid: 24386d1b4855eb74eb2d6d61b736a218, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4625817917571699266, guid: 24386d1b4855eb74eb2d6d61b736a218, type: 3}
-      propertyPath: m_Name
-      value: motorK
-      objectReference: {fileID: 0}
-    - target: {fileID: 5321164010127318298, guid: 24386d1b4855eb74eb2d6d61b736a218, type: 3}
-      propertyPath: m_Name
-      value: motorGa
-      objectReference: {fileID: 0}
-    - target: {fileID: 7750274201553516036, guid: 24386d1b4855eb74eb2d6d61b736a218, type: 3}
-      propertyPath: m_Name
-      value: motorHb
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24386d1b4855eb74eb2d6d61b736a218, type: 3}
@@ -7312,6 +7261,10 @@ PrefabInstance:
     - target: {fileID: 2741431988647967915, guid: 6bbb7ea71b46fc94bbc4452583a07771, type: 3}
       propertyPath: m_Name
       value: Switch1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483558490354967480, guid: 6bbb7ea71b46fc94bbc4452583a07771, type: 3}
+      propertyPath: switchId
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5084888653136228381, guid: 6bbb7ea71b46fc94bbc4452583a07771, type: 3}
       propertyPath: m_RootOrder
