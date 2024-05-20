@@ -7,7 +7,7 @@ using TMPro;
 using Mirror;
 using System.Linq;
 using System.Net.NetworkInformation;
-using Microsoft.MixedReality.Toolkit.UI;
+
 
 
 public class ConnectionManager : MonoBehaviour
@@ -20,12 +20,17 @@ public class ConnectionManager : MonoBehaviour
 
 
 
-    List<Connection> currentConnections = new();
+    private List<Connection> currentConnections = new();
 
-    List<Connection> wrongConnections = new();
-    List<Connection> missingConnections = new();
+    private List<Connection> wrongConnections = new();
+    private List<Connection> missingConnections = new();
 
     List<Connection> motorExcitementConnections = new();
+
+
+
+    public Action<List<Connection>, List<Connection>> OnConnectionCheck;
+
 
 
     List<string[]> motorExcitement = new List<string[]>
@@ -36,7 +41,7 @@ public class ConnectionManager : MonoBehaviour
 
         new string[] {"switchPosOut", "resPos" },
         new string[] {"switchNegOut", "resNeg" },
-        
+
         new string[] {"resPos", "amperIn" },
         new string[] {"resGnd", "motorK" },
 
@@ -51,7 +56,7 @@ public class ConnectionManager : MonoBehaviour
         missingConnections.Clear();
 
         CreateConnectionFromList();
-        TestPrintConnections(motorExcitementConnections);
+        DebugPrintConnections(motorExcitementConnections);
 
     }
 
@@ -71,13 +76,13 @@ public class ConnectionManager : MonoBehaviour
         CheckConnection(currentConnections);
 
 
-        Debug.Log("Wrong connections are: ");
-        TestPrintConnections(wrongConnections);
+        //Debug.Log("Wrong connections are: ");
+        //DebugPrintConnections(wrongConnections);
 
 
 
-        Debug.Log("Missing Connections are: ");
-        TestPrintConnections(missingConnections);
+        //Debug.Log("Missing Connections are: ");
+        //DebugPrintConnections(missingConnections);
     }
 
     public void OnConnectionMade(GameObject cableStart, GameObject cableEnd, int cableId)
@@ -107,13 +112,10 @@ public class ConnectionManager : MonoBehaviour
 
             connectionText.text += connection.ToString() + '\n';
         }
-
-
-
     }
 
 
-    void TestPrintConnections(List<Connection> connections)
+    void DebugPrintConnections(List<Connection> connections)
     {
         foreach (var connection in connections)
         {
@@ -149,6 +151,8 @@ public class ConnectionManager : MonoBehaviour
                     missingConnections.Add(connection);
                 }
             }
+
+        OnConnectionCheck?.Invoke(wrongConnections, missingConnections);
     }
 
 
