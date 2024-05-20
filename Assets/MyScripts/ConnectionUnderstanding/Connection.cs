@@ -3,20 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Connection : IEquatable<Connection>
 {
 
-    public string PinA { get; private set; }
-    public string PinB { get; private set; }
+    public GameObject PinA { get; private set; }
+    public GameObject PinB { get; private set; }
     public int ConnectingCable { get; private set; }
 
 
-    public Connection(string pinA, string pinB, int connectingCable)
+    public Connection(GameObject pinA,  GameObject pinB, int connectingCable)
     {
         PinA = pinA;
         PinB = pinB;
         ConnectingCable = connectingCable;
     }
+
+
 
     public override string ToString()
     {
@@ -36,6 +39,6 @@ public class Connection : IEquatable<Connection>
 
     public override int GetHashCode()
     {
-        return HashCode.Combine(PinA, PinB);
+        return HashCode.Combine(PinA, PinB,ConnectingCable);
     }
 }

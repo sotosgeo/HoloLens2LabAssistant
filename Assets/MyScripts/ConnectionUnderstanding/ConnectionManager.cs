@@ -7,6 +7,7 @@ using TMPro;
 using Mirror;
 using System.Linq;
 using System.Net.NetworkInformation;
+using Microsoft.MixedReality.Toolkit.UI;
 
 
 public class ConnectionManager : MonoBehaviour
@@ -15,26 +16,8 @@ public class ConnectionManager : MonoBehaviour
 
     [SerializeField] TextMeshPro connectionText;
 
-        
+    [SerializeField] PlacementManager placementManager;
 
-    List<Connection> motorExcitementConnections = new()
-        {
-            new Connection("networkPos","switchPosIn",0),
-            new Connection("networkNeg","switchNegIn",0),
-
-            new Connection("switchPosOut","resPos",0),
-            new Connection("switchNegOut","resNeg",0),
-
-            new Connection("resPos","amperIn",0),
-            new Connection("resGnd","motorK",0),
-
-            new Connection("amperOut","motorJ",0),
-
-
-        };
-
-
-    
 
 
     List<Connection> currentConnections = new();
@@ -42,12 +25,23 @@ public class ConnectionManager : MonoBehaviour
     List<Connection> wrongConnections = new();
     List<Connection> missingConnections = new();
 
-    List<Connection> testConnections = new()
+    List<Connection> motorExcitementConnections = new();
+
+
+    List<string[]> motorExcitement = new List<string[]>
     {
-        new Connection("networkPos","switchPosIn",5), //Should be correct
-        new Connection("resPos","switchPosOut",2), //Should be correct (just different order)
-        new Connection("amperIn","motorJ",0), //Should be incorrect
-        //all the others should be missing
+
+        new string[]{"networkPos","switchPosIn" },
+        new string[]{"networkNeg","switchNegIn"},
+
+        new string[] {"switchPosOut", "resPos" },
+        new string[] {"switchNegOut", "resNeg" },
+        
+        new string[] {"resPos", "amperIn" },
+        new string[] {"resGnd", "motorK" },
+
+        new string[] {"amperOut", "motorJ" }
+
     };
 
     private void Start()
@@ -56,11 +50,21 @@ public class ConnectionManager : MonoBehaviour
         wrongConnections.Clear();
         missingConnections.Clear();
 
-        Debug.Log(motorExcitementConnections.Contains(new("networkPos", "switchPosIn", 3)));
+        CreateConnectionFromList();
+        TestPrintConnections(motorExcitementConnections);
 
-        //CheckConnection(testConnections);
-        
     }
+
+    private void CreateConnectionFromList()
+    {
+        foreach (var conStr in motorExcitement)
+        {
+            motorExcitementConnections.Add(new Connection(GameObject.Find(conStr[0]), GameObject.Find(conStr[1]), 0));
+            //Debug.Log(GameObject.Find(conStr[0]).ToString() + " "+ GameObject.Find(conStr[1]).ToString());
+        }
+    }
+
+
 
     public void CheckCurrentConnection()
     {
@@ -70,13 +74,13 @@ public class ConnectionManager : MonoBehaviour
         Debug.Log("Wrong connections are: ");
         TestPrintConnections(wrongConnections);
 
-       
+
 
         Debug.Log("Missing Connections are: ");
         TestPrintConnections(missingConnections);
     }
 
-    public void OnConnectionMade(string cableStart, string cableEnd, int cableId)
+    public void OnConnectionMade(GameObject cableStart, GameObject cableEnd, int cableId)
     {
         var newConnection = new Connection(cableStart, cableEnd, cableId);
         currentConnections.Add(newConnection);
@@ -84,7 +88,7 @@ public class ConnectionManager : MonoBehaviour
 
     }
 
-    public void OnConnectionRemoved(string cableStart, string cableEnd, int cableId)
+    public void OnConnectionRemoved(GameObject cableStart, GameObject cableEnd, int cableId)
     {
 
         if (currentConnections.Contains(new Connection(cableStart, cableEnd, cableId)))

@@ -366,7 +366,7 @@ GameObject:
   - component: {fileID: 1509659094326994699}
   - component: {fileID: 8001599889430500940}
   m_Layer: 0
-  m_Name: SmallAmperometer
+  m_Name: Amperometer
   m_TagString: Amperometer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

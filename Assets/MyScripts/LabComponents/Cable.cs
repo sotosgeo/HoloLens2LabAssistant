@@ -19,22 +19,22 @@ public class Cable : MonoBehaviour
     private bool cableStartConnected = false;
     private bool cableEndConnected = false;
 
-    public string cableStartConnectedTo = null;
-    public string cableEndConnectedTo = null;
+    public GameObject cableStartConnectedTo = null;
+    public GameObject cableEndConnectedTo = null;
 
     private bool _cableConnected = false;
 
 
     private void OnCableStartConnected(GameObject pinConnectedTo)
     {
-        cableStartConnectedTo = pinConnectedTo.GetComponent<Pin>().pinId;
+        cableStartConnectedTo = pinConnectedTo;
         cableStartConnected = true;
         ConnectionCheck();
     }
 
     private void OnCableEndConnected(GameObject pinConnectedTo)
     {
-        cableEndConnectedTo = pinConnectedTo.GetComponent<Pin>().pinId;
+        cableEndConnectedTo = pinConnectedTo;
         cableEndConnected = true;
         ConnectionCheck();
     }

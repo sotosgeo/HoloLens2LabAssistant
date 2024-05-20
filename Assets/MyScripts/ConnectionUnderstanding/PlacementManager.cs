@@ -11,7 +11,7 @@ public class PlacementManager : MonoBehaviour
     /// - Maybe event that listens to InstantiatePrefab(Component) and adds the placed component in the
     /// placedComponentObjects
     /// </summary>
-    [SerializeField] GameObject[] placedComponentObjects;
+    public GameObject[] placedComponentObjects;
 
     private bool _placementToggle = false;
     private bool _tooltipToggle = true;

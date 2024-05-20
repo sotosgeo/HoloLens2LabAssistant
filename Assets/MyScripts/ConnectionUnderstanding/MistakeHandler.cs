@@ -2,9 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class MistakeHandler : MonoBehaviour
 {
-    // Start is called before the first frame update
+
+    [SerializeField] ConnectionManager connectionManager;
+
+
+
+
     void Start()
     {
         
