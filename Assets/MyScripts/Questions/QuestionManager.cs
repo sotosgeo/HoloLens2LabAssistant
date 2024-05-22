@@ -83,8 +83,8 @@ public class QuestionManager : MonoBehaviour
 
         //Start by enabling the MultipleChoiceQuestions;
         //Replace with an event that starts when the user accesses this part of the app
-        MultipleChoiceQuestion.SetActive(true);
-        PartSelectionQuestion.SetActive(false);
+       // MultipleChoiceQuestion.SetActive(true);
+       // PartSelectionQuestion.SetActive(false);
 
 
     }

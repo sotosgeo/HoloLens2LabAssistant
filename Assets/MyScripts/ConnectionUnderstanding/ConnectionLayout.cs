@@ -7,11 +7,12 @@ public class ConnectionLayout
 
 
     public string ConnectionLayoutName;
-    public List<Connection> ConnectionsInLayout { get; private set;}
+    public List<Connection> ConnectionsInLayout { get; private set; }
 
-    public ConnectionLayout(string name, List<Connection> connections) {
-        ConnectionLayoutName = name;
-        ConnectionsInLayout = connections;
+    
+    public ConnectionLayout(string connectionLayoutName, List<Connection> connectionsInLayout)
+    {
+        ConnectionLayoutName = connectionLayoutName;
+        ConnectionsInLayout = connectionsInLayout;
     }
-
 }

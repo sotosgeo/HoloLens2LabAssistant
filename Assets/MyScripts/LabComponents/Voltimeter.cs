@@ -7,6 +7,6 @@ public class Voltimeter : LabComponent
     public Pin voltimeterIn;
     public Pin voltimeterOut;
 
-    public string greekName = "Βολτόμετρο";
+    public string voltimeterId;
     
 }

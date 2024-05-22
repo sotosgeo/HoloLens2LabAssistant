@@ -196,12 +196,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7c1a08acc8b9d64c9989e1f742a6c2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 
+  GreekName: "\u0394\u03B9\u03B1\u03BA\u03CC\u03C0\u03C4\u03B7\u03C2"
   switchPosIn: {fileID: 2717306911251191781}
   switchPosOut: {fileID: 8315530056847597271}
   switchNegIn: {fileID: 9134175794081764415}
   switchNegOut: {fileID: 2595023862451951749}
   switchId: 0
-  greekName: "\u0394\u03B9\u03B1\u03BA\u03CC\u03C0\u03C4\u03B7\u03C2"
 --- !u!1 &5739377919307389517
 GameObject:
   m_ObjectHideFlags: 0

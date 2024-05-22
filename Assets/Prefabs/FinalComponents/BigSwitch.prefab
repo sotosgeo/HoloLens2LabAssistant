@@ -527,12 +527,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7c1a08acc8b9d64c9989e1f742a6c2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 
+  GreekName: "\u0394\u03B9\u03B1\u03BA\u03CC\u03C0\u03C4\u03B7\u03C2"
   switchPosIn: {fileID: 619928586}
   switchPosOut: {fileID: 2088459043}
   switchNegIn: {fileID: 2088459042}
   switchNegOut: {fileID: 2088459041}
   switchId: 0
-  greekName: "\u0394\u03B9\u03B1\u03BA\u03CC\u03C0\u03C4\u03B7\u03C2"
 --- !u!1 &3098477572830762681
 GameObject:
   m_ObjectHideFlags: 0
@@ -871,11 +872,11 @@ MonoBehaviour:
   activation: 3
   flattenAxis: 3
   uniformScaleOnFlattenedAxis: 1
-  boxPadding: {x: 0, y: 0, z: 0.1}
+  boxPadding: {x: 0.01, y: 0, z: 0}
   boxDisplayConfiguration: {fileID: 11400000, guid: c2b8a0ee1166d2f43a8acffd135b182c, type: 2}
   linksConfiguration: {fileID: 0}
   scaleHandlesConfiguration: {fileID: 11400000, guid: 937499e8c23a2814696107c1544583ae, type: 2}
-  rotationHandlesConfiguration: {fileID: 11400000, guid: 169481b514dd6bd478ce9c10b67ee5d6, type: 2}
+  rotationHandlesConfiguration: {fileID: 0}
   translationHandlesConfiguration: {fileID: 11400000, guid: 6ef333f55c6862d4b85f4d643b7a2e1a, type: 2}
   handleProximityEffectConfiguration: {fileID: 11400000, guid: 9607516de9549d6468834d73e183e029, type: 2}
   hideElementsInInspector: 1

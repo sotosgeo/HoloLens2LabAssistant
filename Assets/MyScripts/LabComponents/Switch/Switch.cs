@@ -9,8 +9,6 @@ public class Switch : LabComponent
     public Pin switchPosOut;
     public Pin switchNegIn;
     public Pin switchNegOut;
-    public int switchId = 0;
-    public new string greekName = "Διακόπτης";
-    
+    public string switchId;
     
 }

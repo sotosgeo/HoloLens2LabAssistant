@@ -16,7 +16,7 @@ public class MistakeHandler : MonoBehaviour
     private int timesAskedForHelp;
 
 
-
+    #region Dialog UI and prefabs
     [SerializeField]
     [Tooltip("Assign DialogLarge_192x192.prefab")]
     private GameObject dialogPrefabLarge;
@@ -107,7 +107,7 @@ public class MistakeHandler : MonoBehaviour
 
         }
     }
-
+    #endregion
 
     private void HelpLevel0()
     {
@@ -118,7 +118,7 @@ public class MistakeHandler : MonoBehaviour
 
     private void HelpLevel1()
     {
-        
+
         OpenHelp1Dialog();
     }
 
@@ -144,62 +144,78 @@ public class MistakeHandler : MonoBehaviour
                 HelpLevel2();
                 break;
             default:
-                Debug.Log(helpLevel);
                 helpLevel = 0;
                 break;
         };
     }
 
 
-    private void FindMistakes(List<Connection> wrongConnections, List<Connection> missingConnections)
+    //private void FindMistakes(List<Connection> wrongConnections, List<Connection> missingConnections)
+    //{
+
+    //    timesAskedForHelp++;
+    //    //Level 1 Mistakes
+    //    numOfWrongConnections = wrongConnections.Count;
+    //    numOfMissingConnections = missingConnections.Count;
+
+    //    List<GameObject> wrongComponents = new();
+    //    //Level 2 Mistakes
+
+    //    foreach (Connection connection in wrongConnections)
+    //    {
+     
+    //        //Get lab component from pin that is in a wrong connection
+    //        if (!wrongComponents.Contains(GetComponentFromPin(connection.PinA)))
+    //        {
+    //            wrongComponents.Add(GetComponentFromPin(connection.PinA));
+
+    //            Debug.Log(GetComponentFromPin(connection.PinA).GetComponent<LabComponent>().GreekName);
+    //        }
+    //        if (!wrongComponents.Contains(GetComponentFromPin(connection.PinB)))
+    //        {
+    //            wrongComponents.Add(connection.PinB);
+    //            Debug.Log(GetComponentFromPin(connection.PinB).GetComponent<LabComponent>().GreekName);
+    //        }
+    //    }
+
+    //    //Level 3 Mistakes
+
+
+    //    if (numOfWrongConnections > 0 | numOfMissingConnections > 0)
+    //    {
+    //        GetHelp(helpLevel);
+    //    }
+    //    else
+    //    {
+    //        OpenCorrectDialogSmall();
+    //    }
+
+
+
+    //}
+
+
+
+    private GameObject GetComponentFromPin(GameObject pin)
     {
-
-        timesAskedForHelp++;
-        //Level 1 Mistakes
-        numOfWrongConnections = wrongConnections.Count;
-        numOfMissingConnections = missingConnections.Count;
-
-        List<GameObject> wrongComponents = new();
-        //Level 2 Mistakes
-
-        foreach (Connection connection in wrongConnections)
-        {
-            wrongComponents.Add(connection.PinA.transform.parent.parent.gameObject);
-            Debug.Log(connection.PinA.transform.parent.parent.gameObject);
-        }
-
-        //Level 3 Mistakes
-
-
-        if (numOfWrongConnections > 0 | numOfMissingConnections > 0)
-        {
-            GetHelp(helpLevel);
-        }
-        else
-        {
-            OpenCorrectDialogSmall();
-        }
-
-
-
+        return pin.transform.parent.parent.gameObject;
     }
 
-   
 
-     void Start()
+    void Start()
     {
         timesAskedForHelp = 0;
         helpLevel = 0;
     }
 
-    private void OnEnable()
-    {
-        connectionManager.OnConnectionCheck += FindMistakes;
-    }
+    //private void OnEnable()
+    //{
+    //    connectionManager.OnConnectionCheck += FindMistakes;
+    //}
 
-    private void OnDisable()
-    {
-        connectionManager.OnConnectionCheck -= FindMistakes;
-    }
+    //private void OnDisable()
+    //{
+    //    connectionManager.OnConnectionCheck -= FindMistakes;
+    //}
 
 }

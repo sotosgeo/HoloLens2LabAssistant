@@ -9,8 +9,8 @@ public class Pin : MonoBehaviour
     [SerializeField] Material connectionDetectedMaterial;
     [SerializeField] Material connectionFinalizedMaterial;
 
-    public GameObject pinConnectedTo;
-    public string pinId;
+    //public GameObject pinConnectedTo;
+    //public string pinId;
 
      
 }

@@ -1,14 +1,14 @@
-using Assets.MyScripts;
+using Microsoft.MixedReality.Toolkit.Examples.Demos;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.XR.CoreUtils.Datums;
 using UnityEngine;
 
-public abstract class LabComponent : MonoBehaviour { 
+public abstract class LabComponent : MonoBehaviour
+{
+
+    public string id;
+    public string GreekName;
 
 
-    public GameObject[] ComponentPins;
-
-    
-    
-    
 }

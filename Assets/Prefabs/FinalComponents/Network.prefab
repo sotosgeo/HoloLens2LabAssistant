@@ -977,7 +977,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3529052896631040068}
-  - component: {fileID: 3529052895130294688}
+  - component: {fileID: 8655698327029429474}
   m_Layer: 0
   m_Name: Network
   m_TagString: Network
@@ -1004,7 +1004,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3529052895130294688
+--- !u!114 &8655698327029429474
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1016,9 +1016,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28bd4f7d7deeb0244af588314c35f590, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: network
+  GreekName: "\u0394\u03AF\u03BA\u03C4\u03C5\u03BF"
   NetworkPos: {fileID: 766681247}
   NetworkNeg: {fileID: 766681246}
-  greekName: "\u0394\u03AF\u03BA\u03C4\u03C5\u03BF"
 --- !u!1 &3529052896638286666
 GameObject:
   m_ObjectHideFlags: 0
@@ -1735,6 +1736,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28bd4f7d7deeb0244af588314c35f590, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 
+  GreekName: 
   NetworkPos: {fileID: 0}
   NetworkNeg: {fileID: 0}
-  greekName: "\u0394\u03AF\u03BA\u03C4\u03C5\u03BF"

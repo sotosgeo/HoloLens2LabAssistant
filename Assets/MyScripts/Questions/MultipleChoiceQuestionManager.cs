@@ -49,8 +49,8 @@ public class MultipleChoiceQuestionManager : MonoBehaviour
     void Start()
     {
         
-        SelectNewQuestion();
-        SetAnswerValues();
+        //SelectNewQuestion();
+        //SetAnswerValues();
 
     }
 
@@ -66,6 +66,7 @@ public class MultipleChoiceQuestionManager : MonoBehaviour
         //Pick a question at random from the List
         int randomQuestionIndex = UnityEngine.Random.Range(0, multipleChoiceQuestions.Count);
         currentQuestion = multipleChoiceQuestions[randomQuestionIndex];
+        Debug.Log(multipleChoiceQuestions.ToString());
         multipleChoiceQuestions.RemoveAt(randomQuestionIndex);
         questionText.text = currentQuestion.question;
         

@@ -528,11 +528,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5814c0549b80de640948fb39f8a6ad86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 
+  GreekName: "\u039C\u03B7\u03C7\u03B1\u03BD\u03AE"
   J: {fileID: 1522677392}
   K: {fileID: 529631950}
   Ga: {fileID: 1522677394}
   Hb: {fileID: 1522677393}
-  greekName: "\u039A\u03B9\u03BD\u03B7\u03C4\u03AE\u03C1\u03B1\u03C2"
 --- !u!1 &3991698480735306295
 GameObject:
   m_ObjectHideFlags: 0
@@ -843,7 +844,6 @@ GameObject:
   - component: {fileID: 1880896002246594652}
   - component: {fileID: 494451322954425186}
   - component: {fileID: 1116398639055061414}
-  - component: {fileID: 6269804057555634339}
   - component: {fileID: 3683272338677529881}
   m_Layer: 0
   m_Name: BoardManipulation
@@ -1132,20 +1132,6 @@ MonoBehaviour:
   onHoverExited:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &6269804057555634339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5445646763298844559}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5afd5316c63705643b3daba5a6e923bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowTetherWhenManipulating: 0
-  IsBoundsHandles: 0
 --- !u!114 &3683272338677529881
 MonoBehaviour:
   m_ObjectHideFlags: 0

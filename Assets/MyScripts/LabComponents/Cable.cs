@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Test;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Cable : MonoBehaviour
@@ -12,7 +14,7 @@ public class Cable : MonoBehaviour
     [SerializeField] CablePin myCableStart;
     [SerializeField] CablePin myCableEnd;
     [SerializeField] ConnectionManager myConnectionManager;
-
+    [SerializeField] ConnectionSystemComponent myConnectionSystem;
 
   
 
@@ -86,7 +88,10 @@ public class Cable : MonoBehaviour
         if (cableStartConnected & cableEndConnected)
         {
             Debug.Log("Connection Detected Between " + cableStartConnectedTo + " and " + cableEndConnectedTo + "  via cable " + cableId.ToString());
-            myConnectionManager.OnConnectionMade(cableStartConnectedTo, cableEndConnectedTo,cableId);
+            //myConnectionManager.OnConnectionMade(cableStartConnectedTo, cableEndConnectedTo,cableId);
+            myConnectionSystem.ConnectionSystem.Connect(cableStartConnectedTo.GetComponent<Port>(), cableEndConnectedTo.GetComponent<Port>());
+            //Set the connection between the cable ends at each pin
+           
             _cableConnected = true;
         }
 
@@ -94,7 +99,8 @@ public class Cable : MonoBehaviour
         if ((cableStartConnected == false | cableEndConnected == false) & _cableConnected)
         {
             Debug.Log("Connection removed between" + cableStartConnectedTo + " and " + cableEndConnectedTo + "  via cable " + cableId.ToString());
-            myConnectionManager.OnConnectionRemoved(cableStartConnectedTo, cableEndConnectedTo, cableId);
+            //myConnectionManager.OnConnectionRemoved(cableStartConnectedTo, cableEndConnectedTo, cableId);
+            myConnectionSystem.ConnectionSystem.Disconnect(cableStartConnectedTo.GetComponent<Port>(), cableEndConnectedTo.GetComponent<Port>());
             _cableConnected = false;
         }
     }
