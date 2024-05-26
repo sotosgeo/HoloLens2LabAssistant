@@ -1,4 +1,4 @@
-using Microsoft.MixedReality.Toolkit.UI;
+﻿using Microsoft.MixedReality.Toolkit.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -38,19 +38,23 @@ public class MultipleChoiceQuestionManager : MonoBehaviour
     public event FinishHandler Finished;
 
 
+    public HelpDialogHandler helpDialogHandler;
+
 
     private void Awake()
     {
-        
+
         GetQuestionAssets();
+        SelectNewQuestion();
+        SetAnswerValues(); 
     }  
     
 
-    void Start()
+
+    private void OnEnable()
     {
-        
-        //SelectNewQuestion();
-        //SetAnswerValues();
+        helpDialogHandler.SetHelpText("Επιλέξτε την μοναδική σωστή απάντηση.\nΥποβάλετε την απάντηση σας με το κουμπί Υποβολή");
+        helpDialogHandler.OpenHelpDialogSmall();
 
     }
 
@@ -59,6 +63,7 @@ public class MultipleChoiceQuestionManager : MonoBehaviour
     {
         multipleChoiceQuestions = new List<MultipleChoiceData>(Resources.LoadAll<MultipleChoiceData>("Questions/MultipleChoice"));
         numberOfQuestions = multipleChoiceQuestions.Count;
+        Debug.Log(numberOfQuestions.ToString() + " questions loaded");
     }
 
     private void SelectNewQuestion()
@@ -66,9 +71,9 @@ public class MultipleChoiceQuestionManager : MonoBehaviour
         //Pick a question at random from the List
         int randomQuestionIndex = UnityEngine.Random.Range(0, multipleChoiceQuestions.Count);
         currentQuestion = multipleChoiceQuestions[randomQuestionIndex];
-        Debug.Log(multipleChoiceQuestions.ToString());
         multipleChoiceQuestions.RemoveAt(randomQuestionIndex);
         questionText.text = currentQuestion.question;
+        //Debug.Log(currentQuestion.ToString());
         
            
     }
@@ -133,7 +138,6 @@ public class MultipleChoiceQuestionManager : MonoBehaviour
         CalculateScore();
         Finished?.Invoke(result);
         Console.WriteLine("Done with Multiple Choice Questions");
-        //gameObject.SetActive(false);
     }
 
 }

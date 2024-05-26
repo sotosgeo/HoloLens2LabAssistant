@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace Test
+namespace HeftyConnections
 {
     public class Port : MonoBehaviour
     {

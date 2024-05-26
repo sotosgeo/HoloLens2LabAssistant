@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d33e32d44e65514e9c7865fa6258203, type: 3}
   m_Name: BrushSelection
   m_EditorClassIdentifier: Assembly-CSharp::PartSelection
-  question: 
-  correctAnswerIndex: 0
+  question: "\u03A0\u03BF\u03C5 \u03B2\u03C1\u03AF\u03C3\u03BA\u03BF\u03BD\u03C4\u03B1\u03B9
+    \u03BF\u03B9 \u03B2\u03BF\u03CD\u03C1\u03C4\u03C3\u03B5\u03C2 "
+  correctAnswerIndex: 2

@@ -1524,8 +1524,6 @@ MonoBehaviour:
   defaultMaterial: {fileID: 2100000, guid: 0af8d1e6d7540734087f7c01b77eaee2, type: 2}
   connectionDetectedMaterial: {fileID: 2100000, guid: d236d89f17d25f846a55e0125b3acc3a, type: 2}
   connectionFinalizedMaterial: {fileID: 2100000, guid: 3dbf937dee12f0a4294bfc0fb6d4a8dd, type: 2}
-  pinConnectedTo: {fileID: 0}
-  pinId: switch1NegOut
 --- !u!114 &5417757978523228039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1538,7 +1536,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef798ad4e3bbf944c9ef528ff1e72f12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  portTag: NegativeOut
+  portTag: negativeOut
   parent: {fileID: 4575195133198463623}
 --- !u!54 &5417757978523228032
 Rigidbody:
@@ -1624,7 +1622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39133bea761fc204f8c086e503e400b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentTag: switch
+  parentTag: 
 --- !u!1 &7111172704132524349
 GameObject:
   m_ObjectHideFlags: 0
@@ -1939,8 +1937,6 @@ MonoBehaviour:
   defaultMaterial: {fileID: 2100000, guid: 0af8d1e6d7540734087f7c01b77eaee2, type: 2}
   connectionDetectedMaterial: {fileID: 2100000, guid: d236d89f17d25f846a55e0125b3acc3a, type: 2}
   connectionFinalizedMaterial: {fileID: 2100000, guid: 3dbf937dee12f0a4294bfc0fb6d4a8dd, type: 2}
-  pinConnectedTo: {fileID: 0}
-  pinId: switch1PosOut
 --- !u!114 &277019870149761007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1953,7 +1949,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef798ad4e3bbf944c9ef528ff1e72f12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  portTag: NegativeIn
+  portTag: negativeIn
   parent: {fileID: 4575195133198463623}
 --- !u!54 &277019870149761000
 Rigidbody:
@@ -2071,8 +2067,6 @@ MonoBehaviour:
   defaultMaterial: {fileID: 2100000, guid: 0af8d1e6d7540734087f7c01b77eaee2, type: 2}
   connectionDetectedMaterial: {fileID: 2100000, guid: d236d89f17d25f846a55e0125b3acc3a, type: 2}
   connectionFinalizedMaterial: {fileID: 2100000, guid: 3dbf937dee12f0a4294bfc0fb6d4a8dd, type: 2}
-  pinConnectedTo: {fileID: 0}
-  pinId: switch1PosIn
 --- !u!114 &831513727913598645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2085,7 +2079,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef798ad4e3bbf944c9ef528ff1e72f12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  portTag: PositiveIn
+  portTag: positiveIn
   parent: {fileID: 4575195133198463623}
 --- !u!54 &831513727913598646
 Rigidbody:
@@ -2168,8 +2162,6 @@ MonoBehaviour:
   defaultMaterial: {fileID: 2100000, guid: 0af8d1e6d7540734087f7c01b77eaee2, type: 2}
   connectionDetectedMaterial: {fileID: 2100000, guid: d236d89f17d25f846a55e0125b3acc3a, type: 2}
   connectionFinalizedMaterial: {fileID: 2100000, guid: 3dbf937dee12f0a4294bfc0fb6d4a8dd, type: 2}
-  pinConnectedTo: {fileID: 0}
-  pinId: switch1PosOut
 --- !u!114 &232758634231454771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2182,7 +2174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef798ad4e3bbf944c9ef528ff1e72f12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  portTag: PositiveOut
+  portTag: positiveOut
   parent: {fileID: 4575195133198463623}
 --- !u!54 &232758634231454780
 Rigidbody:

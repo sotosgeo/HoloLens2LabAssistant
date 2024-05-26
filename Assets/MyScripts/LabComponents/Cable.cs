@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using Test;
+using HeftyConnections;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -87,9 +87,9 @@ public class Cable : MonoBehaviour
        
         if (cableStartConnected & cableEndConnected)
         {
-            Debug.Log("Connection Detected Between " + cableStartConnectedTo + " and " + cableEndConnectedTo + "  via cable " + cableId.ToString());
+            Debug.Log("Connection Detected Between " + cableStartConnectedTo.GetComponent<Port>().FullTag + " and " + cableEndConnectedTo.GetComponent<Port>().FullTag + "  via cable " + cableId.ToString());
             //myConnectionManager.OnConnectionMade(cableStartConnectedTo, cableEndConnectedTo,cableId);
-            myConnectionSystem.ConnectionSystem.Connect(cableStartConnectedTo.GetComponent<Port>(), cableEndConnectedTo.GetComponent<Port>());
+            myConnectionSystem.ConnectionSystem.Connect(cableStartConnectedTo.GetComponent<Port>(), cableEndConnectedTo.GetComponent<Port>(), cableId);
             //Set the connection between the cable ends at each pin
            
             _cableConnected = true;
@@ -98,9 +98,9 @@ public class Cable : MonoBehaviour
 
         if ((cableStartConnected == false | cableEndConnected == false) & _cableConnected)
         {
-            Debug.Log("Connection removed between" + cableStartConnectedTo + " and " + cableEndConnectedTo + "  via cable " + cableId.ToString());
+            Debug.Log("Connection removed between" + cableStartConnectedTo.GetComponent<Port>().FullTag + " and " + cableEndConnectedTo.GetComponent<Port>().FullTag + "  via cable " + cableId.ToString());
             //myConnectionManager.OnConnectionRemoved(cableStartConnectedTo, cableEndConnectedTo, cableId);
-            myConnectionSystem.ConnectionSystem.Disconnect(cableStartConnectedTo.GetComponent<Port>(), cableEndConnectedTo.GetComponent<Port>());
+            myConnectionSystem.ConnectionSystem.Disconnect(cableStartConnectedTo.GetComponent<Port>(), cableEndConnectedTo.GetComponent<Port>(), cableId);
             _cableConnected = false;
         }
     }

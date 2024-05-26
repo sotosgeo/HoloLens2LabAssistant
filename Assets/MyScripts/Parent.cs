@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
-using Test;
 using UnityEngine;
 
 // This is a gameobject representing a parent
-namespace Test
+namespace HeftyConnections
 {
     public class Parent : MonoBehaviour
     {
         public string parentTag;
+        public int timesUsed;
     }
 }

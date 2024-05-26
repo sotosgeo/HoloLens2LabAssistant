@@ -1,4 +1,4 @@
-using Microsoft.MixedReality.Toolkit.UI;
+﻿using Microsoft.MixedReality.Toolkit.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,8 +8,8 @@ using UnityEngine.Events;
 
 public class PartSelectionQuestionManager : MonoBehaviour
 {
-    //TODO Implement score calculation and part selection
 
+    [SerializeField] HelpDialogHandler helpDialogHandler;
     public List<PartSelectionData> partSelectionQuestions;
     [SerializeField] private GameObject PartSelectionAnswerCollection;
     [SerializeField] private TextMeshPro questionTitle;
@@ -23,13 +23,11 @@ public class PartSelectionQuestionManager : MonoBehaviour
     [SerializeField] private float percentageToBeat = 0.75f;
     private int correctAnswersScore = 0;
     private int numberOfQuestions;
-
-
     private bool result =false;
 
 
-    public delegate void FinishHandler(bool result);
-    public event FinishHandler Finished;
+
+    public Action<bool> PartSelectionFinished;
 
     private void Awake()
     {
@@ -41,11 +39,19 @@ public class PartSelectionQuestionManager : MonoBehaviour
         SelectNewQuestion();
     }
 
+    private void OnEnable()
+    {
+        helpDialogHandler.SetHelpText("Επιλέξτε το εξάρτημα της μηχανής που ζητείται.\nΤο επιλεγμένο εξάρτημα φαίνεται με πορτοκαλί χρώμα. \nΥποβάλετε την απάντηση σας με το κουμπί Υποβολή");
+        helpDialogHandler.OpenHelpDialogSmall();
+    }
+
+
+
     private void GetQuestionAssets()
     {
         partSelectionQuestions = new List<PartSelectionData>(Resources.LoadAll<PartSelectionData>("Questions/PartSelection"));
         numberOfQuestions = partSelectionQuestions.Count;
-        Debug.Log("Questions Selected");
+        Debug.Log( numberOfQuestions.ToString() + " Questions Selected");
     }
 
     private void CalculateScore()
@@ -68,9 +74,9 @@ public class PartSelectionQuestionManager : MonoBehaviour
     private void OnQuestionsFinished()
     {
         CalculateScore();
-        Finished?.Invoke(result);
+        PartSelectionFinished?.Invoke(result);
         Console.WriteLine("Done with Part Selection Questions");
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
     }
 
     //When Button is Pressed:
@@ -81,7 +87,7 @@ public class PartSelectionQuestionManager : MonoBehaviour
         submittedAnswerIndex = PartSelectionAnswerCollection.GetComponent<InteractableToggleCollection>().CurrentIndex;
         if (submittedAnswerIndex == currentPartQuestion.correctAnswerIndex) isCorrect = true;
         else isCorrect = false;
-
+        Debug.Log("Remaining Questions are" + partSelectionQuestions.Count.ToString());
 
         if (isCorrect)
         {

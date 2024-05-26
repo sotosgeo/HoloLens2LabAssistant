@@ -7,7 +7,7 @@ using System.Net.NetworkInformation;
 using UnityEngine.VFX;
 
 // This is an gameobject representing a port
-namespace Test
+namespace HeftyConnections
 {
     // Not a gameobject
     [Serializable]
@@ -52,7 +52,7 @@ namespace Test
 
         public override bool Equals(object obj)
         {
-            var other = obj as Connection;
+            Connection other = obj as Connection;
             if (other == null)
                 return false;
             return UniqueId == other.UniqueId;
@@ -86,12 +86,16 @@ namespace Test
         public Port portA;
         public Port portB;
 
+        public int cableId;
+
         public Connection Connection { get; private set; }
-        public PortConnection(Port portA, Port portB)
+        public PortConnection(Port portA, Port portB, int cableId)
         {
             this.portA = portA;
             this.portB = portB;
+            this.cableId = cableId;
             Connection = new Connection(portA.FullTag, portB.FullTag);
+           
         }
 
         public bool Equals(PortConnection other)
@@ -107,6 +111,11 @@ namespace Test
         {
             return portA.GetHashCode() ^ portB.GetHashCode();
         }
+
+        public override string ToString()
+        {
+            return $"{portA.FullTag} + {portB.FullTag} via cable {cableId}";
+        }
     }
 
     // Not a gameobject. This class has:
@@ -120,14 +129,21 @@ namespace Test
     {
         public static bool CheckValidSystem(ConnectionSystem validSystem, ConnectionSystem systemToValidate)
         {
+
             // They must have the same number of connections
             if (validSystem.connections.Count != systemToValidate.connections.Count)
+            {
+                //Debug.Log(1);
                 return false;
+            }
+
 
             // They must have the same number of parent tags to parents
-            if (validSystem.usedParents.Count != systemToValidate.usedParents.Count)
+            if (validSystem.parentTags.Count != systemToValidate.parentTags.Count)
+            {
+               // Debug.Log(2);
                 return false;
-
+            }
             foreach (var pair in validSystem.connections)
             {
                 var connection = pair.Key;
@@ -135,11 +151,16 @@ namespace Test
                 // if we go in this if, it means the systemToValidate has a connection that
                 // the valid system doesn't have
                 if (!systemToValidate.connections.TryGetValue(connection, out int validTimes))
+                {
+                   // Debug.Log(3);
                     return false;
-
+                }
                 // if a specific connection wasn't found as many times as we wanted
                 if (times != validTimes)
+                {
+                    //Debug.Log(4);
                     return false;
+                }
             }
 
             foreach (var pair in validSystem.parentTags)
@@ -150,11 +171,30 @@ namespace Test
                 // If the valid system doesn't have that parent tag used or
                 // it doesn't have it used the same amount of ties
                 if (!systemToValidate.parentTags.TryGetValue(parentTag, out int numUsed) || parentTagNums != numUsed)
+                {
+                    Debug.Log(5);
                     return false;
+                }
             }
 
             return true;
         }
+
+        public static List<PortConnection> FindWrongConnections(ConnectionSystem systemToCheck, ConnectionSystem correctSystem)
+        {
+            var wrongConnections = new List<PortConnection>();
+
+
+
+
+
+            return wrongConnections;
+        }
+
+
+        
+
+
 
         // stores how many times a connection has been made, where
         // connection is e.g node1.p1 <=> node2.p3
@@ -164,14 +204,20 @@ namespace Test
 
         // stores how many times a unique Gameobject (the parent) with a tag has been used
         // this is only useful when using the PortConnection class for connecting at runtime
-        private Dictionary<string, Dictionary<Parent, int>> usedParents = new Dictionary<string, Dictionary<Parent, int>>();
+
+        
+        private  Dictionary<string, Dictionary<Parent, int>> usedParents = new Dictionary<string, Dictionary<Parent, int>>();
+
+        private Dictionary<string, List<Parent>> testUsedParents = new Dictionary<string, List<Parent>>();
+
+
         private HashSet<PortConnection> usedPorts = new HashSet<PortConnection>();
 
-        public bool Connect(Port portA, Port portB) => Connect(new PortConnection(portA, portB));
+        public bool Connect(Port portA, Port portB, int cableId) => Connect(new PortConnection(portA, portB, cableId));
         
         public bool Connect(PortConnection portConnection)
         {
-            // Add the connection to the overall connections
+            // Add the connection to the overall connections if it isnt there
             if (!usedPorts.Add(portConnection))
                 return false;
             var connection = portConnection.Connection;
@@ -196,9 +242,21 @@ namespace Test
             // tag => parent => how many times a parent with that tag has been connected
             usedParents[parent.parentTag][parent] += 1;
             RefreshParentTagByUsedParents(parent.parentTag);
+
+
+            if (!testUsedParents.ContainsKey(parent.parentTag))
+            {
+                var parentList = testUsedParents[parent.parentTag] = new List<Parent>();
+                parentList.Add(parent);
+
+                
+            }
+            parent.timesUsed += 1;
+            
+
         }
 
-        public bool Disconnect(Port portA, Port portB) => Disconnect(new PortConnection(portA, portB));
+        public bool Disconnect(Port portA, Port portB, int cableId) => Disconnect(new PortConnection(portA, portB, cableId));
 
         public bool Disconnect(PortConnection portConnection)
         {
@@ -232,7 +290,7 @@ namespace Test
 
         private void RefreshParentTagByUsedParents(string parentTag)
         {
-            var totalParents = 0;
+            //var totalParents = 0;
             if (!usedParents.TryGetValue(parentTag, out var usedParent))
             {
                 if (parentTags.ContainsKey(parentTag))
@@ -240,8 +298,8 @@ namespace Test
                 return;
             }
 
-            totalParents = usedParent.Count;
-
+            var totalParents = usedParent.Count;
+           
             parentTags[parentTag] = totalParents;
         }
     }
@@ -263,11 +321,15 @@ namespace Test
         [ContextMenu("Print System")]
         private void PrintConnectionSystem()
         {
+            
             var result = "CONNECTIONS:\n";
             foreach (var pair in ConnectionSystem.connections)
             {
                 result += $"{pair.Value} {pair.Key}\n";
             }
+
+            result += "USED PARENTS COUNT:\n";
+            result += $"{ConnectionSystem.parentTags.Count}\n";
 
             result += "PARENTS:\n";
             foreach (var pair in ConnectionSystem.parentTags)

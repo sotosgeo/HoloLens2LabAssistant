@@ -23,6 +23,23 @@ public class QuestionManager : MonoBehaviour
         psQuestionManager = PartSelectionQuestion.GetComponent<PartSelectionQuestionManager>();
     }
 
+    private void OnEnable()
+    {
+
+        MultipleChoiceQuestion.SetActive(true);
+        PartSelectionQuestion.SetActive(false);
+    }
+
+    private void OnDisable()
+    {
+        mcQuestionManager.Finished -= MultipleChoiceFinished;
+        psQuestionManager.PartSelectionFinished -= PartSelectionFinished;
+    }
+
+
+
+
+
     private void MultipleChoiceFinished(bool result)
     {
         PassedMultipleChoice = result;
@@ -48,7 +65,7 @@ public class QuestionManager : MonoBehaviour
         }
 
 
-        PartSelectionQuestion.SetActive(false);
+        //PartSelectionQuestion.SetActive(false);
         CalculateFinalScore();
     }
 
@@ -77,7 +94,7 @@ public class QuestionManager : MonoBehaviour
 
         if (psQuestionManager != null)
         {
-            psQuestionManager.Finished += PartSelectionFinished;
+            psQuestionManager.PartSelectionFinished += PartSelectionFinished;
         }
 
 
@@ -89,11 +106,6 @@ public class QuestionManager : MonoBehaviour
 
     }
 
-    private void OnDisable()
-    {
-        MultipleChoiceQuestion.SetActive(false);
-        PartSelectionQuestion.SetActive(false);
-    }
-
+   
 
 }
