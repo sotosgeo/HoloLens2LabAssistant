@@ -7067,7 +7067,7 @@ GameObject:
   - component: {fileID: 2103831446}
   - component: {fileID: 2103831450}
   m_Layer: 0
-  m_Name: Aruco Tracker
+  m_Name: CableTracker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

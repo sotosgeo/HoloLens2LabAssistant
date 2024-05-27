@@ -50,13 +50,23 @@ public class HelpDialogHandler : MonoBehaviour
     #endregion
 
 
-    private string _myHelpText =  "";
+    private string _myHelpText = "";
 
     public void OpenHelpDialogSmall()
     {
         Dialog.Open(DialogPrefabSmall, DialogButtonType.OK, "Βοήθεια", _myHelpText, true);
     }
 
+
+    public void OpenCustomOKDialogue(string dialogTitle,string dialogText)
+    {
+        Dialog.Open(DialogPrefabSmall, DialogButtonType.OK, dialogTitle, dialogText, true);
+    }
+
+    public void OpenCustomChoiceDialogue(string dialogTitle, string dialogText)
+    {
+        Dialog.Open(DialogPrefabSmall, DialogButtonType.Yes | DialogButtonType.No, dialogTitle, dialogText, true);
+    }
 
     public void SetHelpText(string helpText)
     {
@@ -69,9 +79,4 @@ public class HelpDialogHandler : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

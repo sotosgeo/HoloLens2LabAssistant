@@ -12,25 +12,27 @@ public class SceneManager : MonoBehaviour
 
     private void Awake()
     {
-        startingMenu.SetActive(true);
+       
     }
 
     // Display starting text, and choose between student and teacher mode
     void Start()
     {
-        
+        startingMenu.SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
 
 
     public void Student()
     {
+        questionManager.SetActive(true);
+        startingMenu.SetActive(false);
+    }
 
+    public void Teacher()
+    {
+        startingMenu.SetActive(false);
     }
 
 

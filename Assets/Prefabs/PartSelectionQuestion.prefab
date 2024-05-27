@@ -3852,7 +3852,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1806540995980350867}
   - component: {fileID: 1806540995980350866}
-  - component: {fileID: 1806540995980350864}
   m_Layer: 0
   m_Name: PartSelectionQuestion
   m_TagString: Untagged
@@ -3889,30 +3888,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d85c034d564d26042a49d8b52a75332e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  helpDialogHandler: {fileID: 0}
   partSelectionQuestions:
   - {fileID: 11400000, guid: afffe7d2299a6bc4ebaaf4a5ccd61d2d, type: 2}
   PartSelectionAnswerCollection: {fileID: 1806540994388615937}
   questionTitle: {fileID: 1806540996008170191}
   percentageToBeat: 0.75
---- !u!114 &1806540995980350864
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1806540995980350868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b55691ad5b034fe6966763a6e23818d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trackedTargetType: 0
-  trackedHandedness: 3
-  trackedHandJoint: 2
-  transformOverride: {fileID: 0}
-  additionalOffset: {x: 0, y: 0, z: 0}
-  additionalRotation: {x: 0, y: 0, z: 0}
-  updateSolvers: 1
 --- !u!1 &1806540996008170177
 GameObject:
   m_ObjectHideFlags: 0

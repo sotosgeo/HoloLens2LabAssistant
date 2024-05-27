@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +15,8 @@ public class QuestionManager : MonoBehaviour
 
     private bool PassedMultipleChoice = false;
     private bool PassedPartSelection = false;
+
+    [SerializeField] HelpDialogHandler dialogHandler;
 
 
     private void Awake()
@@ -65,7 +67,7 @@ public class QuestionManager : MonoBehaviour
         }
 
 
-        //PartSelectionQuestion.SetActive(false);
+        PartSelectionQuestion.SetActive(false);
         CalculateFinalScore();
     }
 
@@ -75,12 +77,14 @@ public class QuestionManager : MonoBehaviour
         if (PassedMultipleChoice & PassedPartSelection)
         {
             //Display Successful Screen and contine to connection
-            Debug.Log("Passed Both Parts");
+            //Debug.Log("Passed Both Parts");
+            dialogHandler.OpenCustomOKDialogue("Επιτυχία", "Περάσατε επιτυχώς το κομμάτι των ερωτήσεων.\nΠατήστε ΟΚ για να συνεχίσετε με τη συνδεσμολογία.");
         }
         else
         {
             //Display Game over screen, and chance to start again
-            Debug.Log("Try Again!");
+            dialogHandler.OpenCustomOKDialogue("Αποτυχία", "Δυστυχώς δεν περάσατε επιτυχώς το κομμάτι των ερωτήσεων.\nΠατήστε ΟΚ για να ξαναπροσπαθήσετε.");
+           // Debug.Log("Try Again!");
         }
     }
 
@@ -96,13 +100,6 @@ public class QuestionManager : MonoBehaviour
         {
             psQuestionManager.PartSelectionFinished += PartSelectionFinished;
         }
-
-
-        //Start by enabling the MultipleChoiceQuestions;
-        //Replace with an event that starts when the user accesses this part of the app
-       // MultipleChoiceQuestion.SetActive(true);
-       // PartSelectionQuestion.SetActive(false);
-
 
     }
 
