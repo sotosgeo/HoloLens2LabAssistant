@@ -7,7 +7,7 @@ using UnityEngine;
 public abstract class LabComponent : MonoBehaviour
 {
 
-    public string id;
+    public string componentTag;
     public string GreekName;
 
 

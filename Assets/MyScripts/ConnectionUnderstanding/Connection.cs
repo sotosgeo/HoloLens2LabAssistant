@@ -1,3 +1,4 @@
+using HeftyConnections;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,19 +8,19 @@ using UnityEngine;
 public class Connection : IEquatable<Connection>
 {
 
-    public string PinA { get; private set; }
-    public string PinB { get; private set; }
+    public Pin PinA { get; private set; }
+    public Pin PinB { get; private set; }
     public int ConnectingCable { get; private set; }
 
 
-    public Connection(string pinA,  string pinB, int connectingCable)
+    public Connection(Pin pinA, Pin pinB, int connectingCable)
     {
         PinA = pinA;
         PinB = pinB;
         ConnectingCable = connectingCable;
     }
 
-
+    
 
     public override string ToString()
     {
@@ -39,6 +40,6 @@ public class Connection : IEquatable<Connection>
 
     public override int GetHashCode()
     {
-        return HashCode.Combine(PinA.ToString(), PinB.ToString());
+        return PinA.GetHashCode() ^ PinB.GetHashCode();
     }
 }

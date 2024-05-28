@@ -74,9 +74,5 @@ public class HelpDialogHandler : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
+    
 }

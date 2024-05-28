@@ -347,7 +347,7 @@ MonoBehaviour:
   - {fileID: 2481568140940411104}
   - {fileID: 2481568141532986878}
   - {fileID: 2481568141504439247}
-  percentageToBeat: 0.75
+  percentageToBeat: 0
   helpDialogHandler: {fileID: 0}
 --- !u!114 &2481568141060633753
 MonoBehaviour:

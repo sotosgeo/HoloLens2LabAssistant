@@ -13,7 +13,6 @@ using AYellowpaper.SerializedCollections.KeysGenerators;
 
 public class ConnectionManager : MonoBehaviour
 {
-    public static float connectionTime = 3;
 
     [SerializeField] TextMeshPro connectionText;
 
@@ -75,21 +74,21 @@ public class ConnectionManager : MonoBehaviour
         missingConnections.Clear();
 
         //motorExcitementConnections = CreateConnectionListFromListOfStrings(motorExcitementStrPins);
-        DebugPrintConnections(motorExcitementConnections);
+        //DebugPrintConnections(motorExcitementConnections);
 
-        ConnectionLayout motorExcitement = new("Διέγερση Κινητήρα", motorExcitementConnections );
+        ConnectionSystem motorExcitement = new("Διέγερση Κινητήρα", motorExcitementConnections );
     }
 
-    //private List<Connection> CreateConnectionListFromListOfStrings(List<string[]> stringList)
-    //{
-    //    List<Connection> connectionList = new();
-    //    foreach (var conStr in stringList)
-    //    {
-    //        connectionList.Add(new Connection(GameObject.Find(conStr[0]), GameObject.Find(conStr[1]), 0));
-    //    }
+    private List<Connection> CreateConnectionListFromListOfStrings(List<string[]> stringList)
+    {
+        List<Connection> connectionList = new();
+        foreach (var conStr in stringList)
+        {
+            connectionList.Add(new Connection(conStr[0], conStr[1], 0));
+        }
 
-    //    return connectionList;
-    //}
+        return connectionList;
+    }
 
 
 
@@ -97,31 +96,31 @@ public class ConnectionManager : MonoBehaviour
     {
         CheckConnection(currentConnections);
 
-        //Debug.Log("Wrong connections are: ");
-        //DebugPrintConnections(wrongConnections);
+        Debug.Log("Wrong connections are: ");
+        DebugPrintConnections(wrongConnections);
 
-        //Debug.Log("Missing Connections are: ");
-        //DebugPrintConnections(missingConnections);
+        Debug.Log("Missing Connections are: ");
+        DebugPrintConnections(missingConnections);
     }
 
-    //public void OnConnectionMade(GameObject cableStart, GameObject cableEnd, int cableId)
-    //{
-    //    var newConnection = new Connection(cableStart, cableEnd, cableId);
-    //    currentConnections.Add(newConnection);
-    //    PrintConnections();
+    public void OnConnectionMade(Pin cableStart, Pin cableEnd, int cableId)
+    {
+        var newConnection = new Connection(cableStart, cableEnd, cableId);
+        currentConnections.Add(newConnection);
+        PrintConnections();
 
-    //}
+    }
 
-    //public void OnConnectionRemoved(GameObject cableStart, GameObject cableEnd, int cableId)
-    //{
+    public void OnConnectionRemoved(Pin cableStart, Pin cableEnd, int cableId)
+    {
 
-    //    if (currentConnections.Contains(new Connection(cableStart, cableEnd, cableId)))
-    //    {
-    //        currentConnections.Remove(new Connection(cableStart, cableEnd, cableId));
-    //    }
+        if (currentConnections.Contains(new Connection(cableStart, cableEnd, cableId)))
+        {
+            currentConnections.Remove(new Connection(cableStart, cableEnd, cableId));
+        }
 
-    //    PrintConnections();
-    //}
+        PrintConnections();
+    }
 
     void PrintConnections()
     {
@@ -144,7 +143,7 @@ public class ConnectionManager : MonoBehaviour
 
 
     /// <summary>
-    /// Checks current connection, in comparison to each connection Layout that the exercise has
+    /// Checks current connection, in comparison to each connection system that the exercise has
     /// and returns
     /// </summary>
     /// <param name="connectionsToCheck"></param>

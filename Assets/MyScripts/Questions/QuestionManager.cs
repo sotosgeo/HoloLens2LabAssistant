@@ -18,7 +18,7 @@ public class QuestionManager : MonoBehaviour
 
     [SerializeField] HelpDialogHandler dialogHandler;
 
-
+    public Action OnQuestionsFinished;
     private void Awake()
     {
         mcQuestionManager = MultipleChoiceQuestion.GetComponent<MultipleChoiceQuestionManager>();
@@ -86,6 +86,7 @@ public class QuestionManager : MonoBehaviour
             dialogHandler.OpenCustomOKDialogue("Αποτυχία", "Δυστυχώς δεν περάσατε επιτυχώς το κομμάτι των ερωτήσεων.\nΠατήστε ΟΚ για να ξαναπροσπαθήσετε.");
            // Debug.Log("Try Again!");
         }
+        OnQuestionsFinished?.Invoke();
     }
 
     // Start is called before the first frame update

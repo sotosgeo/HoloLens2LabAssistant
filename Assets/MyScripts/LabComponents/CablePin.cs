@@ -10,11 +10,11 @@ public class CablePin : MonoBehaviour
     [SerializeField] Material connectionDetectedMaterial;
     [SerializeField] Material connectionFinalizedMaterial;
 
-    public GameObject pinConnectedTo = null;
+    public Pin pinConnectedTo = null;
  
 
-    public Action<GameObject> OnConnectionFinalized;
-    public Action<GameObject> OnConnectionStopped;
+    public Action<Pin> OnConnectionFinalized;
+    public Action<Pin> OnConnectionStopped;
 
 
     private void Start()
@@ -29,7 +29,7 @@ public class CablePin : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //Debug.Log(this.gameObject.ToString() + "collided with " + other.gameObject.ToString());
-        pinConnectedTo = other.gameObject;
+        pinConnectedTo = other.gameObject.GetComponent<Pin>();
         pinVisual.GetComponent<MeshRenderer>().material = connectionFinalizedMaterial;
         
         OnConnectionFinalized?.Invoke(pinConnectedTo);
@@ -43,6 +43,7 @@ public class CablePin : MonoBehaviour
 
         OnConnectionStopped?.Invoke(pinConnectedTo);
         pinVisual.GetComponent<MeshRenderer>().material = defaultMaterial;
+        pinConnectedTo = null;
     }
 
 }

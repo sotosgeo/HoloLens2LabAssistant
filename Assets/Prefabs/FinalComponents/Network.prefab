@@ -258,6 +258,7 @@ GameObject:
   - component: {fileID: 3529052895509477620}
   - component: {fileID: 3529052895509477621}
   - component: {fileID: 766681247}
+  - component: {fileID: 2249649614902708548}
   m_Layer: 6
   m_Name: networkPos
   m_TagString: Untagged
@@ -289,7 +290,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3529052895509477623}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.05, y: 0.06, z: 0.1}
@@ -310,8 +311,24 @@ MonoBehaviour:
   defaultMaterial: {fileID: 2100000, guid: 0af8d1e6d7540734087f7c01b77eaee2, type: 2}
   connectionDetectedMaterial: {fileID: 2100000, guid: d236d89f17d25f846a55e0125b3acc3a, type: 2}
   connectionFinalizedMaterial: {fileID: 2100000, guid: 3dbf937dee12f0a4294bfc0fb6d4a8dd, type: 2}
-  pinConnectedTo: {fileID: 0}
-  pinId: networkPos
+  pinTag: positive
+  parent: {fileID: 8655698327029429474}
+--- !u!54 &2249649614902708548
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3529052895509477623}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &3529052895599803705
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,7 +390,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c66936cac20300b4092d9057bd00aee2, type: 2}
+  - {fileID: 2100000, guid: d3100c8f946a0184b83636687fc5d6af, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1016,7 +1033,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28bd4f7d7deeb0244af588314c35f590, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: network
+  componentTag: network
   GreekName: "\u0394\u03AF\u03BA\u03C4\u03C5\u03BF"
   NetworkPos: {fileID: 766681247}
   NetworkNeg: {fileID: 766681246}
@@ -1448,6 +1465,7 @@ GameObject:
   - component: {fileID: 3529052896682832914}
   - component: {fileID: 3529052896682832915}
   - component: {fileID: 766681246}
+  - component: {fileID: 1058466846053315417}
   m_Layer: 6
   m_Name: networkNeg
   m_TagString: Untagged
@@ -1479,7 +1497,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3529052896682832917}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.05, y: 0.06, z: 0.1}
@@ -1500,8 +1518,24 @@ MonoBehaviour:
   defaultMaterial: {fileID: 2100000, guid: 0af8d1e6d7540734087f7c01b77eaee2, type: 2}
   connectionDetectedMaterial: {fileID: 2100000, guid: d236d89f17d25f846a55e0125b3acc3a, type: 2}
   connectionFinalizedMaterial: {fileID: 2100000, guid: 3dbf937dee12f0a4294bfc0fb6d4a8dd, type: 2}
-  pinConnectedTo: {fileID: 0}
-  pinId: networkNeg
+  pinTag: negative
+  parent: {fileID: 8655698327029429474}
+--- !u!54 &1058466846053315417
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3529052896682832917}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &3529052896727641945
 GameObject:
   m_ObjectHideFlags: 0
@@ -1736,7 +1770,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28bd4f7d7deeb0244af588314c35f590, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 
+  componentTag: 
   GreekName: 
   NetworkPos: {fileID: 0}
   NetworkNeg: {fileID: 0}
