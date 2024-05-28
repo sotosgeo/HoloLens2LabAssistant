@@ -7,8 +7,7 @@ using TMPro;
 using Mirror;
 using System.Linq;
 using System.Net.NetworkInformation;
-using AYellowpaper.SerializedCollections;
-using AYellowpaper.SerializedCollections.KeysGenerators;
+
 
 
 public class ConnectionManager : MonoBehaviour
@@ -33,16 +32,16 @@ public class ConnectionManager : MonoBehaviour
     public  List<string[]> motorExcitementStrPins = new()
     {
 
-        new string[]{"networkPos","switch1PosIn" },
-        new string[]{"networkNeg","switch1NegIn"},
+        new string[]{"Network.Pos","Switch1.PosIn" },
+        new string[]{"Network.Neg","Switch1.NegIn"},
 
-        new string[] {"switch1PosOut", "resPos" },
-        new string[] {"switch1NegOut", "resNeg" },
+        new string[] {"Switch1.PosOut", "VariableResistance.Pos" },
+        new string[] {"Switch1.NegOut", "VariableResistance.Neg" },
 
-        new string[] {"resPos", "amperIn" },
-        new string[] {"resGnd", "motorK" },
+        new string[] { "VariableResistance.Pos", "Amperometer.In" },
+        new string[] { "VariableResistance.Gnd", "Motor.K" },
 
-        new string[] {"amperOut", "motorJ" }
+        new string[] {"Amperometer.Out", "Motor.J" }
 
     };
 
@@ -79,16 +78,24 @@ public class ConnectionManager : MonoBehaviour
         ConnectionSystem motorExcitement = new("Διέγερση Κινητήρα", motorExcitementConnections );
     }
 
-    private List<Connection> CreateConnectionListFromListOfStrings(List<string[]> stringList)
-    {
-        List<Connection> connectionList = new();
-        foreach (var conStr in stringList)
-        {
-            connectionList.Add(new Connection(conStr[0], conStr[1], 0));
-        }
+    //private List<Connection> CreateConnectionListFromListOfStrings(List<string[]> stringList)
+    //{
+    //    List<Connection> connectionList = new();
+    //    foreach (var conStr in stringList)
+    //        foreach(var placedComponent in placementManager.placedComponentObjects)
+    //        {
+    //            Pin[] pins = placedComponent.GetComponentsInChildren<Pin>();
+    //            foreach(var pin in pins)
+    //            {
+    //                if(pin.FullTag = conStr[0])
+    //            }
+    //        }
+    //    {
+    //        connectionList.Add(new Connection(conStr[0], conStr[1], 0));
+    //    }
 
-        return connectionList;
-    }
+    //    return connectionList;
+    //}
 
 
 
@@ -128,7 +135,7 @@ public class ConnectionManager : MonoBehaviour
         foreach (var connection in currentConnections)
         {
 
-            connectionText.text += connection.ToString() + '\n';
+            connectionText.text = connection.ToString() + '\n';
         }
     }
 

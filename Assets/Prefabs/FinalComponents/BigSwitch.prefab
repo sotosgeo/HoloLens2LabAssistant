@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5869293124650882990}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pins
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 8851139312436108969}
   - component: {fileID: 2088459043}
   - component: {fileID: 7875927314333524112}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: switchPosOut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ MonoBehaviour:
   defaultMaterial: {fileID: 2100000, guid: 0af8d1e6d7540734087f7c01b77eaee2, type: 2}
   connectionDetectedMaterial: {fileID: 2100000, guid: d236d89f17d25f846a55e0125b3acc3a, type: 2}
   connectionFinalizedMaterial: {fileID: 2100000, guid: 3dbf937dee12f0a4294bfc0fb6d4a8dd, type: 2}
-  pinTag: PositiveOut
+  pinTag: PosOut
   parent: {fileID: 4483558490354967480}
 --- !u!54 &7875927314333524112
 Rigidbody:
@@ -129,7 +129,7 @@ GameObject:
   - component: {fileID: 5821555720861181222}
   - component: {fileID: 619928586}
   - component: {fileID: 5043090423196996836}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: switchPosIn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,7 +181,7 @@ MonoBehaviour:
   defaultMaterial: {fileID: 2100000, guid: 0af8d1e6d7540734087f7c01b77eaee2, type: 2}
   connectionDetectedMaterial: {fileID: 2100000, guid: d236d89f17d25f846a55e0125b3acc3a, type: 2}
   connectionFinalizedMaterial: {fileID: 2100000, guid: 3dbf937dee12f0a4294bfc0fb6d4a8dd, type: 2}
-  pinTag: PositiveIn
+  pinTag: PosIn
   parent: {fileID: 4483558490354967480}
 --- !u!54 &5043090423196996836
 Rigidbody:
@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 8806596567080031605}
   - component: {fileID: 2088459042}
   - component: {fileID: 2388080306252992262}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: switchNegIn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -263,7 +263,7 @@ MonoBehaviour:
   defaultMaterial: {fileID: 2100000, guid: 0af8d1e6d7540734087f7c01b77eaee2, type: 2}
   connectionDetectedMaterial: {fileID: 2100000, guid: d236d89f17d25f846a55e0125b3acc3a, type: 2}
   connectionFinalizedMaterial: {fileID: 2100000, guid: 3dbf937dee12f0a4294bfc0fb6d4a8dd, type: 2}
-  pinTag: NegativeIn
+  pinTag: NegIn
   parent: {fileID: 4483558490354967480}
 --- !u!54 &2388080306252992262
 Rigidbody:
@@ -292,7 +292,7 @@ GameObject:
   - component: {fileID: 7619549090089994581}
   - component: {fileID: 8703078171891855125}
   - component: {fileID: 6381893247079383857}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: NegOutVis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -458,7 +458,7 @@ GameObject:
   - component: {fileID: 1389332672566727904}
   - component: {fileID: 9104444727143272156}
   - component: {fileID: 858026258220826899}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PosInVis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -556,7 +556,7 @@ Transform:
   m_GameObject: {fileID: 2741431988647967915}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.0000002, y: 1, z: 1.0000002}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5936350128004283908}
@@ -578,7 +578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7c1a08acc8b9d64c9989e1f742a6c2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  componentTag: 
+  componentTag: Switch1
   GreekName: "\u0394\u03B9\u03B1\u03BA\u03CC\u03C0\u03C4\u03B7\u03C2"
   switchPosIn: {fileID: 619928586}
   switchPosOut: {fileID: 2088459043}
@@ -597,7 +597,7 @@ GameObject:
   - component: {fileID: 2199798009375662426}
   - component: {fileID: 2088459041}
   - component: {fileID: 8597990972404656687}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: switchNegOut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -649,7 +649,7 @@ MonoBehaviour:
   defaultMaterial: {fileID: 2100000, guid: 0af8d1e6d7540734087f7c01b77eaee2, type: 2}
   connectionDetectedMaterial: {fileID: 2100000, guid: d236d89f17d25f846a55e0125b3acc3a, type: 2}
   connectionFinalizedMaterial: {fileID: 2100000, guid: 3dbf937dee12f0a4294bfc0fb6d4a8dd, type: 2}
-  pinTag: NegativeOut
+  pinTag: NegOut
   parent: {fileID: 4483558490354967480}
 --- !u!54 &8597990972404656687
 Rigidbody:
@@ -678,7 +678,7 @@ GameObject:
   - component: {fileID: 1832207829478174394}
   - component: {fileID: 8366080893199488134}
   - component: {fileID: 254944419132196643}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: NegInVis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -984,7 +984,7 @@ GameObject:
   - component: {fileID: 3000410217154531062}
   - component: {fileID: 6127708828882299281}
   - component: {fileID: 4353123841068074459}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PosOutVis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1286,7 +1286,7 @@ GameObject:
   - component: {fileID: 8682286459094557415}
   - component: {fileID: 8682286459094557414}
   m_Layer: 0
-  m_Name: Simple Line ToolTip(Clone)
+  m_Name: Tooltip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

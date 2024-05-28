@@ -42,8 +42,8 @@ public class MediaCapturer : MonoBehaviour
 
     [SerializeField] MediaCaptureProfiles mediaCaptureProfiles;
     [SerializeField] MediaCaptureFPS fpsProfile;
-    //[SerializeField] TMP_Text debugTmp;
-    //[SerializeField] TMP_Text averageFpsText;
+    [SerializeField] TMP_Text debugTmp;
+    [SerializeField] TMP_Text averageFpsText;
 
     Timer timer = new Timer();
 #if ENABLE_WINMD_SUPPORT
@@ -59,7 +59,7 @@ public class MediaCapturer : MonoBehaviour
     {
         await StartCapture(mediaCaptureProfiles);
         hasStarted = true;
-       // debugTmp.text += debugTmp.text + "Started Capturing";        
+        debugTmp.text += debugTmp.text + "Started Capturing";        
     }
     private async void OnDestroy()
     {
@@ -214,10 +214,10 @@ public class MediaCapturer : MonoBehaviour
         //For debugging
         timer.CountFrame();
         //This InvokeOnAppThread is used to return control to unity for updating debug text
-        //UnityEngine.WSA.Application.InvokeOnAppThread(() =>
-        //    {
-        //        averageFpsText.text = $"Media Capturer Fps: {timer.AverageFPS}";
-        //    }, false);
+        UnityEngine.WSA.Application.InvokeOnAppThread(() =>
+            {
+                averageFpsText.text = $"Media Capturer Fps: {timer.AverageFPS}";
+            }, false);
     }
 
 
@@ -306,16 +306,16 @@ public class MediaCapturer : MonoBehaviour
         }
 
         //Debugging the video Profiles
-        //if (debugTmp != null)
-        //{
-        //    var videoInfoList = frameSource.Info.VideoProfileMediaDescription;
-        //    string temp = "";
-        //    foreach( var videoInfo in videoInfoList){
-        //        temp += $"Width: {videoInfo.Width} Height: {videoInfo.Height} FPS:{videoInfo.FrameRate}\n";
-        //    }
-        //    debugTmp.text = temp;
+        if (debugTmp != null)
+        {
+            var videoInfoList = frameSource.Info.VideoProfileMediaDescription;
+            string temp = "";
+            foreach( var videoInfo in videoInfoList){
+                temp += $"Width: {videoInfo.Width} Height: {videoInfo.Height} FPS:{videoInfo.FrameRate}\n";
+            }
+            debugTmp.text = temp;
             
-        //}
+        }
         
         return (mediaCapture, frameSource);
     }
