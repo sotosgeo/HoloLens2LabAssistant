@@ -18,7 +18,8 @@ MonoBehaviour:
     - _MixedRealityToolkit_Editor_LockProfiles
     - MixedRealityToolkit_Editor_RunOptimalConfig
     - MixedRealityToolkit_Editor_NullDataProviders
-    values: 00010100
+    - _MixedRealityToolkit_Editor_AutoEnableUWPCapabilities
+    values: 0001010001
   intPreferences:
     keys:
     - _MixedRealityToolkit_Editor_ConfiguratorState
@@ -31,4 +32,4 @@ MonoBehaviour:
     keys:
     - BuildDeployWindow_AppLauncherModelLocation
     values:
-    - 
+    - Packages/com.microsoft.mixedreality.toolkit.examples/StandardAssets/Models/MRTK_Logo.glb

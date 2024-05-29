@@ -13,25 +13,37 @@ public class PlacementManager : MonoBehaviour
     /// </summary>
     public List<GameObject> placedComponentObjects;
 
-    private bool _placementToggle = false;
+    private bool _placementToggle = true;
     private bool _tooltipToggle = true;
-    public void OnLabComponentInstantiated()
-    {
-        if (placedComponentObjects != null)
-        {
+    private bool _visualizationToggle = false;
 
-        }
+
+
+    private void OnEnable()
+    {
+        ChangeManipulationAndTransform(true);
     }
 
-    public void TogglePlacement()
+    private void OnDisable()
+    {
+        ChangeManipulationAndTransform(false);
+    }
+
+    private void ChangeManipulationAndTransform(bool change)
     {
         foreach (var component in placedComponentObjects)
         {
             Transform manipulator = component.transform.GetChild(0);
             Transform visualization = component.transform.GetChild(1);
-            manipulator.gameObject.SetActive(_placementToggle);
-            visualization.gameObject.SetActive(_placementToggle);
+            manipulator.gameObject.SetActive(change);
+            visualization.gameObject.SetActive(change);
         }
+    }
+
+
+    public void TogglePlacement()
+    {
+        ChangeManipulationAndTransform(_placementToggle);
         _placementToggle = !_placementToggle;
     }
 
@@ -46,5 +58,16 @@ public class PlacementManager : MonoBehaviour
         _tooltipToggle = !_tooltipToggle;
     }
 
+    public void ToggleVisualization()
+    {
+        foreach (var component in placedComponentObjects)
+        {
+            Transform visualization = component.transform.GetChild(1);
+            visualization.gameObject.SetActive(_visualizationToggle);
+        }
+        _visualizationToggle = !_visualizationToggle;
+    }
+
+    
 
 }

@@ -63,10 +63,6 @@ public class HelpDialogHandler : MonoBehaviour
         Dialog.Open(DialogPrefabSmall, DialogButtonType.OK, dialogTitle, dialogText, true);
     }
 
-    public void OpenCustomChoiceDialogue(string dialogTitle, string dialogText)
-    {
-        Dialog.Open(DialogPrefabSmall, DialogButtonType.Yes | DialogButtonType.No, dialogTitle, dialogText, true);
-    }
 
     public void SetHelpText(string helpText)
     {

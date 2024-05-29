@@ -11,12 +11,12 @@ public class PartSelectionQuestionManager : MonoBehaviour
 
     [SerializeField] HelpDialogHandler helpDialogHandler;
     public List<PartSelectionData> partSelectionQuestions;
+    private List<PartSelectionData> currentQuestions;
     [SerializeField] private GameObject PartSelectionAnswerCollection;
     [SerializeField] private TextMeshPro questionTitle;
     
     private PartSelectionData currentPartQuestion;
     private int submittedAnswerIndex;
-    private int correctAnswerChoice;
     private bool isCorrect = false;
 
   
@@ -25,33 +25,37 @@ public class PartSelectionQuestionManager : MonoBehaviour
     private int numberOfQuestions;
     private bool result =false;
 
-
+    
 
     public Action<bool> PartSelectionFinished;
 
     private void Awake()
     {
-        GetQuestionAssets();
+        partSelectionQuestions = new List<PartSelectionData>(Resources.LoadAll<PartSelectionData>("Questions/PartSelection"));
+        Debug.Log(partSelectionQuestions.Count.ToString() + " Questions Loaded");
     }
 
-    void Start()
-    {
-        SelectNewQuestion();
-    }
 
     private void OnEnable()
     {
         helpDialogHandler.SetHelpText("Επιλέξτε το εξάρτημα της μηχανής που ζητείται.\nΤο επιλεγμένο εξάρτημα φαίνεται με πορτοκαλί χρώμα. \nΥποβάλετε την απάντηση σας με το κουμπί Υποβολή");
         helpDialogHandler.OpenHelpDialogSmall();
+        GetQuestionAssets();
+        SelectNewQuestion();
     }
 
+
+    private void OnDisable()
+    {
+        correctAnswersScore = 0;   
+    }
 
 
     private void GetQuestionAssets()
     {
-        partSelectionQuestions = new List<PartSelectionData>(Resources.LoadAll<PartSelectionData>("Questions/PartSelection"));
-        numberOfQuestions = partSelectionQuestions.Count;
-        Debug.Log( numberOfQuestions.ToString() + " Questions Selected");
+        currentQuestions = new List<PartSelectionData>(partSelectionQuestions);
+        numberOfQuestions = currentQuestions.Count;
+        Debug.Log( numberOfQuestions.ToString() + " Questions copied");
     }
 
     private void CalculateScore()
@@ -62,11 +66,11 @@ public class PartSelectionQuestionManager : MonoBehaviour
 
     private void SelectNewQuestion()
     {
-
+        
         //Pick a question at random from the List
-        int randomQuestionIndex = UnityEngine.Random.Range(0, partSelectionQuestions.Count);
-        currentPartQuestion = partSelectionQuestions[randomQuestionIndex];
-        partSelectionQuestions.RemoveAt(randomQuestionIndex);
+        int randomQuestionIndex = UnityEngine.Random.Range(0, currentQuestions.Count);
+        currentPartQuestion = currentQuestions[randomQuestionIndex];
+        currentQuestions.RemoveAt(randomQuestionIndex);
         questionTitle.text = currentPartQuestion.question;
 
 
@@ -76,7 +80,6 @@ public class PartSelectionQuestionManager : MonoBehaviour
         CalculateScore();
         PartSelectionFinished?.Invoke(result);
         Console.WriteLine("Done with Part Selection Questions");
-        //gameObject.SetActive(false);
     }
 
     //When Button is Pressed:
@@ -87,7 +90,7 @@ public class PartSelectionQuestionManager : MonoBehaviour
         submittedAnswerIndex = PartSelectionAnswerCollection.GetComponent<InteractableToggleCollection>().CurrentIndex;
         if (submittedAnswerIndex == currentPartQuestion.correctAnswerIndex) isCorrect = true;
         else isCorrect = false;
-        Debug.Log("Remaining Questions are" + partSelectionQuestions.Count.ToString());
+        Debug.Log("Remaining Questions are" + currentQuestions.Count.ToString());
 
         if (isCorrect)
         {
@@ -99,7 +102,7 @@ public class PartSelectionQuestionManager : MonoBehaviour
             Debug.Log("Wrong Answer");
         }
 
-        if (partSelectionQuestions.Count == 0)
+        if (currentQuestions.Count == 0)
         {
             OnQuestionsFinished();
         }

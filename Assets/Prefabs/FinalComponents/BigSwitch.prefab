@@ -937,7 +937,7 @@ MonoBehaviour:
   targetObject: {fileID: 2741431988647967915}
   boundsOverride: {fileID: 473843063081262550}
   boundsCalculationMethod: 0
-  activation: 3
+  activation: 1
   flattenAxis: 3
   uniformScaleOnFlattenedAxis: 1
   boxPadding: {x: 0.01, y: 0, z: 0}

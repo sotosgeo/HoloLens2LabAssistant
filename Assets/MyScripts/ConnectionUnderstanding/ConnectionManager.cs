@@ -15,7 +15,7 @@ public class ConnectionManager : MonoBehaviour
 
     [SerializeField] TextMeshPro connectionText;
 
-    [SerializeField] PlacementManager placementManager;
+    
 
     private List<Connection> currentConnections = new();
 

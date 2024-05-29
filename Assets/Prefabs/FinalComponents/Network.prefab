@@ -1583,7 +1583,6 @@ GameObject:
   - component: {fileID: 4305712750309547493}
   - component: {fileID: 1098675746945849064}
   - component: {fileID: 1652664175157984361}
-  - component: {fileID: 3320721022367349306}
   m_Layer: 0
   m_Name: Manipulation
   m_TagString: Network
@@ -1722,15 +1721,15 @@ MonoBehaviour:
   targetObject: {fileID: 3529052896631040071}
   boundsOverride: {fileID: 674772211376161716}
   boundsCalculationMethod: 0
-  activation: 3
+  activation: 1
   flattenAxis: 4
   uniformScaleOnFlattenedAxis: 1
-  boxPadding: {x: 0, y: 0, z: 0.1}
+  boxPadding: {x: 0, y: 0, z: 0}
   boxDisplayConfiguration: {fileID: 11400000, guid: c2b8a0ee1166d2f43a8acffd135b182c, type: 2}
   linksConfiguration: {fileID: 0}
   scaleHandlesConfiguration: {fileID: 11400000, guid: 937499e8c23a2814696107c1544583ae, type: 2}
-  rotationHandlesConfiguration: {fileID: 11400000, guid: 169481b514dd6bd478ce9c10b67ee5d6, type: 2}
-  translationHandlesConfiguration: {fileID: 0}
+  rotationHandlesConfiguration: {fileID: 0}
+  translationHandlesConfiguration: {fileID: 11400000, guid: 6ef333f55c6862d4b85f4d643b7a2e1a, type: 2}
   handleProximityEffectConfiguration: {fileID: 11400000, guid: 9607516de9549d6468834d73e183e029, type: 2}
   hideElementsInInspector: 1
   smoothingActive: 0
@@ -1758,19 +1757,3 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   elasticsManager: {fileID: 0}
---- !u!114 &3320721022367349306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4857288730573863333}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28bd4f7d7deeb0244af588314c35f590, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  componentTag: 
-  GreekName: 
-  NetworkPos: {fileID: 0}
-  NetworkNeg: {fileID: 0}

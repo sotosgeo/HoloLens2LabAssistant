@@ -21,18 +21,15 @@ public class SceneManager : MonoBehaviour
 
 
     //Tracking Objects
-    [SerializeField] GameObject connectionTracking;
-
-    private void Awake()
-    {
-       
-    }
+    [SerializeField] GameObject connectionManagerObject;
+    [SerializeField] GameObject cableTrackingObject;
+    [SerializeField] GameObject placementManagerObject;
 
     // Display starting text, and choose between student and teacher mode
     void Start()
     {
         startingMenu.SetActive(true);
-        questionManager.GetComponent<QuestionManager>().OnQuestionsFinished += StartConnection;
+        questionManager.GetComponent<QuestionManager>().OnQuestionsFinished += StartStudentConnection;
 
 
         _studenHandMenu = GameObject.Find("StudentMenu");
@@ -41,19 +38,27 @@ public class SceneManager : MonoBehaviour
         _studenHandMenu.SetActive(false);
         _teacherHandMenu.SetActive(false);
 
-        connectionTracking.SetActive(false);
+        cableTrackingObject.SetActive(false);
+        placementManagerObject.SetActive(false);
     }
 
-
-    public void StartConnection()
+    public void Reset()
     {
-        helpDialogHandler.OpenCustomOKDialogue("Διέγερση Κινητήρα", "Ξεκινήστε τη συνδεσμολογία της διέγερσης κινητήρα συνεχούς ρεύματος");
-        connectionTracking.SetActive(true);
+        startingMenu.SetActive(true);
+        _studenHandMenu.SetActive(false);
+        _teacherHandMenu.SetActive(false);
+        questionManager.GetComponent<QuestionManager>().Reset();
+        cableTrackingObject.SetActive(false);
+        placementManagerObject.SetActive(false);
     }
+
+   
 
     public void Student()
     {
         _studenHandMenu.SetActive(true);
+
+        //Setting question manager to active, resets the question part
         questionManager.SetActive(true);
         startingMenu.SetActive(false);
     }
@@ -62,8 +67,20 @@ public class SceneManager : MonoBehaviour
     {
         _teacherHandMenu.SetActive(true);
         startingMenu.SetActive(false);
-        connectionTracking.SetActive(true);
+        StartTeacherConnection();
+        
+    }
+    public void StartStudentConnection()
+    {
+        helpDialogHandler.OpenCustomOKDialogue("Διέγερση Κινητήρα", "Ξεκινήστε τη συνδεσμολογία της διέγερσης κινητήρα συνεχούς ρεύματος");
+        cableTrackingObject.SetActive(true);
+        
     }
 
+    public void StartTeacherConnection()
+    {
+        cableTrackingObject.SetActive(true);
+        placementManagerObject.SetActive(true);
+    }
 
 }

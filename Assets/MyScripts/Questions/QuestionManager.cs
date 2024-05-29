@@ -1,10 +1,43 @@
-﻿using System;
+﻿using Microsoft.MixedReality.Toolkit.UI;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class QuestionManager : MonoBehaviour
 {
+
+    #region Dialog UI and prefabs
+    [SerializeField]
+    [Tooltip("Assign DialogSmall_192x96.prefab")]
+    private GameObject dialogPrefabSmall;
+
+    /// <summary>
+    /// Small Dialog example prefab to display
+    /// </summary>
+    public GameObject DialogPrefabSmall
+    {
+        get => dialogPrefabSmall;
+        set => dialogPrefabSmall = value;
+    }
+    private void OnClosedDialogEvent(DialogResult obj)
+    {
+        if (obj.Result == DialogButtonType.OK)
+        {
+            OnQuestionsFinished?.Invoke();
+        }
+
+    }
+    public void OpenQuestionsFinishedDialogSmall(string title, string text)
+    {
+        Dialog myDialog = Dialog.Open(DialogPrefabSmall, DialogButtonType.OK,title, text, true);
+        if (myDialog != null)
+        {
+            myDialog.OnClosed += OnClosedDialogEvent;
+        }
+    }
+
+    #endregion
 
     //TODO Subscribe to events from MultipleChoice and PartSelection
     private MultipleChoiceQuestionManager mcQuestionManager;
@@ -30,15 +63,33 @@ public class QuestionManager : MonoBehaviour
 
         MultipleChoiceQuestion.SetActive(true);
         PartSelectionQuestion.SetActive(false);
+
+        if (mcQuestionManager != null)
+        {
+            mcQuestionManager.Finished += MultipleChoiceFinished;
+        }
+
+        if (psQuestionManager != null)
+        {
+            psQuestionManager.PartSelectionFinished += PartSelectionFinished;
+        }
     }
 
+    //When QuestionManager is disabled,lets reset the whole thing
     private void OnDisable()
     {
         mcQuestionManager.Finished -= MultipleChoiceFinished;
         psQuestionManager.PartSelectionFinished -= PartSelectionFinished;
+        MultipleChoiceQuestion.SetActive(false);
+        PartSelectionQuestion.SetActive(false);
     }
 
 
+    public void Reset()
+    {
+        gameObject.SetActive(false);
+        
+    }
 
 
 
@@ -51,7 +102,7 @@ public class QuestionManager : MonoBehaviour
             Debug.Log("Passed Multiple Choice");
             mcQuestionManager.Finished -= MultipleChoiceFinished;
         }
-        
+
         MultipleChoiceQuestion.SetActive(false);
         PartSelectionQuestion.SetActive(true);
     }
@@ -78,32 +129,19 @@ public class QuestionManager : MonoBehaviour
         {
             //Display Successful Screen and contine to connection
             //Debug.Log("Passed Both Parts");
-            dialogHandler.OpenCustomOKDialogue("Επιτυχία", "Περάσατε επιτυχώς το κομμάτι των ερωτήσεων.\nΠατήστε ΟΚ για να συνεχίσετε με τη συνδεσμολογία.");
+            OpenQuestionsFinishedDialogSmall("Επιτυχία", "Περάσατε επιτυχώς το κομμάτι των ερωτήσεων.\nΠατήστε ΟΚ για να συνεχίσετε με τη συνδεσμολογία.");
         }
         else
         {
             //Display Game over screen, and chance to start again
-            dialogHandler.OpenCustomOKDialogue("Αποτυχία", "Δυστυχώς δεν περάσατε επιτυχώς το κομμάτι των ερωτήσεων.\nΠατήστε ΟΚ για να ξαναπροσπαθήσετε.");
-           // Debug.Log("Try Again!");
+            OpenQuestionsFinishedDialogSmall("Αποτυχία", "Δυστυχώς δεν περάσατε επιτυχώς το κομμάτι των ερωτήσεων.\nΠατήστε ΟΚ για να ξαναπροσπαθήσετε.");
+            // Debug.Log("Try Again!");
         }
-        OnQuestionsFinished?.Invoke();
+       
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        if (mcQuestionManager != null)
-        {
-            mcQuestionManager.Finished += MultipleChoiceFinished;
-        }
 
-        if (psQuestionManager != null)
-        {
-            psQuestionManager.PartSelectionFinished += PartSelectionFinished;
-        }
 
-    }
 
-   
 
 }
