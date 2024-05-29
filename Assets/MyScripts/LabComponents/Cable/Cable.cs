@@ -6,6 +6,7 @@ using HeftyConnections;
 using Unity.VisualScripting;
 using UnityEngine;
 
+
 public class Cable : MonoBehaviour
 {
     public int cableId = 0;
@@ -14,41 +15,41 @@ public class Cable : MonoBehaviour
     [SerializeField] CablePin myCableStart;
     [SerializeField] CablePin myCableEnd;
     [SerializeField] ConnectionManager myConnectionManager;
-   // [SerializeField] ConnectionSystemComponent myConnectionSystem;
+    public ConnectionSystemComponent myConnectionSystem;
 
-  
+
 
     private bool cableStartConnected = false;
     private bool cableEndConnected = false;
 
-    public  Pin cableStartConnectedTo = null;
-    public Pin cableEndConnectedTo = null;
+    public GameObject cableStartConnectedTo = null;
+    public GameObject cableEndConnectedTo = null;
 
     private bool _cableConnected = false;
 
 
-    private void OnCableStartConnected(Pin   pinConnectedTo)
+    private void OnCableStartConnected(GameObject   pinConnectedTo)
     {
         cableStartConnectedTo = pinConnectedTo;
         cableStartConnected = true;
         ConnectionCheck();
     }
 
-    private void OnCableEndConnected(Pin pinConnectedTo)
+    private void OnCableEndConnected(GameObject pinConnectedTo)
     {
         cableEndConnectedTo = pinConnectedTo;
         cableEndConnected = true;
         ConnectionCheck();
     }
 
-    private void OnCableStartDisconnected(Pin pinConnectedTo)
+    private void OnCableStartDisconnected(GameObject pinConnectedTo)
     { 
         cableStartConnected = false;
         ConnectionCheck();
         cableStartConnectedTo = null;
     }
 
-    private void OnCableEndDisonnected(Pin pinConnectedTo)
+    private void OnCableEndDisonnected(GameObject pinConnectedTo)
     {
         cableEndConnected = false;
         ConnectionCheck();
@@ -83,10 +84,20 @@ public class Cable : MonoBehaviour
        
         if (cableStartConnected & cableEndConnected)
         {
-            Debug.Log("Connection Detected Between " + cableStartConnectedTo.GetComponent<Pin>().FullTag + " and " + cableEndConnectedTo.GetComponent<Pin>().FullTag + "  via cable " + cableId.ToString());
-            myConnectionManager.OnConnectionMade(cableStartConnectedTo, cableEndConnectedTo,cableId);
-            //myConnectionSystem.ConnectionSystem.Connect(cableStartConnectedTo.GetComponent<Port>(), cableEndConnectedTo.GetComponent<Port>(), cableId);
-            //Set the connection between the cable ends at each pin
+            Debug.Log("Connection Detected Between " + cableStartConnectedTo.ToString() + " and " + cableEndConnectedTo.ToString() + "  via cable " + cableId.ToString());
+            
+            if(myConnectionManager != null)
+            {
+                myConnectionManager.OnConnectionMade(cableStartConnectedTo, cableEndConnectedTo, cableId);
+            }
+
+            if (myConnectionSystem != null)
+            {
+                myConnectionSystem.ConnectionSystem.Connect(cableStartConnectedTo.GetComponent<Port>(), cableEndConnectedTo.GetComponent<Port>(), cableId);
+            }
+
+
+            
            
             _cableConnected = true;
         }
@@ -94,9 +105,21 @@ public class Cable : MonoBehaviour
 
         if ((cableStartConnected == false | cableEndConnected == false) & _cableConnected)
         {
-            Debug.Log("Connection removed between" + cableStartConnectedTo.GetComponent<Pin>().pinTag + " and " + cableEndConnectedTo.GetComponent<Pin>().FullTag + "  via cable " + cableId.ToString());
-            myConnectionManager.OnConnectionRemoved(cableStartConnectedTo, cableEndConnectedTo, cableId);
-            //myConnectionSystem.ConnectionSystem.Disconnect(cableStartConnectedTo.GetComponent<Port>(), cableEndConnectedTo.GetComponent<Port>(), cableId);
+            Debug.Log("Connection removed between" + cableStartConnectedTo.ToString() + " and " + cableEndConnectedTo.ToString() + "  via cable " + cableId.ToString());
+            
+
+            if(myConnectionManager != null)
+            {
+               myConnectionManager.OnConnectionRemoved(cableStartConnectedTo, cableEndConnectedTo, cableId);
+            }
+
+
+            if (myConnectionSystem != null)
+            {
+                myConnectionSystem.ConnectionSystem.Disconnect(cableStartConnectedTo.GetComponent<Port>(), cableEndConnectedTo.GetComponent<Port>(), cableId);
+            }
+
+
             _cableConnected = false;
         }
     }

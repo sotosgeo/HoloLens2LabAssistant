@@ -3,6 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
+
+
 public class CablePin : MonoBehaviour
 {
     [SerializeField] GameObject pinVisual;
@@ -10,11 +14,11 @@ public class CablePin : MonoBehaviour
     [SerializeField] Material connectionDetectedMaterial;
     [SerializeField] Material connectionFinalizedMaterial;
 
-    public Pin pinConnectedTo = null;
+    public GameObject pinConnectedTo = null;
  
 
-    public Action<Pin> OnConnectionFinalized;
-    public Action<Pin> OnConnectionStopped;
+    public Action<GameObject> OnConnectionFinalized;
+    public Action<GameObject> OnConnectionStopped;
 
 
     private void Start()
@@ -29,7 +33,7 @@ public class CablePin : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //Debug.Log(this.gameObject.ToString() + "collided with " + other.gameObject.ToString());
-        pinConnectedTo = other.gameObject.GetComponent<Pin>();
+        pinConnectedTo = other.gameObject;
         pinVisual.GetComponent<MeshRenderer>().material = connectionFinalizedMaterial;
         
         OnConnectionFinalized?.Invoke(pinConnectedTo);

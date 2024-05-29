@@ -3227,7 +3227,6 @@ GameObject:
   m_Component:
   - component: {fileID: 318755183}
   - component: {fileID: 318755186}
-  - component: {fileID: 318755185}
   - component: {fileID: 318755184}
   m_Layer: 0
   m_Name: TextMeshPro
@@ -3348,14 +3347,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 318755186}
   m_maskType: 0
---- !u!222 &318755185
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 318755182}
-  m_CullTransparentMesh: 0
 --- !u!23 &318755186
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6424,7 +6415,6 @@ GameObject:
   m_Component:
   - component: {fileID: 627056506}
   - component: {fileID: 627056509}
-  - component: {fileID: 627056508}
   - component: {fileID: 627056507}
   m_Layer: 0
   m_Name: TextMeshPro
@@ -6545,14 +6535,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 627056509}
   m_maskType: 0
---- !u!222 &627056508
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 627056505}
-  m_CullTransparentMesh: 0
 --- !u!23 &627056509
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8042,7 +8024,6 @@ GameObject:
   m_Component:
   - component: {fileID: 782907033}
   - component: {fileID: 782907036}
-  - component: {fileID: 782907035}
   - component: {fileID: 782907034}
   m_Layer: 0
   m_Name: Title
@@ -8163,14 +8144,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 782907036}
   m_maskType: 0
---- !u!222 &782907035
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 782907032}
-  m_CullTransparentMesh: 0
 --- !u!23 &782907036
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -13817,7 +13790,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1266256450}
   - component: {fileID: 1266256453}
-  - component: {fileID: 1266256452}
   - component: {fileID: 1266256451}
   m_Layer: 0
   m_Name: TextMeshPro
@@ -13938,14 +13910,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 1266256453}
   m_maskType: 0
---- !u!222 &1266256452
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1266256449}
-  m_CullTransparentMesh: 0
 --- !u!23 &1266256453
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -14288,7 +14252,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1338862680}
   - component: {fileID: 1338862683}
-  - component: {fileID: 1338862682}
   - component: {fileID: 1338862681}
   m_Layer: 0
   m_Name: TextMeshPro
@@ -14409,14 +14372,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 1338862683}
   m_maskType: 0
---- !u!222 &1338862682
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1338862679}
-  m_CullTransparentMesh: 0
 --- !u!23 &1338862683
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -18264,7 +18219,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1607757112
 Transform:
   m_ObjectHideFlags: 0
@@ -18350,7 +18305,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1629641156}
   - component: {fileID: 1629641159}
-  - component: {fileID: 1629641158}
   - component: {fileID: 1629641157}
   m_Layer: 0
   m_Name: TextMeshPro
@@ -18471,14 +18425,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 1629641159}
   m_maskType: 0
---- !u!222 &1629641158
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1629641155}
-  m_CullTransparentMesh: 0
 --- !u!23 &1629641159
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -20770,7 +20716,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1826152771}
   - component: {fileID: 1826152774}
-  - component: {fileID: 1826152773}
   - component: {fileID: 1826152772}
   m_Layer: 0
   m_Name: TextMeshPro
@@ -20891,14 +20836,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 1826152774}
   m_maskType: 0
---- !u!222 &1826152773
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1826152770}
-  m_CullTransparentMesh: 0
 --- !u!23 &1826152774
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -24854,7 +24791,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2128037484}
   - component: {fileID: 2128037487}
-  - component: {fileID: 2128037486}
   - component: {fileID: 2128037485}
   m_Layer: 0
   m_Name: TextMeshPro
@@ -24975,14 +24911,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 2128037487}
   m_maskType: 0
---- !u!222 &2128037486
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2128037483}
-  m_CullTransparentMesh: 0
 --- !u!23 &2128037487
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -26444,74 +26372,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 394836668612783601, guid: b8a3b2506ee58f844b6e13383a769911, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 926099694813400884, guid: b8a3b2506ee58f844b6e13383a769911, type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1662505420}
-    - target: {fileID: 926099694813400884, guid: b8a3b2506ee58f844b6e13383a769911, type: 3}
-      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Reset
-      objectReference: {fileID: 0}
-    - target: {fileID: 926099694813400884, guid: b8a3b2506ee58f844b6e13383a769911, type: 3}
-      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SceneManager, Assembly-CSharp
-      objectReference: {fileID: 0}
     - target: {fileID: 4628918782692126556, guid: b8a3b2506ee58f844b6e13383a769911, type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1424839032}
-    - target: {fileID: 4628918782692126556, guid: b8a3b2506ee58f844b6e13383a769911, type: 3}
-      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ToolTipToggle
-      objectReference: {fileID: 0}
-    - target: {fileID: 4628918782975963648, guid: b8a3b2506ee58f844b6e13383a769911, type: 3}
-      propertyPath: Dimensions
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4628918782975963648, guid: b8a3b2506ee58f844b6e13383a769911, type: 3}
-      propertyPath: profiles.Array.data[0].Themes.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4628918782975963648, guid: b8a3b2506ee58f844b6e13383a769911, type: 3}
-      propertyPath: profiles.Array.data[1].Themes.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4628918782975963648, guid: b8a3b2506ee58f844b6e13383a769911, type: 3}
-      propertyPath: profiles.Array.data[2].Themes.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4628918782975963648, guid: b8a3b2506ee58f844b6e13383a769911, type: 3}
-      propertyPath: profiles.Array.data[3].Themes.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4628918782975963648, guid: b8a3b2506ee58f844b6e13383a769911, type: 3}
-      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4628918782975963648, guid: b8a3b2506ee58f844b6e13383a769911, type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1424839032}
-    - target: {fileID: 4628918782975963648, guid: b8a3b2506ee58f844b6e13383a769911, type: 3}
-      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: TogglePlacement
-      objectReference: {fileID: 0}
-    - target: {fileID: 4628918782975963648, guid: b8a3b2506ee58f844b6e13383a769911, type: 3}
-      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7102172865605417163, guid: b8a3b2506ee58f844b6e13383a769911, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7102172865943270576, guid: b8a3b2506ee58f844b6e13383a769911, type: 3}
-      propertyPath: facingCameraTrackingThreshold
-      value: 50
-      objectReference: {fileID: 0}
     - target: {fileID: 7102172865943270577, guid: b8a3b2506ee58f844b6e13383a769911, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -26559,22 +26431,6 @@ PrefabInstance:
     - target: {fileID: 7102172865943270578, guid: b8a3b2506ee58f844b6e13383a769911, type: 3}
       propertyPath: m_Name
       value: TeacherMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 7102172865943270578, guid: b8a3b2506ee58f844b6e13383a769911, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7102172866299001875, guid: b8a3b2506ee58f844b6e13383a769911, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7102172866299001965, guid: b8a3b2506ee58f844b6e13383a769911, type: 3}
-      propertyPath: m_text
-      value: Save Connection
-      objectReference: {fileID: 0}
-    - target: {fileID: 7753265932133691417, guid: b8a3b2506ee58f844b6e13383a769911, type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8a3b2506ee58f844b6e13383a769911, type: 3}
@@ -28303,7 +28159,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8498359570814789596}
   - component: {fileID: 8498359570814789593}
-  - component: {fileID: 8498359570814789598}
   - component: {fileID: 8498359570814789599}
   m_Layer: 0
   m_Name: TextMeshPro
@@ -28312,14 +28167,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!222 &8498359570814789598
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8498359570814789597}
-  m_CullTransparentMesh: 0
 --- !u!114 &8498359570814789599
 MonoBehaviour:
   m_ObjectHideFlags: 0

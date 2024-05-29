@@ -75,7 +75,7 @@ public class ConnectionManager : MonoBehaviour
         //motorExcitementConnections = CreateConnectionListFromListOfStrings(motorExcitementStrPins);
         //DebugPrintConnections(motorExcitementConnections);
 
-        ConnectionSystem motorExcitement = new("Διέγερση Κινητήρα", motorExcitementConnections );
+        //ConnectionSystem motorExcitement = new("Διέγερση Κινητήρα", motorExcitementConnections );
     }
 
     //private List<Connection> CreateConnectionListFromListOfStrings(List<string[]> stringList)
@@ -110,7 +110,7 @@ public class ConnectionManager : MonoBehaviour
         DebugPrintConnections(missingConnections);
     }
 
-    public void OnConnectionMade(Pin cableStart, Pin cableEnd, int cableId)
+    public void OnConnectionMade(GameObject cableStart, GameObject cableEnd, int cableId)
     {
         var newConnection = new Connection(cableStart, cableEnd, cableId);
         currentConnections.Add(newConnection);
@@ -118,7 +118,7 @@ public class ConnectionManager : MonoBehaviour
 
     }
 
-    public void OnConnectionRemoved(Pin cableStart, Pin cableEnd, int cableId)
+    public void OnConnectionRemoved(GameObject cableStart, GameObject cableEnd, int cableId)
     {
 
         if (currentConnections.Contains(new Connection(cableStart, cableEnd, cableId)))
@@ -135,7 +135,7 @@ public class ConnectionManager : MonoBehaviour
         foreach (var connection in currentConnections)
         {
 
-            connectionText.text = connection.ToString() + '\n';
+            connectionText.text += connection.ToString() + '\n';
         }
     }
 

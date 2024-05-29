@@ -97,7 +97,7 @@ namespace HeftyConnections
             Connection = new Connection(portA.FullTag, portB.FullTag);
            
         }
-
+        
         public bool Equals(PortConnection other)
         {
             return other != null && GetType() == other.GetType() && ((portA == other.portA && portB == other.portB) || (portA == other.portB && portB == other.portA));
@@ -180,15 +180,18 @@ namespace HeftyConnections
             return true;
         }
 
-        public static List<PortConnection> FindWrongConnections(ConnectionSystem systemToCheck, ConnectionSystem correctSystem)
+        public static void TestShowObjects(ConnectionSystem systemToShow)
         {
-            var wrongConnections = new List<PortConnection>();
+            var ports = systemToShow.usedPorts;
+
+            foreach(var port in ports)
+            {
+                port.portA.GameObject().GetComponentInChildren<MeshRenderer>().material.color = Color.red;
+                port.portB.GameObject().GetComponentInChildren<MeshRenderer>().material.color = Color.red;
+            }
 
 
-
-
-
-            return wrongConnections;
+                     
         }
 
 
@@ -316,6 +319,12 @@ namespace HeftyConnections
         private void TestValidSystem()
         {
            Debug.Log(ConnectionSystem.CheckValidSystem(validSystemTest.ConnectionSystem, ConnectionSystem));
+        }
+
+        [ContextMenu("Show Ports Used")]
+        private void TestShowPorts()
+        {
+            ConnectionSystem.TestShowObjects(ConnectionSystem);
         }
 
         [ContextMenu("Print System")]

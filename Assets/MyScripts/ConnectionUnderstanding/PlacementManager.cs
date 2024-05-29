@@ -21,15 +21,15 @@ public class PlacementManager : MonoBehaviour
 
     private void OnEnable()
     {
-        ChangeManipulationAndTransform(true);
+        ChangeManipulationAndVisualization(true);
     }
 
     private void OnDisable()
     {
-        ChangeManipulationAndTransform(false);
+        ChangeManipulationAndVisualization(false);
     }
 
-    private void ChangeManipulationAndTransform(bool change)
+    private void ChangeManipulationAndVisualization(bool change)
     {
         foreach (var component in placedComponentObjects)
         {
@@ -37,13 +37,20 @@ public class PlacementManager : MonoBehaviour
             Transform visualization = component.transform.GetChild(1);
             manipulator.gameObject.SetActive(change);
             visualization.gameObject.SetActive(change);
+
+            //Turn off Pins Visual
+            MeshRenderer[] pinRenderers = component.transform.GetChild(3).GetComponentsInChildren<MeshRenderer>();
+            foreach (var pinRenderer in pinRenderers)
+            {
+                pinRenderer.enabled = change;
+            }
         }
     }
 
 
     public void TogglePlacement()
     {
-        ChangeManipulationAndTransform(_placementToggle);
+        ChangeManipulationAndVisualization(_placementToggle);
         _placementToggle = !_placementToggle;
     }
 
@@ -60,14 +67,26 @@ public class PlacementManager : MonoBehaviour
 
     public void ToggleVisualization()
     {
-        foreach (var component in placedComponentObjects)
-        {
-            Transform visualization = component.transform.GetChild(1);
-            visualization.gameObject.SetActive(_visualizationToggle);
-        }
         _visualizationToggle = !_visualizationToggle;
+        ChangeVisualization(_visualizationToggle);
+        
     }
 
-    
+    public void ChangeVisualization(bool mode)
+    {
+        foreach (var component in placedComponentObjects)
+        {
+            //Turn Off Component Visualization
+            Transform visualization = component.transform.GetChild(1);
+            visualization.gameObject.SetActive(mode);
+
+            //Turn off Pins Visual
+            MeshRenderer[] pinRenderers = component.transform.GetChild(3).GetComponentsInChildren<MeshRenderer>();
+            foreach (var pinRenderer in pinRenderers)
+            {
+                pinRenderer.enabled = mode;
+            }
+        }
+    }
 
 }

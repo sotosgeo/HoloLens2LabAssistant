@@ -8,19 +8,24 @@ using UnityEngine;
 public class Connection : IEquatable<Connection>
 {
 
-    public Pin PinA { get; private set; }
-    public Pin PinB { get; private set; }
+    public string PinA { get; private set; }
+    public string PinB { get; private set; }
     public int ConnectingCable { get; private set; }
 
 
-    public Connection(Pin pinA, Pin pinB, int connectingCable)
+    public Connection(string pinA, string pinB, int connectingCable)
     {
         PinA = pinA;
         PinB = pinB;
         ConnectingCable = connectingCable;
     }
 
-    
+    public Connection(GameObject objectA,  GameObject objectB, int connectingCable)
+    {
+        PinA = objectA.GetComponent<Pin>().FullTag;
+        PinB = objectB.GetComponent<Pin>().FullTag;
+        ConnectingCable = connectingCable;
+    }
 
     public override string ToString()
     {
