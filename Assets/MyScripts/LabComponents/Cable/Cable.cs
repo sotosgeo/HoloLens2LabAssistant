@@ -15,7 +15,7 @@ public class Cable : MonoBehaviour
     [SerializeField] CablePin myCableStart;
     [SerializeField] CablePin myCableEnd;
     [SerializeField] ConnectionManager myConnectionManager;
-    public ConnectionSystemComponent myConnectionSystem;
+    public HeftyConnections.ConnectionSystemComponent myConnectionSystem;
 
 
 
@@ -88,14 +88,14 @@ public class Cable : MonoBehaviour
             
             if(myConnectionManager != null)
             {
-                myConnectionManager.OnConnectionMade(cableStartConnectedTo, cableEndConnectedTo, cableId);
+               myConnectionManager.OnConnectionMade(cableStartConnectedTo, cableEndConnectedTo, this);
             }
 
             if (myConnectionSystem != null)
             {
-                myConnectionSystem.ConnectionSystem.Connect(cableStartConnectedTo.GetComponent<Port>(), cableEndConnectedTo.GetComponent<Port>(), cableId);
+                //myConnectionSystem.ConnectionSystem.Connect(cableStartConnectedTo.GetComponent<Port>(), cableEndConnectedTo.GetComponent<Port>(), cableId);
             }
-
+            
 
             
            
@@ -110,13 +110,13 @@ public class Cable : MonoBehaviour
 
             if(myConnectionManager != null)
             {
-               myConnectionManager.OnConnectionRemoved(cableStartConnectedTo, cableEndConnectedTo, cableId);
+              myConnectionManager.OnConnectionRemoved(cableStartConnectedTo, cableEndConnectedTo, this);
             }
 
 
             if (myConnectionSystem != null)
             {
-                myConnectionSystem.ConnectionSystem.Disconnect(cableStartConnectedTo.GetComponent<Port>(), cableEndConnectedTo.GetComponent<Port>(), cableId);
+               // myConnectionSystem.ConnectionSystem.Disconnect(cableStartConnectedTo.GetComponent<Port>(), cableEndConnectedTo.GetComponent<Port>(), cableId);
             }
 
 

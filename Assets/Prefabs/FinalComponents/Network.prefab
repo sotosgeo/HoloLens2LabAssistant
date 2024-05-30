@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 3529052895317646981}
   - component: {fileID: 3529052895317646979}
   - component: {fileID: 3529052895317646978}
-  m_Layer: 2
+  m_Layer: 7
   m_Name: NegVis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -259,7 +259,7 @@ GameObject:
   - component: {fileID: 3529052895509477621}
   - component: {fileID: 766681247}
   - component: {fileID: 2249649614902708548}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: networkPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -340,7 +340,7 @@ GameObject:
   - component: {fileID: 3529052895599803702}
   - component: {fileID: 3529052895599803700}
   - component: {fileID: 3529052895599803703}
-  m_Layer: 2
+  m_Layer: 7
   m_Name: PosVis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1466,7 +1466,7 @@ GameObject:
   - component: {fileID: 3529052896682832915}
   - component: {fileID: 766681246}
   - component: {fileID: 1058466846053315417}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: networkNeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}

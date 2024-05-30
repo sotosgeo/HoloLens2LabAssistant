@@ -81,40 +81,40 @@ namespace HeftyConnections
 
     // Represents a connection between two ports and keeps
     // the underlying connection
-    public class PortConnection : IEquatable<PortConnection>
+    public class PortConnection 
     {
         public Port portA;
         public Port portB;
 
-        public int cableId;
+        
 
         public Connection Connection { get; private set; }
-        public PortConnection(Port portA, Port portB, int cableId)
+        public PortConnection(Port portA, Port portB)
         {
             this.portA = portA;
             this.portB = portB;
-            this.cableId = cableId;
+            
             Connection = new Connection(portA.FullTag, portB.FullTag);
            
         }
-        
-        public bool Equals(PortConnection other)
-        {
-            return other != null && GetType() == other.GetType() && ((portA == other.portA && portB == other.portB) || (portA == other.portB && portB == other.portA));
-        }
-        public override bool Equals(object obj)
-        {
-            return Equals(obj as Connection);
-        }
 
-        public override int GetHashCode()
-        {
-            return portA.GetHashCode() ^ portB.GetHashCode();
-        }
+        //public bool Equals(PortConnection other)
+        //{
+        //    return other != null && GetType() == other.GetType() && ((portA == other.portA && portB == other.portB) || (portA == other.portB && portB == other.portA));
+        //}
+        //public override bool Equals(object obj)
+        //{
+        //    return Equals(obj as Connection);
+        //}
+
+        //public override int GetHashCode()
+        //{
+        //    return portA.GetHashCode() ^ portB.GetHashCode();
+        //}
 
         public override string ToString()
         {
-            return $"{portA.FullTag} + {portB.FullTag} via cable {cableId}";
+            return $"{portA.FullTag} + {portB.FullTag}";
         }
     }
 
@@ -133,7 +133,7 @@ namespace HeftyConnections
             // They must have the same number of connections
             if (validSystem.connections.Count != systemToValidate.connections.Count)
             {
-                //Debug.Log(1);
+                
                 return false;
             }
 
@@ -141,7 +141,7 @@ namespace HeftyConnections
             // They must have the same number of parent tags to parents
             if (validSystem.parentTags.Count != systemToValidate.parentTags.Count)
             {
-               // Debug.Log(2);
+               
                 return false;
             }
             foreach (var pair in validSystem.connections)
@@ -152,13 +152,13 @@ namespace HeftyConnections
                 // the valid system doesn't have
                 if (!systemToValidate.connections.TryGetValue(connection, out int validTimes))
                 {
-                   // Debug.Log(3);
+                   
                     return false;
                 }
                 // if a specific connection wasn't found as many times as we wanted
                 if (times != validTimes)
                 {
-                    //Debug.Log(4);
+                    
                     return false;
                 }
             }
@@ -172,7 +172,7 @@ namespace HeftyConnections
                 // it doesn't have it used the same amount of ties
                 if (!systemToValidate.parentTags.TryGetValue(parentTag, out int numUsed) || parentTagNums != numUsed)
                 {
-                    Debug.Log(5);
+                    
                     return false;
                 }
             }
@@ -193,6 +193,8 @@ namespace HeftyConnections
 
                      
         }
+
+      
 
 
         
@@ -216,7 +218,7 @@ namespace HeftyConnections
 
         private HashSet<PortConnection> usedPorts = new HashSet<PortConnection>();
 
-        public bool Connect(Port portA, Port portB, int cableId) => Connect(new PortConnection(portA, portB, cableId));
+        public bool Connect(Port portA, Port portB, int cableId) => Connect(new PortConnection(portA, portB));
         
         public bool Connect(PortConnection portConnection)
         {
@@ -259,7 +261,7 @@ namespace HeftyConnections
 
         }
 
-        public bool Disconnect(Port portA, Port portB, int cableId) => Disconnect(new PortConnection(portA, portB, cableId));
+        public bool Disconnect(Port portA, Port portB, int cableid) => Disconnect(new PortConnection(portA, portB));
 
         public bool Disconnect(PortConnection portConnection)
         {

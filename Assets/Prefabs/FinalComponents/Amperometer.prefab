@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3989167128602137369}
   - component: {fileID: 7890978974244511219}
   - component: {fileID: 769109963436979971}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: NegVis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 6060217998458736439}
   - component: {fileID: 9098871306510222279}
   - component: {fileID: 3056562054584493256}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: PosVis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -564,7 +564,7 @@ GameObject:
   - component: {fileID: 8994023953953756562}
   - component: {fileID: 309189922413922008}
   - component: {fileID: 1649073185568014827}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: amperOut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -646,7 +646,7 @@ GameObject:
   - component: {fileID: 6860723994851925347}
   - component: {fileID: 7280182296383082196}
   - component: {fileID: 4455416612442813216}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: amperIn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1795,7 +1795,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9222726844278544964}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Pins
   m_TagString: Untagged
   m_Icon: {fileID: 0}

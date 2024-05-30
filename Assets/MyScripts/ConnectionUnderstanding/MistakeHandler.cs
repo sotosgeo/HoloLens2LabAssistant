@@ -150,49 +150,34 @@ public class MistakeHandler : MonoBehaviour
     }
 
 
-    //private void FindMistakes(List<Connection> wrongConnections, List<Connection> missingConnections)
-    //{
+    public void FindMistakes()
+    {
 
-    //    timesAskedForHelp++;
-    //    //Level 1 Mistakes
-    //    numOfWrongConnections = wrongConnections.Count;
-    //    numOfMissingConnections = missingConnections.Count;
+        timesAskedForHelp++;
+        //Level 1 Mistakes
+        numOfWrongConnections = connectionManager.wrongConnections.Count;
+        numOfMissingConnections = connectionManager.missingConnections.Count;
 
-    //    List<GameObject> wrongComponents = new();
-    //    //Level 2 Mistakes
+        List<GameObject> wrongComponents = new();
+        //Level 2 Mistakes
 
-    //    foreach (Connection connection in wrongConnections)
-    //    {
-     
-    //        //Get lab component from pin that is in a wrong connection
-    //        if (!wrongComponents.Contains(GetComponentFromPin(connection.PinA)))
-    //        {
-    //            wrongComponents.Add(GetComponentFromPin(connection.PinA));
+        
 
-    //            Debug.Log(GetComponentFromPin(connection.PinA).GetComponent<LabComponent>().GreekName);
-    //        }
-    //        if (!wrongComponents.Contains(GetComponentFromPin(connection.PinB)))
-    //        {
-    //            wrongComponents.Add(connection.PinB);
-    //            Debug.Log(GetComponentFromPin(connection.PinB).GetComponent<LabComponent>().GreekName);
-    //        }
-    //    }
-
-    //    //Level 3 Mistakes
+        //Level 3 Mistakes
 
 
-    //    if (numOfWrongConnections > 0 | numOfMissingConnections > 0)
-    //    {
-    //        GetHelp(helpLevel);
-    //    }
-    //    else
-    //    {
-    //        OpenCorrectDialogSmall();
-    //    }
+        if (numOfWrongConnections > 0 | numOfMissingConnections > 0)
+        {
+            GetHelp(helpLevel);
+        }
+        else
+        {
+            OpenCorrectDialogSmall();
+        }
 
 
 
-    //}
+    }
 
 
 

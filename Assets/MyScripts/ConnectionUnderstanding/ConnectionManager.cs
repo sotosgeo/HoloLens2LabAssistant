@@ -15,21 +15,17 @@ public class ConnectionManager : MonoBehaviour
 
     [SerializeField] TextMeshPro connectionText;
 
-    
-
-    private List<Connection> currentConnections = new();
-
-    private List<Connection> wrongConnections = new();
-    private List<Connection> missingConnections = new();
-
-    List<Connection> motorExcitementConnections = new();
-
-    List<Connection> motorDrumConnections = new();
-
-    public Action<List<Connection>, List<Connection>> OnConnectionCheck;
 
 
-    public  List<string[]> motorExcitementStrPins = new()
+    [SerializeField] ConnectionSystem currentConnections;
+
+
+    [SerializeField] ConnectionSystem motorExcitementConnections;
+
+    public List<PinConnection> wrongConnections = new();
+    public List<PinConnection> missingConnections = new();
+
+    public List<string[]> motorExcitementStrPins = new()
     {
 
         new string[]{"Network.Pos","Switch1.PosIn" },
@@ -45,7 +41,7 @@ public class ConnectionManager : MonoBehaviour
 
     };
 
-    public  List<string[]> motorDrumStrPins = new()
+    public List<string[]> motorDrumStrPins = new()
     {
 
         new string[]{"networkPos","switchPosIn" },
@@ -64,75 +60,88 @@ public class ConnectionManager : MonoBehaviour
     };
 
 
+    private PinConnectionComparer myComparer = new();
+
 
 
     private void Start()
     {
-        currentConnections.Clear();
-        wrongConnections.Clear();
+        currentConnections.ClearSystem();
         missingConnections.Clear();
+        wrongConnections.Clear();
 
-        //motorExcitementConnections = CreateConnectionListFromListOfStrings(motorExcitementStrPins);
-        //DebugPrintConnections(motorExcitementConnections);
 
-        //ConnectionSystem motorExcitement = new("Διέγερση Κινητήρα", motorExcitementConnections );
     }
 
-    //private List<Connection> CreateConnectionListFromListOfStrings(List<string[]> stringList)
-    //{
-    //    List<Connection> connectionList = new();
-    //    foreach (var conStr in stringList)
-    //        foreach(var placedComponent in placementManager.placedComponentObjects)
-    //        {
-    //            Pin[] pins = placedComponent.GetComponentsInChildren<Pin>();
-    //            foreach(var pin in pins)
-    //            {
-    //                if(pin.FullTag = conStr[0])
-    //            }
-    //        }
-    //    {
-    //        connectionList.Add(new Connection(conStr[0], conStr[1], 0));
-    //    }
-
-    //    return connectionList;
-    //}
-
-
-
+    [ContextMenu("Check Current System")]
     public void CheckCurrentConnection()
     {
-        CheckConnection(currentConnections);
 
-        Debug.Log("Wrong connections are: ");
-        DebugPrintConnections(wrongConnections);
+        missingConnections.Clear();
+        wrongConnections.Clear();
 
-        Debug.Log("Missing Connections are: ");
-        DebugPrintConnections(missingConnections);
-    }
-
-    public void OnConnectionMade(GameObject cableStart, GameObject cableEnd, int cableId)
-    {
-        var newConnection = new Connection(cableStart, cableEnd, cableId);
-        currentConnections.Add(newConnection);
-        PrintConnections();
-
-    }
-
-    public void OnConnectionRemoved(GameObject cableStart, GameObject cableEnd, int cableId)
-    {
-
-        if (currentConnections.Contains(new Connection(cableStart, cableEnd, cableId)))
+        //Wrong connections are the ones in current connections, not found in the correct system
+        foreach (var connection in currentConnections.connections)
         {
-            currentConnections.Remove(new Connection(cableStart, cableEnd, cableId));
+            if (!motorExcitementConnections.connections.Contains(connection, myComparer))
+            {
+                wrongConnections.Add(connection);
+            }
+
         }
 
+        //Missing connections are the correct ones, not found in the current system
+        foreach(var connection in motorExcitementConnections.connections)
+        {
+            if (!currentConnections.connections.Contains(connection, myComparer))
+            {
+                missingConnections.Add(connection);
+            }
+        }
+
+        //Duplicate connections
+
+
+        Debug.Log("WRONG CONNECTIONS \n");
+        foreach(var conn in wrongConnections)
+        {
+            Debug.Log(conn.ToString() + "\n");
+        }
+
+        Debug.Log("MISSING CONNECTIONS \n");
+        foreach (var conn in missingConnections)
+        {
+            Debug.Log(conn.ToString() + "\n");
+        }
+
+    }
+
+   
+
+
+
+    public void OnConnectionMade(GameObject cableStart, GameObject cableEnd, Cable connectingCable)
+    {
+        var newConnection = new PinConnection(cableStart.GetComponent<Pin>(), cableEnd.GetComponent<Pin>(), connectingCable);
+        currentConnections.connections.Add(newConnection);
         PrintConnections();
     }
 
-    void PrintConnections()
+    public void OnConnectionRemoved(GameObject cableStart, GameObject cableEnd, Cable connectingCable)
+    {
+
+        //if (currentConnections.connections.Contains(new PinConnection(cableStart.GetComponent<Pin>(), cableEnd.GetComponent<Pin>(), connectingCable)))
+        //{
+        currentConnections.connections.Remove(new PinConnection(cableStart.GetComponent<Pin>(), cableEnd.GetComponent<Pin>(), connectingCable));
+        // }
+
+        PrintConnections();
+    }
+
+    private void PrintConnections()
     {
         connectionText.text = "";
-        foreach (var connection in currentConnections)
+        foreach (var connection in currentConnections.connections)
         {
 
             connectionText.text += connection.ToString() + '\n';
@@ -140,7 +149,7 @@ public class ConnectionManager : MonoBehaviour
     }
 
 
-    void DebugPrintConnections(List<Connection> connections)
+    private void DebugPrintConnections(List<PinConnection> connections)
     {
         foreach (var connection in connections)
         {
@@ -155,36 +164,36 @@ public class ConnectionManager : MonoBehaviour
     /// </summary>
     /// <param name="connectionsToCheck"></param>
 
-    public void CheckConnection(List<Connection> connectionsToCheck)
-    {
+    //public void CheckConnection(List<PinConnection> connectionsToCheck)
+    //{
 
-        wrongConnections.Clear();
-        missingConnections.Clear();
+    //    wrongConnections.Clear();
+    //    missingConnections.Clear();
 
-        //Find all the wrong Connections
-        foreach (var connection in connectionsToCheck)
-        {
-            if (!motorExcitementConnections.Contains(connection))
-            {
-                wrongConnections.Add(connection);
-            }
+    //    //Find all the wrong Connections
+    //    foreach (var connection in connectionsToCheck)
+    //    {
+    //        if (!motorExcitementConnections.Contains(connection))
+    //        {
+    //            wrongConnections.Add(connection);
+    //        }
 
 
-        }
+    //    }
 
-        if (motorExcitementConnections.Any())
+    //    if (motorExcitementConnections.Any())
 
-            //Find the missing Connections
-            foreach (var connection in motorExcitementConnections)
-            {
-                if (!connectionsToCheck.Contains(connection))
-                {
-                    missingConnections.Add(connection);
-                }
-            }
+    //        //Find the missing Connections
+    //        foreach (var connection in motorExcitementConnections)
+    //        {
+    //            if (!connectionsToCheck.Contains(connection))
+    //            {
+    //                missingConnections.Add(connection);
+    //            }
+    //        }
 
-        OnConnectionCheck?.Invoke(wrongConnections, missingConnections);
-    }
+    //    OnConnectionCheck?.Invoke(wrongConnections, missingConnections);
+    //}
 
 
 }
