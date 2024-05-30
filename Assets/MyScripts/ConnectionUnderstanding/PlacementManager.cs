@@ -15,8 +15,8 @@ public class PlacementManager : MonoBehaviour
 
     private bool _placementToggle = true;
     private bool _tooltipToggle = true;
-    private bool _visualizationToggle = false;
-
+    private bool _visualizationAndManipulationToggle = true;
+   
 
 
     private void OnEnable()
@@ -33,8 +33,8 @@ public class PlacementManager : MonoBehaviour
     {
         foreach (var component in placedComponentObjects)
         {
-            Transform manipulator = component.transform.GetChild(0);
-            Transform visualization = component.transform.GetChild(1);
+            Transform manipulator = component.transform.GetChild(1);
+            Transform visualization = component.transform.GetChild(0);
             manipulator.gameObject.SetActive(change);
             visualization.gameObject.SetActive(change);
 
@@ -45,6 +45,7 @@ public class PlacementManager : MonoBehaviour
                 pinRenderer.enabled = change;
             }
         }
+        _visualizationAndManipulationToggle = change;
     }
 
 
@@ -65,20 +66,17 @@ public class PlacementManager : MonoBehaviour
         _tooltipToggle = !_tooltipToggle;
     }
 
-    public void ToggleVisualization()
+    public void ToggleManipulationAndVisualization()
     {
-        _visualizationToggle = !_visualizationToggle;
-        ChangeVisualization(_visualizationToggle);
+        _visualizationAndManipulationToggle = !_visualizationAndManipulationToggle;
+        ChangeManipulationAndVisualization(_visualizationAndManipulationToggle);
         
     }
 
-    public void ChangeVisualization(bool mode)
+    public void ChangePinVisualization(bool mode)
     {
         foreach (var component in placedComponentObjects)
         {
-            //Turn Off Component Visualization
-            Transform visualization = component.transform.GetChild(1);
-            visualization.gameObject.SetActive(mode);
 
             //Turn off Pins Visual
             MeshRenderer[] pinRenderers = component.transform.GetChild(3).GetComponentsInChildren<MeshRenderer>();
@@ -87,6 +85,20 @@ public class PlacementManager : MonoBehaviour
                 pinRenderer.enabled = mode;
             }
         }
+
     }
+
+    public void ChangeTooltip(bool mode)
+    {
+        foreach (var component in placedComponentObjects)
+        {
+            Transform tooltip = component.transform.GetChild(2);
+
+            tooltip.gameObject.SetActive(mode);
+        }
+
+        _tooltipToggle = mode;
+    }
+
 
 }

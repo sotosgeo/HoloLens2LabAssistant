@@ -8,7 +8,7 @@ public class MistakeHandler : MonoBehaviour
 {
 
     [SerializeField] ConnectionManager connectionManager;
-
+    [SerializeField] PlacementManager placementManager;
 
     private int helpLevel = 0;
     private int numOfWrongConnections = 0;
@@ -57,12 +57,13 @@ public class MistakeHandler : MonoBehaviour
     }
 
 
-
+    [SerializeField] Material[] missingPinMaterials;
+    [SerializeField] Material wrongPinMaterial;
 
 
     public void OpenHelp0Dialog()
     {
-        Dialog myDialog = Dialog.Open(DialogPrefabSmall, DialogButtonType.Yes | DialogButtonType.No, "Βοήθεια", $"Υπάρχουν {numOfWrongConnections} λάθος συνδεδεμένα καλώδια. \nΛείπουν {numOfMissingConnections} συνδέσεις.\nΧρειάζεσαι περισσότερη βοήθεια;", true);
+        Dialog myDialog = Dialog.Open(DialogPrefabSmall, DialogButtonType.Yes | DialogButtonType.No, "Βοήθεια", $"{SingleOrMultipleMistakesText()}\n{SingleOrMultipleMissingText()}\nΧρειάζεσαι περισσότερη βοήθεια;", true);
         if (myDialog != null)
         {
             myDialog.OnClosed += OnClosedDialogEvent;
@@ -71,8 +72,8 @@ public class MistakeHandler : MonoBehaviour
 
     public void OpenHelp1Dialog()
     {
-        string help1Text = "";
-        Dialog myDialog = Dialog.Open(DialogPrefabMedium, DialogButtonType.Yes | DialogButtonType.No, "Βοήθεια", help1Text + "\nΧρειάζεσαι περισσότερη βοήθεια;", true);
+
+        Dialog myDialog = Dialog.Open(DialogPrefabMedium, DialogButtonType.Yes | DialogButtonType.No, "Βοήθεια", $"{SingleOrMultipleMistakesText()}\n{SingleOrMultipleMissingText()}\nΤα σημέια της σύνδεσης που είναι λάθος ή όπου λείπουν συνδέσεις επισημαίνονται με ταμπέλες.\nΧρειάζεσαι περισσότερη βοήθεια;", true);
         if (myDialog != null)
         {
             myDialog.OnClosed += OnClosedDialogEvent;
@@ -81,7 +82,8 @@ public class MistakeHandler : MonoBehaviour
 
     public void OpenHelp2Dialog()
     {
-        Dialog myDialog = Dialog.Open(DialogPrefabSmall, DialogButtonType.Yes | DialogButtonType.No, "Help", $"Mistakes Outlined blah blah \nDo you need more help?", true);
+        Dialog myDialog = Dialog.Open(DialogPrefabMedium, DialogButtonType.OK, "Βοήθεια", $"{SingleOrMultipleMistakesText()}\n{SingleOrMultipleMissingText()}\nΟι λάθος συνδέσεις φαίνονται με κόκκινο χρώμα." +
+           "\nΟι συνδέσεις που λείπουν φαίνονται με το ίδιο χρώμα", true);
         if (myDialog != null)
         {
             myDialog.OnClosed += OnClosedDialogEvent;
@@ -90,7 +92,7 @@ public class MistakeHandler : MonoBehaviour
 
     public void OpenCorrectDialogSmall()
     {
-        Dialog.Open(DialogPrefabSmall, DialogButtonType.OK, "Help", "There are no mistakes so far.\nPlease continue with the exercise", true);
+        Dialog.Open(DialogPrefabSmall, DialogButtonType.OK, "Βοήθεια", "Δεν υπάρχει κανένα λάθος μέχρι στιγμής.\nΣυνεχίστε με την άσκηση.", true);
     }
 
 
@@ -101,7 +103,8 @@ public class MistakeHandler : MonoBehaviour
             helpLevel++;
             GetHelp(helpLevel);
         }
-        if (obj.Result == DialogButtonType.No)
+
+        if (obj.Result == DialogButtonType.OK || obj.Result == DialogButtonType.No)
         {
             helpLevel = 0;
 
@@ -120,11 +123,44 @@ public class MistakeHandler : MonoBehaviour
     {
 
         OpenHelp1Dialog();
+        //Level 2 Mistakes -> Enable their tooltip components
+        foreach (var pinConnection in connectionManager.wrongConnections)
+        {
+            pinConnection.PinA.parent.GameObject().transform.GetChild(2).gameObject.SetActive(true);
+            pinConnection.PinB.parent.GameObject().transform.GetChild(2).gameObject.SetActive(true);
+        }
+
+        foreach (var pinConnection in connectionManager.missingConnections)
+        {
+            pinConnection.PinA.parent.GameObject().transform.GetChild(2).gameObject.SetActive(true);
+            pinConnection.PinB.parent.GameObject().transform.GetChild(2).gameObject.SetActive(true);
+        }
     }
 
     private void HelpLevel2()
     {
         OpenHelp2Dialog();
+        //Level 3 Mistakes - Highlight the wrong connections with the same red color, and missing connections with the same random color
+        foreach (var pinConnection in connectionManager.wrongConnections)
+        {
+            pinConnection.PinA.GameObject().GetComponentInChildren<MeshRenderer>().enabled = true;
+            pinConnection.PinA.GameObject().GetComponentInChildren<MeshRenderer>().material = wrongPinMaterial;
+
+            pinConnection.PinB.GameObject().GetComponentInChildren<MeshRenderer>().enabled = true;
+            pinConnection.PinB.GameObject().GetComponentInChildren<MeshRenderer>().material = wrongPinMaterial;
+        }
+
+        foreach (var pinConnection in connectionManager.missingConnections)
+        {
+            Material randomMat = missingPinMaterials[Random.Range(0, missingPinMaterials.Length)];
+
+            pinConnection.PinA.GameObject().GetComponentInChildren<MeshRenderer>().enabled = true;
+            pinConnection.PinA.GameObject().GetComponentInChildren<MeshRenderer>().material = randomMat;
+
+            pinConnection.PinB.GameObject().GetComponentInChildren<MeshRenderer>().enabled = true;
+            pinConnection.PinB.GameObject().GetComponentInChildren<MeshRenderer>().material = randomMat;
+        }
+
 
     }
 
@@ -150,18 +186,46 @@ public class MistakeHandler : MonoBehaviour
     }
 
 
+    private string SingleOrMultipleMistakesText()
+    {
+        if (numOfWrongConnections == 0)
+        {
+            return "Δεν υπάρχει κανένα λάθος συνδεδεμένο καλώδιο";
+        }
+        else if (numOfWrongConnections == 1)
+        {
+            return $"Υπάρχει {numOfWrongConnections} λάθος συνδεδεμένο καλώδιο.";
+        }
+        else return $"Υπάρχουν {numOfWrongConnections} λάθος συνδεδεμένα καλώδια.";
+    }
+
+    private string SingleOrMultipleMissingText()
+    {
+        if(numOfMissingConnections == 0)
+        {
+            return "Δεν λείπει καμία σύνδεση";
+        }
+
+        else if (numOfMissingConnections == 1)
+        {
+            return $"Λείπει {numOfMissingConnections} σύνδεση.";
+        }
+        else return $"Λείπουν {numOfMissingConnections} συνδέσεις.";
+    }
+
     public void FindMistakes()
     {
-
+        placementManager.ChangeTooltip(false);
         timesAskedForHelp++;
-        //Level 1 Mistakes
+
+
+        //Level 0 Mistakes
         numOfWrongConnections = connectionManager.wrongConnections.Count;
         numOfMissingConnections = connectionManager.missingConnections.Count;
 
-        List<GameObject> wrongComponents = new();
-        //Level 2 Mistakes
-
-        
+        placementManager.ChangePinVisualization(false);
+        //Level 1 Mistakes -> Enable their tooltip components
+        //Its done in HelpLevel 2
 
         //Level 3 Mistakes
 

@@ -316,6 +316,10 @@ PrefabInstance:
       value: -0.0403
       objectReference: {fileID: 0}
     - target: {fileID: 6722064896235382973, guid: 478732197b53dee4694480aac1a7c98c, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6722064896235382973, guid: 478732197b53dee4694480aac1a7c98c, type: 3}
       propertyPath: m_textAlignment
       value: 65535
       objectReference: {fileID: 0}
