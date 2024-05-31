@@ -130,17 +130,22 @@ public class ConnectionManager : MonoBehaviour
     public void OnConnectionMade(GameObject cableStart, GameObject cableEnd, Cable connectingCable)
     {
         var newConnection = new PinConnection(cableStart.GetComponent<Pin>(), cableEnd.GetComponent<Pin>(), connectingCable);
-        currentConnections.connections.Add(newConnection);
+        if (!currentConnections.connections.Contains(newConnection))
+        {
+            currentConnections.connections.Add(newConnection);
+        }
+            
+        
         PrintConnections();
     }
 
     public void OnConnectionRemoved(GameObject cableStart, GameObject cableEnd, Cable connectingCable)
     {
 
-        //if (currentConnections.connections.Contains(new PinConnection(cableStart.GetComponent<Pin>(), cableEnd.GetComponent<Pin>(), connectingCable)))
-        //{
-        currentConnections.connections.Remove(new PinConnection(cableStart.GetComponent<Pin>(), cableEnd.GetComponent<Pin>(), connectingCable));
-        // }
+        if (currentConnections.connections.Contains(new PinConnection(cableStart.GetComponent<Pin>(), cableEnd.GetComponent<Pin>(), connectingCable), myComparer))
+        {
+            currentConnections.connections.Remove(new PinConnection(cableStart.GetComponent<Pin>(), cableEnd.GetComponent<Pin>(), connectingCable));
+        }
 
         PrintConnections();
     }

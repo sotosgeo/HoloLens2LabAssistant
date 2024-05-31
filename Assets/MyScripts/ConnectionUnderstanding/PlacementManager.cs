@@ -13,9 +13,9 @@ public class PlacementManager : MonoBehaviour
     /// </summary>
     public List<GameObject> placedComponentObjects;
 
-    private bool _placementToggle = true;
+    private bool _placementToggle = false;
     private bool _tooltipToggle = true;
-    private bool _visualizationAndManipulationToggle = true;
+    private bool _visualizationAndManipulationToggle = false;
     [SerializeField] Material DefaultPinMaterial;   
     
 

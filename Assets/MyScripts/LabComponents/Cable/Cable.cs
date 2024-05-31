@@ -84,7 +84,7 @@ public class Cable : MonoBehaviour
        
         if (cableStartConnected & cableEndConnected)
         {
-            Debug.Log("Connection Detected Between " + cableStartConnectedTo.ToString() + " and " + cableEndConnectedTo.ToString() + "  via cable " + cableId.ToString());
+           // Debug.Log("Connection Detected Between " + cableStartConnectedTo.ToString() + " and " + cableEndConnectedTo.ToString() + "  via cable " + cableId.ToString());
             
             if(myConnectionManager != null)
             {
@@ -105,7 +105,7 @@ public class Cable : MonoBehaviour
 
         if ((cableStartConnected == false | cableEndConnected == false) & _cableConnected)
         {
-            Debug.Log("Connection removed between" + cableStartConnectedTo.ToString() + " and " + cableEndConnectedTo.ToString() + "  via cable " + cableId.ToString());
+           // Debug.Log("Connection removed between" + cableStartConnectedTo.ToString() + " and " + cableEndConnectedTo.ToString() + "  via cable " + cableId.ToString());
             
 
             if(myConnectionManager != null)
