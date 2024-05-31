@@ -73,6 +73,13 @@ public class ConnectionManager : MonoBehaviour
 
     }
 
+    public void SceneReset()
+    {
+        currentConnections.ClearSystem();
+        missingConnections.Clear();
+        wrongConnections.Clear();
+    }
+
     [ContextMenu("Check Current System")]
     public void CheckCurrentConnection()
     {
@@ -91,7 +98,7 @@ public class ConnectionManager : MonoBehaviour
         }
 
         //Missing connections are the correct ones, not found in the current system
-        foreach(var connection in motorExcitementConnections.connections)
+        foreach (var connection in motorExcitementConnections.connections)
         {
             if (!currentConnections.connections.Contains(connection, myComparer))
             {
@@ -103,7 +110,7 @@ public class ConnectionManager : MonoBehaviour
 
 
         Debug.Log("WRONG CONNECTIONS \n");
-        foreach(var conn in wrongConnections)
+        foreach (var conn in wrongConnections)
         {
             Debug.Log(conn.ToString() + "\n");
         }
@@ -116,7 +123,7 @@ public class ConnectionManager : MonoBehaviour
 
     }
 
-   
+
 
 
 

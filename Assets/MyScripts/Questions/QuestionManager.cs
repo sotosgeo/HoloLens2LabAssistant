@@ -85,7 +85,7 @@ public class QuestionManager : MonoBehaviour
     }
 
 
-    public void Reset()
+    public void SceneReset()
     {
         gameObject.SetActive(false);
         

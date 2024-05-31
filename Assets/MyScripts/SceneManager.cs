@@ -47,9 +47,11 @@ public class SceneManager : MonoBehaviour
         startingMenu.SetActive(true);
         _studenHandMenu.SetActive(false);
         _teacherHandMenu.SetActive(false);
-        questionManager.GetComponent<QuestionManager>().Reset();
+        questionManager.GetComponent<QuestionManager>().SceneReset();
         cableTrackingObject.SetActive(false);
         placementManager.ChangeManipulationAndVisualization(false);
+        placementManager.ChangeDirectionalIndicator(false);
+        placementManager.ChangeTooltip(false);
     }
 
    

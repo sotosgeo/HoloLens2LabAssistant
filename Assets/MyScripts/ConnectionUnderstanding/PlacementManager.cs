@@ -16,8 +16,8 @@ public class PlacementManager : MonoBehaviour
     private bool _placementToggle = true;
     private bool _tooltipToggle = true;
     private bool _visualizationAndManipulationToggle = true;
-   
-
+    [SerializeField] Material DefaultPinMaterial;   
+    
 
     private void OnEnable()
     {
@@ -83,6 +83,7 @@ public class PlacementManager : MonoBehaviour
             foreach (var pinRenderer in pinRenderers)
             {
                 pinRenderer.enabled = mode;
+                pinRenderer.material = DefaultPinMaterial;
             }
         }
 
