@@ -29,7 +29,7 @@ public class PlacementManager : MonoBehaviour
         ChangeManipulationAndVisualization(false);
     }
 
-    private void ChangeManipulationAndVisualization(bool change)
+    public void ChangeManipulationAndVisualization(bool change)
     {
         foreach (var component in placedComponentObjects)
         {
@@ -39,7 +39,7 @@ public class PlacementManager : MonoBehaviour
             visualization.gameObject.SetActive(change);
 
             //Turn off Pins Visual
-            MeshRenderer[] pinRenderers = component.transform.GetChild(3).GetComponentsInChildren<MeshRenderer>();
+            MeshRenderer[] pinRenderers = component.transform.GetChild(4).GetComponentsInChildren<MeshRenderer>();
             foreach (var pinRenderer in pinRenderers)
             {
                 pinRenderer.enabled = change;
@@ -79,12 +79,13 @@ public class PlacementManager : MonoBehaviour
         {
 
             //Turn off Pins Visual
-            MeshRenderer[] pinRenderers = component.transform.GetChild(3).GetComponentsInChildren<MeshRenderer>();
+            MeshRenderer[] pinRenderers = component.transform.GetChild(4).GetComponentsInChildren<MeshRenderer>();
             foreach (var pinRenderer in pinRenderers)
             {
                 pinRenderer.enabled = mode;
             }
         }
+
 
     }
 
@@ -100,5 +101,12 @@ public class PlacementManager : MonoBehaviour
         _tooltipToggle = mode;
     }
 
-
+    public void ChangeDirectionalIndicator(bool mode)
+    {
+        foreach (var component in placedComponentObjects)
+        {
+            Transform directionalIndicator = component.transform.GetChild(3);
+            directionalIndicator.gameObject.SetActive(mode);
+        }
+    }
 }

@@ -23,7 +23,7 @@ public class SceneManager : MonoBehaviour
     //Tracking Objects
     [SerializeField] GameObject connectionManagerObject;
     [SerializeField] GameObject cableTrackingObject;
-    [SerializeField] GameObject placementManagerObject;
+    [SerializeField] PlacementManager placementManager;
 
     // Display starting text, and choose between student and teacher mode
     void Start()
@@ -39,17 +39,17 @@ public class SceneManager : MonoBehaviour
         _teacherHandMenu.SetActive(false);
 
         cableTrackingObject.SetActive(false);
-        placementManagerObject.SetActive(false);
+        placementManager.ChangeManipulationAndVisualization(false);
     }
 
-    public void Reset()
+    public void SceneReset()
     {
         startingMenu.SetActive(true);
         _studenHandMenu.SetActive(false);
         _teacherHandMenu.SetActive(false);
         questionManager.GetComponent<QuestionManager>().Reset();
         cableTrackingObject.SetActive(false);
-        placementManagerObject.SetActive(false);
+        placementManager.ChangeManipulationAndVisualization(false);
     }
 
    
@@ -61,6 +61,7 @@ public class SceneManager : MonoBehaviour
         //Setting question manager to active, resets the question part
         questionManager.SetActive(true);
         startingMenu.SetActive(false);
+        placementManager.ChangeManipulationAndVisualization(false);
     }
 
     public void Teacher()
@@ -80,7 +81,7 @@ public class SceneManager : MonoBehaviour
     public void StartTeacherConnection()
     {
         cableTrackingObject.SetActive(true);
-        placementManagerObject.SetActive(true);
+        placementManager.ChangeManipulationAndVisualization(true);
     }
 
 }

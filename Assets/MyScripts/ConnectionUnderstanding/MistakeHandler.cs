@@ -1,7 +1,7 @@
 ﻿using Microsoft.MixedReality.Toolkit.UI;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using System.Linq;
 using UnityEngine;
 
 public class MistakeHandler : MonoBehaviour
@@ -14,6 +14,7 @@ public class MistakeHandler : MonoBehaviour
     private int numOfWrongConnections = 0;
     private int numOfMissingConnections = 0;
     private int timesAskedForHelp;
+
 
 
     #region Dialog UI and prefabs
@@ -59,7 +60,7 @@ public class MistakeHandler : MonoBehaviour
 
     [SerializeField] Material[] missingPinMaterials;
     [SerializeField] Material wrongPinMaterial;
-
+    #endregion
 
     public void OpenHelp0Dialog()
     {
@@ -95,6 +96,10 @@ public class MistakeHandler : MonoBehaviour
         Dialog.Open(DialogPrefabSmall, DialogButtonType.OK, "Βοήθεια", "Δεν υπάρχει κανένα λάθος μέχρι στιγμής.\nΣυνεχίστε με την άσκηση.", true);
     }
 
+    public void OpenFinishedDialog()
+    {
+        Dialog.Open(DialogPrefabSmall, DialogButtonType.OK, "Συγχαρητήρια!", "Ολοκληρώσατε επιτυχώς την άσκηση!", true);
+    }
 
     private void OnClosedDialogEvent(DialogResult obj)
     {
@@ -110,12 +115,12 @@ public class MistakeHandler : MonoBehaviour
 
         }
     }
-    #endregion
+
 
     private void HelpLevel0()
     {
+        //Level 0 Help -> Just show number of wrong and missing connections
         OpenHelp0Dialog();
-
     }
 
 
@@ -123,42 +128,60 @@ public class MistakeHandler : MonoBehaviour
     {
 
         OpenHelp1Dialog();
-        //Level 2 Mistakes -> Enable their tooltip components
+        //Level 1 Help -> Enable the tooltips of the wrong components
         foreach (var pinConnection in connectionManager.wrongConnections)
         {
-            pinConnection.PinA.parent.GameObject().transform.GetChild(2).gameObject.SetActive(true);
-            pinConnection.PinB.parent.GameObject().transform.GetChild(2).gameObject.SetActive(true);
+
+            //Turn on the tooltip of that component
+            pinConnection.PinA.parent.transform.GetChild(2).gameObject.SetActive(true);
+            pinConnection.PinB.parent.transform.GetChild(2).gameObject.SetActive(true);
+
+
+            //Turn on the Directional Indicator of that component
+            pinConnection.PinA.parent.transform.GetChild(3).gameObject.SetActive(true);
+            pinConnection.PinA.parent.transform.GetChild(3).gameObject.SetActive(true);
         }
 
         foreach (var pinConnection in connectionManager.missingConnections)
         {
-            pinConnection.PinA.parent.GameObject().transform.GetChild(2).gameObject.SetActive(true);
-            pinConnection.PinB.parent.GameObject().transform.GetChild(2).gameObject.SetActive(true);
+            //Turn on the Tooltip of that component
+            pinConnection.PinA.parent.transform.GetChild(2).gameObject.SetActive(true);
+            pinConnection.PinB.parent.transform.GetChild(2).gameObject.SetActive(true);
+
+            //Turn on the Directional Indicator of that component
+            pinConnection.PinA.parent.transform.GetChild(3).gameObject.SetActive(true);
+            pinConnection.PinA.parent.transform.GetChild(3).gameObject.SetActive(true);
+
         }
+
+
     }
 
     private void HelpLevel2()
     {
         OpenHelp2Dialog();
-        //Level 3 Mistakes - Highlight the wrong connections with the same red color, and missing connections with the same random color
+        int missingMatIndex = 0;
+
+        //Level 3 Help - Highlight the wrong connections with the same red color, and missing connections with the same random color
         foreach (var pinConnection in connectionManager.wrongConnections)
         {
-            pinConnection.PinA.GameObject().GetComponentInChildren<MeshRenderer>().enabled = true;
-            pinConnection.PinA.GameObject().GetComponentInChildren<MeshRenderer>().material = wrongPinMaterial;
+            pinConnection.PinA.GetComponentInChildren<MeshRenderer>().enabled = true;
+            pinConnection.PinA.GetComponentInChildren<MeshRenderer>().material = wrongPinMaterial;
 
-            pinConnection.PinB.GameObject().GetComponentInChildren<MeshRenderer>().enabled = true;
-            pinConnection.PinB.GameObject().GetComponentInChildren<MeshRenderer>().material = wrongPinMaterial;
+            pinConnection.PinB.GetComponentInChildren<MeshRenderer>().enabled = true;
+            pinConnection.PinB.GetComponentInChildren<MeshRenderer>().material = wrongPinMaterial;
         }
 
         foreach (var pinConnection in connectionManager.missingConnections)
         {
-            Material randomMat = missingPinMaterials[Random.Range(0, missingPinMaterials.Length)];
+            pinConnection.PinA.GetComponentInChildren<MeshRenderer>().enabled = true;
+            pinConnection.PinA.GetComponentInChildren<MeshRenderer>().material = missingPinMaterials[missingMatIndex];
 
-            pinConnection.PinA.GameObject().GetComponentInChildren<MeshRenderer>().enabled = true;
-            pinConnection.PinA.GameObject().GetComponentInChildren<MeshRenderer>().material = randomMat;
+            pinConnection.PinB.GetComponentInChildren<MeshRenderer>().enabled = true;
+            pinConnection.PinB.GetComponentInChildren<MeshRenderer>().material = missingPinMaterials[missingMatIndex];
 
-            pinConnection.PinB.GameObject().GetComponentInChildren<MeshRenderer>().enabled = true;
-            pinConnection.PinB.GameObject().GetComponentInChildren<MeshRenderer>().material = randomMat;
+            missingMatIndex++;
+            if(missingMatIndex > numOfMissingConnections) missingMatIndex = 0;
         }
 
 
@@ -201,7 +224,7 @@ public class MistakeHandler : MonoBehaviour
 
     private string SingleOrMultipleMissingText()
     {
-        if(numOfMissingConnections == 0)
+        if (numOfMissingConnections == 0)
         {
             return "Δεν λείπει καμία σύνδεση";
         }
@@ -216,6 +239,7 @@ public class MistakeHandler : MonoBehaviour
     public void FindMistakes()
     {
         placementManager.ChangeTooltip(false);
+        placementManager.ChangeDirectionalIndicator(false);
         timesAskedForHelp++;
 
 
@@ -234,9 +258,14 @@ public class MistakeHandler : MonoBehaviour
         {
             GetHelp(helpLevel);
         }
+        else if ((numOfMissingConnections == 0) & (numOfWrongConnections == 0))
+        {
+            OpenFinishedDialog();
+        }
         else
         {
             OpenCorrectDialogSmall();
+
         }
 
 
@@ -257,14 +286,6 @@ public class MistakeHandler : MonoBehaviour
         helpLevel = 0;
     }
 
-    //private void OnEnable()
-    //{
-    //    connectionManager.OnConnectionCheck += FindMistakes;
-    //}
 
-    //private void OnDisable()
-    //{
-    //    connectionManager.OnConnectionCheck -= FindMistakes;
-    //}
 
 }

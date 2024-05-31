@@ -32,4 +32,4 @@ MonoBehaviour:
     keys:
     - BuildDeployWindow_AppLauncherModelLocation
     values:
-    - Packages/com.microsoft.mixedreality.toolkit.examples/StandardAssets/Models/MRTK_Logo.glb
+    - Assets/Models/dc_motor2.glb
