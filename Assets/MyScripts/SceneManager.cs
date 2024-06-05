@@ -24,7 +24,9 @@ public class SceneManager : MonoBehaviour
     [SerializeField] GameObject connectionManagerObject;
     [SerializeField] GameObject cableTrackingObject;
     [SerializeField] PlacementManager placementManager;
+    [SerializeField] TrackingDistance trackDistance;
 
+   
     // Display starting text, and choose between student and teacher mode
     void Start()
     {
@@ -40,6 +42,8 @@ public class SceneManager : MonoBehaviour
 
         cableTrackingObject.SetActive(false);
         placementManager.ChangeManipulationAndVisualization(false);
+
+        
     }
 
     public void SceneReset()

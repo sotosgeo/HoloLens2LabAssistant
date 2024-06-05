@@ -13,9 +13,9 @@ public class PlacementManager : MonoBehaviour
     /// </summary>
     public List<GameObject> placedComponentObjects;
 
-    private bool _placementToggle = false;
-    private bool _tooltipToggle = true;
-    private bool _visualizationAndManipulationToggle = false;
+    private bool _placementToggle = true;
+    private bool _tooltipToggle = false;
+    private bool _visToggle = true;
     [SerializeField] Material DefaultPinMaterial;   
     
 
@@ -33,8 +33,8 @@ public class PlacementManager : MonoBehaviour
     {
         foreach (var component in placedComponentObjects)
         {
-            Transform manipulator = component.transform.GetChild(1);
-            Transform visualization = component.transform.GetChild(0);
+            Transform manipulator = component.transform.Find("Manipulation");
+            Transform visualization = component.transform.Find("Visualization");
             manipulator.gameObject.SetActive(change);
             visualization.gameObject.SetActive(change);
 
@@ -45,33 +45,48 @@ public class PlacementManager : MonoBehaviour
                 pinRenderer.enabled = change;
             }
         }
-        _visualizationAndManipulationToggle = change;
+        _placementToggle = change;
     }
 
 
     public void TogglePlacement()
     {
-        ChangeManipulationAndVisualization(_placementToggle);
         _placementToggle = !_placementToggle;
+        ChangeManipulationAndVisualization(_placementToggle);
+       
     }
 
     public void ToolTipToggle()
     {
+        _tooltipToggle = !_tooltipToggle;
+
         foreach (var component in placedComponentObjects)
         {
-            Transform tooltip = component.transform.GetChild(2);
+            Transform tooltip = component.transform.Find("Tooltip");
 
             tooltip.gameObject.SetActive(_tooltipToggle);
         }
-        _tooltipToggle = !_tooltipToggle;
     }
 
-    public void ToggleManipulationAndVisualization()
+   
+
+    public void ToggleVisualization()
     {
-        _visualizationAndManipulationToggle = !_visualizationAndManipulationToggle;
-        ChangeManipulationAndVisualization(_visualizationAndManipulationToggle);
-        
+        _visToggle = !_visToggle;
+        foreach (var component in placedComponentObjects)
+        {
+            Transform visualization = component.transform.GetChild(0);
+            visualization.gameObject.SetActive(_visToggle);
+
+            //Turn off Pins Visual
+            MeshRenderer[] pinRenderers = component.transform.GetChild(4).GetComponentsInChildren<MeshRenderer>();
+            foreach (var pinRenderer in pinRenderers)
+            {
+                pinRenderer.enabled = _visToggle;
+            }
+        }       
     }
+
 
     public void ChangePinVisualization(bool mode)
     {
@@ -79,7 +94,7 @@ public class PlacementManager : MonoBehaviour
         {
 
             //Turn off Pins Visual
-            MeshRenderer[] pinRenderers = component.transform.GetChild(4).GetComponentsInChildren<MeshRenderer>();
+            MeshRenderer[] pinRenderers = component.transform.Find("Pins").GetComponentsInChildren<MeshRenderer>();
             foreach (var pinRenderer in pinRenderers)
             {
                 pinRenderer.enabled = mode;
@@ -94,7 +109,7 @@ public class PlacementManager : MonoBehaviour
     {
         foreach (var component in placedComponentObjects)
         {
-            Transform tooltip = component.transform.GetChild(2);
+            Transform tooltip = component.transform.Find("Tooltip");
 
             tooltip.gameObject.SetActive(mode);
         }
@@ -106,7 +121,7 @@ public class PlacementManager : MonoBehaviour
     {
         foreach (var component in placedComponentObjects)
         {
-            Transform directionalIndicator = component.transform.GetChild(3);
+            Transform directionalIndicator = component.transform.Find("DirectionalChevron");
             directionalIndicator.gameObject.SetActive(mode);
         }
     }

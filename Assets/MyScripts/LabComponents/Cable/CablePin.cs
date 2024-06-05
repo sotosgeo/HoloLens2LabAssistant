@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 
 
@@ -15,8 +16,8 @@ public class CablePin : MonoBehaviour
     [SerializeField] Material connectionFinalizedMaterial;
 
     public GameObject pinConnectedTo = null;
- 
 
+    
     public Action<GameObject> OnConnectionFinalized;
     public Action<GameObject> OnConnectionStopped;
 
@@ -24,10 +25,11 @@ public class CablePin : MonoBehaviour
     private void Start()
     {
         pinVisual.GetComponent<MeshRenderer>().material = defaultMaterial;
+        
     }
 
-   
 
+    
 
 
     private void OnTriggerEnter(Collider other)
