@@ -12,8 +12,13 @@ public class CablePin : MonoBehaviour
 {
     [SerializeField] GameObject pinVisual;
     [SerializeField] Material defaultMaterial;
-    [SerializeField] Material connectionDetectedMaterial;
     [SerializeField] Material connectionFinalizedMaterial;
+
+    [SerializeField] MarkerFollower myFollower;
+
+
+    [SerializeField] Mesh connectionDetectedShape;
+    [SerializeField] Mesh defaultShape;
 
     public GameObject pinConnectedTo = null;
 
@@ -21,6 +26,7 @@ public class CablePin : MonoBehaviour
     public Action<GameObject> OnConnectionFinalized;
     public Action<GameObject> OnConnectionStopped;
 
+    private float distanceFromPort;
 
     private void Start()
     {
@@ -29,7 +35,29 @@ public class CablePin : MonoBehaviour
     }
 
 
-    
+    private void Update()
+    {
+        //If not connected then keep trying to find it
+        if(pinConnectedTo == null)
+        {
+            myFollower.enabled = true;
+        }
+        //If its connected get the distance of the user from the port that its connected to
+        else if (pinConnectedTo != null)
+        {
+            distanceFromPort = Vector3.Distance(Camera.main.transform.position, pinConnectedTo.transform.position);
+            Debug.Log("Distance From port =" + distanceFromPort.ToString());
+            //If the distance is bigger than something, turn off the follower
+            if (distanceFromPort <= 0.6f)
+            {
+                myFollower.enabled = true;
+            }
+            else
+            {
+                myFollower.enabled = false;
+            }
+        }
+    }
 
 
     private void OnTriggerEnter(Collider other)
@@ -37,7 +65,7 @@ public class CablePin : MonoBehaviour
         //Debug.Log(this.gameObject.ToString() + "collided with " + other.gameObject.ToString());
         pinConnectedTo = other.gameObject;
         pinVisual.GetComponent<MeshRenderer>().material = connectionFinalizedMaterial;
-        
+        pinVisual.GetComponent<MeshFilter>().mesh = connectionDetectedShape;
         OnConnectionFinalized?.Invoke(pinConnectedTo);
         
     }
@@ -49,6 +77,7 @@ public class CablePin : MonoBehaviour
 
         OnConnectionStopped?.Invoke(pinConnectedTo);
         pinVisual.GetComponent<MeshRenderer>().material = defaultMaterial;
+        pinVisual.GetComponent<MeshFilter>().mesh = defaultShape;
         pinConnectedTo = null;
     }
 

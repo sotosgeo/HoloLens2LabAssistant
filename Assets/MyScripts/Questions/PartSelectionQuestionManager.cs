@@ -29,6 +29,8 @@ public class PartSelectionQuestionManager : MonoBehaviour
 
     public Action<bool> PartSelectionFinished;
 
+    public bool isStudent = false;
+
     private void Awake()
     {
         partSelectionQuestions = new List<PartSelectionData>(Resources.LoadAll<PartSelectionData>("Questions/PartSelection"));

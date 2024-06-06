@@ -59,6 +59,7 @@ public class MediaCapturer : MonoBehaviour
     {
         await StartCapture(mediaCaptureProfiles);
         hasStarted = true;
+        if(debugTmp!=null)
         debugTmp.text += debugTmp.text + "Started Capturing";        
     }
     private async void OnDestroy()

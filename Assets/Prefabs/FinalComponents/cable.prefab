@@ -384,8 +384,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pinVisual: {fileID: 987461639771549938}
   defaultMaterial: {fileID: 2100000, guid: 0af8d1e6d7540734087f7c01b77eaee2, type: 2}
-  connectionDetectedMaterial: {fileID: 2100000, guid: d236d89f17d25f846a55e0125b3acc3a, type: 2}
   connectionFinalizedMaterial: {fileID: 2100000, guid: 3dbf937dee12f0a4294bfc0fb6d4a8dd, type: 2}
+  myFollower: {fileID: 987461640651757991}
+  connectionDetectedShape: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  defaultShape: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   pinConnectedTo: {fileID: 0}
 --- !u!1 &987461640685990670
 GameObject:
@@ -416,7 +418,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 987461640685990670}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.0375}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -468,8 +470,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pinVisual: {fileID: 987461639788991051}
   defaultMaterial: {fileID: 2100000, guid: 0af8d1e6d7540734087f7c01b77eaee2, type: 2}
-  connectionDetectedMaterial: {fileID: 2100000, guid: d236d89f17d25f846a55e0125b3acc3a, type: 2}
   connectionFinalizedMaterial: {fileID: 2100000, guid: 3dbf937dee12f0a4294bfc0fb6d4a8dd, type: 2}
+  myFollower: {fileID: 987461640685990668}
+  connectionDetectedShape: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  defaultShape: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   pinConnectedTo: {fileID: 0}
 --- !u!114 &3130217884980667671
 MonoBehaviour:

@@ -51,6 +51,8 @@ public class QuestionManager : MonoBehaviour
 
     [SerializeField] HelpDialogHandler dialogHandler;
 
+    public bool isStudent = false;
+
     public Action OnQuestionsFinished;
     private void Awake()
     {
@@ -105,6 +107,7 @@ public class QuestionManager : MonoBehaviour
 
         MultipleChoiceQuestion.SetActive(false);
         PartSelectionQuestion.SetActive(true);
+        psQuestionManager.enabled = true;
     }
 
     private void PartSelectionFinished(bool result)

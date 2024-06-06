@@ -55,7 +55,7 @@ public class MultipleChoiceQuestionManager : MonoBehaviour
         GetQuestionAssets();
         correctAnswersScore = 0;
         helpDialogHandler.SetHelpText("Επιλέξτε την μοναδική σωστή απάντηση.\nΥποβάλετε την απάντηση σας με το κουμπί Υποβολή");
-        helpDialogHandler.OpenHelpDialogSmall();
+        //helpDialogHandler.OpenHelpDialogSmall();
         SelectNewQuestion();
         SetAnswerValues();
        

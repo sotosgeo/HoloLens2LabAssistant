@@ -7,27 +7,33 @@ public class TrackingDistance : MonoBehaviour
 {
 
 
-    Plane cameraPlane = new();
-    public TextMeshPro myText;
+    public GameObject motor;
+    public GameObject network;
+    public TextMeshPro motorDistanceText;
+    public TextMeshPro networkDistanceText;
 
-    [SerializeField] GameObject cableTracker;
-    private float distanceFromCamera;
-
-    private ArucoTracker arucoTracker;
-    private MediaCapturer mediaCapturer;
+    [SerializeField] ArucoTracker arucoTracker;
+    private float networkFromCamera;
+    private float motorFromCamera;
+    
     private void Start()
     {
-        arucoTracker = cableTracker.GetComponent<ArucoTracker>();
-        mediaCapturer = cableTracker.GetComponent<MediaCapturer>();
+        
     }
 
 
     void Update()
     {
-        cameraPlane.SetNormalAndPosition(Camera.main.transform.forward, Camera.main.transform.position);
-        distanceFromCamera = Mathf.Abs(cameraPlane.GetDistanceToPoint(this.transform.position));
-        myText.text = distanceFromCamera.ToString();
-        if(distanceFromCamera <= 1.1)
+        //cameraPlane.SetNormalAndPosition(Camera.main.transform.forward, Camera.main.transform.position);
+        motorFromCamera = Mathf.Abs(Vector3.Distance(Camera.main.transform.position ,  motor.transform.position));
+        networkFromCamera = Mathf.Abs(Vector3.Distance(Camera.main.transform.position , network.transform.position));
+        //myText.text = distanceFromCamera.ToString();
+
+        motorDistanceText.text = "Distance from Motor: " + motorFromCamera.ToString();
+        networkDistanceText.text = "Distance from Network: " + networkFromCamera.ToString();
+
+
+        if ((motorFromCamera <= 1) | (networkFromCamera <= 1))
         {
             arucoTracker.enabled = true;
         }

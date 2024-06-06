@@ -478,7 +478,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7912962390200099554}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pins
   m_TagString: Untagged
   m_Icon: {fileID: 0}
