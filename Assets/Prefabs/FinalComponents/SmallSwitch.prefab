@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8315530056847597271}
   - component: {fileID: 8726696710303922928}
   m_Layer: 7
-  m_Name: PositiveOut
+  m_Name: SwitchPositiveOut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1973657008492433571}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.032900095, y: -0.0928, z: -0.0304}
+  m_LocalPosition: {x: -0.032900095, y: -0.0833, z: -0.0304}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -46,7 +46,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.05, y: 0.05, z: 0.1}
+  m_Size: {x: 0.05, y: 0.03, z: 0.1}
   m_Center: {x: -0.007456236, y: -0.01062789, z: 0.04390998}
 --- !u!114 &8315530056847597271
 MonoBehaviour:
@@ -64,7 +64,7 @@ MonoBehaviour:
   defaultMaterial: {fileID: 2100000, guid: 0af8d1e6d7540734087f7c01b77eaee2, type: 2}
   connectionDetectedMaterial: {fileID: 2100000, guid: d236d89f17d25f846a55e0125b3acc3a, type: 2}
   connectionFinalizedMaterial: {fileID: 2100000, guid: 3dbf937dee12f0a4294bfc0fb6d4a8dd, type: 2}
-  pinTag: positiveOut
+  pinTag: "\u0398\u03B5\u03C4\u03B9\u03BA\u03AE \u0388\u03BE\u03BF\u03B4\u03BF\u03C2"
   parent: {fileID: 2318138404065212880}
 --- !u!54 &8726696710303922928
 Rigidbody:
@@ -193,7 +193,7 @@ Transform:
   m_GameObject: {fileID: 3170484305767134928}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.0074562356, y: -0.01062789, z: 0.04390998}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 0.1}
+  m_LocalScale: {x: 0.05, y: 0.03, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8627770898507822387}
@@ -298,7 +298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7c1a08acc8b9d64c9989e1f742a6c2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  componentTag: Switch
+  componentTag: "\u0394\u03B9\u03B1\u03BA\u03CC\u03C0\u03C4\u03B7\u03C2"
   GreekName: "\u0394\u03B9\u03B1\u03BA\u03CC\u03C0\u03C4\u03B7\u03C2"
   switchPosIn: {fileID: 2717306911251191781}
   switchPosOut: {fileID: 8315530056847597271}
@@ -667,7 +667,7 @@ GameObject:
   - component: {fileID: 9134175794081764415}
   - component: {fileID: 2190017137024927789}
   m_Layer: 7
-  m_Name: NegativeIn
+  m_Name: SwitchNegativeIn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -700,7 +700,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.05, y: 0.05, z: 0.1}
+  m_Size: {x: 0.05, y: 0.03, z: 0.1}
   m_Center: {x: 0.0074562356, y: 0.010627888, z: 0.04390998}
 --- !u!114 &9134175794081764415
 MonoBehaviour:
@@ -718,7 +718,7 @@ MonoBehaviour:
   defaultMaterial: {fileID: 2100000, guid: 0af8d1e6d7540734087f7c01b77eaee2, type: 2}
   connectionDetectedMaterial: {fileID: 2100000, guid: d236d89f17d25f846a55e0125b3acc3a, type: 2}
   connectionFinalizedMaterial: {fileID: 2100000, guid: 3dbf937dee12f0a4294bfc0fb6d4a8dd, type: 2}
-  pinTag: negativeIn
+  pinTag: "\u0391\u03C1\u03BD\u03B7\u03C4\u03B9\u03BA\u03AE \u0395\u03AF\u03C3\u03BF\u03B4\u03BF\u03C2"
   parent: {fileID: 2318138404065212880}
 --- !u!54 &2190017137024927789
 Rigidbody:
@@ -1868,7 +1868,7 @@ Transform:
   m_GameObject: {fileID: 6923539559950622949}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.0074562356, y: 0.010627888, z: 0.04390998}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 0.1}
+  m_LocalScale: {x: 0.05, y: 0.03, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8659974431539759785}
@@ -1951,7 +1951,7 @@ Transform:
   m_GameObject: {fileID: 6959110703070698347}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.007456236, y: -0.01062789, z: 0.04390998}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 0.1}
+  m_LocalScale: {x: 0.05, y: 0.03, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1665939531647766070}
@@ -2020,7 +2020,7 @@ GameObject:
   - component: {fileID: 2717306911251191781}
   - component: {fileID: 2279171029725934248}
   m_Layer: 7
-  m_Name: PositiveIn
+  m_Name: SwitchPositiveIn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2053,7 +2053,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.05, y: 0.05, z: 0.1}
+  m_Size: {x: 0.05, y: 0.03, z: 0.1}
   m_Center: {x: -0.007456236, y: 0.010627888, z: 0.04390998}
 --- !u!114 &2717306911251191781
 MonoBehaviour:
@@ -2071,7 +2071,7 @@ MonoBehaviour:
   defaultMaterial: {fileID: 2100000, guid: 0af8d1e6d7540734087f7c01b77eaee2, type: 2}
   connectionDetectedMaterial: {fileID: 2100000, guid: d236d89f17d25f846a55e0125b3acc3a, type: 2}
   connectionFinalizedMaterial: {fileID: 2100000, guid: 3dbf937dee12f0a4294bfc0fb6d4a8dd, type: 2}
-  pinTag: positiveIn
+  pinTag: "\u0398\u03B5\u03C4\u03B9\u03BA\u03AE \u0395\u03AF\u03C3\u03BF\u03B4\u03BF\u03C2"
   parent: {fileID: 2318138404065212880}
 --- !u!54 &2279171029725934248
 Rigidbody:
@@ -2102,7 +2102,7 @@ GameObject:
   - component: {fileID: 2595023862451951749}
   - component: {fileID: 214255617898672460}
   m_Layer: 7
-  m_Name: NegativeOut
+  m_Name: SwitchNegativeOut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2116,7 +2116,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8663661348082985443}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0316, y: -0.0928, z: -0.0266}
+  m_LocalPosition: {x: 0.0316, y: -0.0833, z: -0.0266}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2135,7 +2135,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.05, y: 0.05, z: 0.097819954}
+  m_Size: {x: 0.05, y: 0.03, z: 0.097819954}
   m_Center: {x: 0.0074562356, y: -0.01062789, z: 0.04390998}
 --- !u!114 &2595023862451951749
 MonoBehaviour:
@@ -2153,7 +2153,7 @@ MonoBehaviour:
   defaultMaterial: {fileID: 2100000, guid: 0af8d1e6d7540734087f7c01b77eaee2, type: 2}
   connectionDetectedMaterial: {fileID: 2100000, guid: d236d89f17d25f846a55e0125b3acc3a, type: 2}
   connectionFinalizedMaterial: {fileID: 2100000, guid: 3dbf937dee12f0a4294bfc0fb6d4a8dd, type: 2}
-  pinTag: negativeOut
+  pinTag: "\u0391\u03C1\u03BD\u03B7\u03C4\u03B9\u03BA\u03AE \u0388\u03BE\u03BF\u03B4\u03BF\u03C2"
   parent: {fileID: 2318138404065212880}
 --- !u!54 &214255617898672460
 Rigidbody:
@@ -2198,7 +2198,7 @@ Transform:
   m_GameObject: {fileID: 8732596599388737096}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.007456236, y: 0.010627888, z: 0.04390998}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 0.1}
+  m_LocalScale: {x: 0.05, y: 0.03, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1322436848262577209}

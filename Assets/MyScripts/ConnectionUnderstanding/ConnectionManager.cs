@@ -109,17 +109,6 @@ public class ConnectionManager : MonoBehaviour
         //Duplicate connections
 
 
-        Debug.Log("WRONG CONNECTIONS \n");
-        foreach (var conn in wrongConnections)
-        {
-            Debug.Log(conn.ToString() + "\n");
-        }
-
-        Debug.Log("MISSING CONNECTIONS \n");
-        foreach (var conn in missingConnections)
-        {
-            Debug.Log(conn.ToString() + "\n");
-        }
 
     }
 
@@ -142,10 +131,10 @@ public class ConnectionManager : MonoBehaviour
     public void OnConnectionRemoved(GameObject cableStart, GameObject cableEnd, Cable connectingCable)
     {
 
-        if (currentConnections.connections.Contains(new PinConnection(cableStart.GetComponent<Pin>(), cableEnd.GetComponent<Pin>(), connectingCable), myComparer))
-        {
+        //if (currentConnections.connections.Contains(new PinConnection(cableStart.GetComponent<Pin>(), cableEnd.GetComponent<Pin>(), connectingCable), myComparer))
+        //{
             currentConnections.connections.Remove(new PinConnection(cableStart.GetComponent<Pin>(), cableEnd.GetComponent<Pin>(), connectingCable));
-        }
+        //}
 
         PrintConnections();
     }

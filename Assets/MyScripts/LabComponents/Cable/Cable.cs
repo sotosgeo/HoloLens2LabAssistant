@@ -11,11 +11,11 @@ public class Cable : MonoBehaviour
 {
     public int cableId = 0;
 
-    
+
     [SerializeField] CablePin myCableStart;
     [SerializeField] CablePin myCableEnd;
     [SerializeField] ConnectionManager myConnectionManager;
-    public HeftyConnections.ConnectionSystemComponent myConnectionSystem;
+
 
 
 
@@ -28,7 +28,7 @@ public class Cable : MonoBehaviour
     private bool _cableConnected = false;
 
 
-    private void OnCableStartConnected(GameObject   pinConnectedTo)
+    private void OnCableStartConnected(GameObject pinConnectedTo)
     {
         cableStartConnectedTo = pinConnectedTo;
         cableStartConnected = true;
@@ -43,7 +43,7 @@ public class Cable : MonoBehaviour
     }
 
     private void OnCableStartDisconnected(GameObject pinConnectedTo)
-    { 
+    {
         cableStartConnected = false;
         ConnectionCheck();
         cableStartConnectedTo = null;
@@ -59,8 +59,8 @@ public class Cable : MonoBehaviour
 
     private void OnEnable()
     {
-        myCableStart.OnConnectionFinalized += OnCableStartConnected;
-        myCableEnd.OnConnectionFinalized += OnCableEndConnected;
+        myCableStart.OnConnectionMade += OnCableStartConnected;
+        myCableEnd.OnConnectionMade += OnCableEndConnected;
 
         myCableStart.OnConnectionStopped += OnCableStartDisconnected;
         myCableEnd.OnConnectionStopped += OnCableEndDisonnected;
@@ -70,55 +70,40 @@ public class Cable : MonoBehaviour
 
     private void OnDisable()
     {
-        myCableStart.OnConnectionFinalized -= OnCableStartConnected;
-        myCableEnd.OnConnectionFinalized -= OnCableEndConnected;
+        myCableStart.OnConnectionMade -= OnCableStartConnected;
+        myCableEnd.OnConnectionMade  -= OnCableEndConnected;
 
         myCableStart.OnConnectionStopped -= OnCableStartDisconnected;
         myCableEnd.OnConnectionStopped -= OnCableEndDisonnected;
 
     }
-    
+
 
     private void ConnectionCheck()
     {
-       
+
         if (cableStartConnected & cableEndConnected)
         {
-           // Debug.Log("Connection Detected Between " + cableStartConnectedTo.ToString() + " and " + cableEndConnectedTo.ToString() + "  via cable " + cableId.ToString());
-            
-            if(myConnectionManager != null)
+            // Debug.Log("Connection Detected Between " + cableStartConnectedTo.ToString() + " and " + cableEndConnectedTo.ToString() + "  via cable " + cableId.ToString());
+
+            if (myConnectionManager != null)
             {
-               myConnectionManager.OnConnectionMade(cableStartConnectedTo, cableEndConnectedTo, this);
+                myConnectionManager.OnConnectionMade(cableStartConnectedTo, cableEndConnectedTo, this);
             }
 
-            if (myConnectionSystem != null)
-            {
-                //myConnectionSystem.ConnectionSystem.Connect(cableStartConnectedTo.GetComponent<Port>(), cableEndConnectedTo.GetComponent<Port>(), cableId);
-            }
-            
 
-            
-           
             _cableConnected = true;
         }
 
 
         if ((cableStartConnected == false | cableEndConnected == false) & _cableConnected)
         {
-           // Debug.Log("Connection removed between" + cableStartConnectedTo.ToString() + " and " + cableEndConnectedTo.ToString() + "  via cable " + cableId.ToString());
-            
+            // Debug.Log("Connection removed between" + cableStartConnectedTo.ToString() + " and " + cableEndConnectedTo.ToString() + "  via cable " + cableId.ToString());
 
-            if(myConnectionManager != null)
+            if (myConnectionManager != null)
             {
-              myConnectionManager.OnConnectionRemoved(cableStartConnectedTo, cableEndConnectedTo, this);
+                myConnectionManager.OnConnectionRemoved(cableStartConnectedTo, cableEndConnectedTo, this);
             }
-
-
-            if (myConnectionSystem != null)
-            {
-               // myConnectionSystem.ConnectionSystem.Disconnect(cableStartConnectedTo.GetComponent<Port>(), cableEndConnectedTo.GetComponent<Port>(), cableId);
-            }
-
 
             _cableConnected = false;
         }

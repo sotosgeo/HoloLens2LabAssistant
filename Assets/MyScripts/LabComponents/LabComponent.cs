@@ -8,7 +8,6 @@ public abstract class LabComponent : MonoBehaviour
 {
 
     public string componentTag;
-    public string GreekName;
 
 
 }

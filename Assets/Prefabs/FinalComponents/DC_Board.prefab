@@ -615,7 +615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5814c0549b80de640948fb39f8a6ad86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  componentTag: motor
+  componentTag: "\u039C\u03B7\u03C7\u03B1\u03BD\u03AE"
   GreekName: "\u039C\u03B7\u03C7\u03B1\u03BD\u03AE"
   J: {fileID: 1522677392}
   K: {fileID: 529631950}

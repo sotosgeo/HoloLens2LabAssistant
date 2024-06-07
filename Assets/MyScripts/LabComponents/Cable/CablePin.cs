@@ -23,7 +23,7 @@ public class CablePin : MonoBehaviour
     public GameObject pinConnectedTo = null;
 
     
-    public Action<GameObject> OnConnectionFinalized;
+    public Action<GameObject> OnConnectionMade;
     public Action<GameObject> OnConnectionStopped;
 
     private float distanceFromPort;
@@ -46,9 +46,9 @@ public class CablePin : MonoBehaviour
         else if (pinConnectedTo != null)
         {
             distanceFromPort = Vector3.Distance(Camera.main.transform.position, pinConnectedTo.transform.position);
-            Debug.Log("Distance From port =" + distanceFromPort.ToString());
+            
             //If the distance is bigger than something, turn off the follower
-            if (distanceFromPort <= 0.6f)
+            if (distanceFromPort <= 0.5f)
             {
                 myFollower.enabled = true;
             }
@@ -66,7 +66,7 @@ public class CablePin : MonoBehaviour
         pinConnectedTo = other.gameObject;
         pinVisual.GetComponent<MeshRenderer>().material = connectionFinalizedMaterial;
         pinVisual.GetComponent<MeshFilter>().mesh = connectionDetectedShape;
-        OnConnectionFinalized?.Invoke(pinConnectedTo);
+        OnConnectionMade?.Invoke(pinConnectedTo);
         
     }
 

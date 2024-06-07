@@ -11,14 +11,12 @@ public class SceneManager : MonoBehaviour
 
     private GameObject _studenHandMenu;
     private GameObject _teacherHandMenu;
-
-
+    [SerializeField] GameObject startingMenu;
+    [SerializeField] HelpDialogHandler helpDialogHandler;
 
     //Questions Objects
 
     [SerializeField] GameObject questionManagerObject;
-    [SerializeField] GameObject startingMenu;
-    [SerializeField] HelpDialogHandler helpDialogHandler;
     private QuestionManager questionManager;
     [SerializeField] GameObject motorQuestions;
 
@@ -39,7 +37,7 @@ public class SceneManager : MonoBehaviour
     private void Awake()
     {
         arucoTracker.enabled = false;
-        mediaCapturer.enabled = false;
+        mediaCapturer.enabled = true;
 
         questionManager = questionManagerObject.GetComponent<QuestionManager>();
         questionManager.OnQuestionsFinished += StartStudentConnection;
@@ -60,6 +58,8 @@ public class SceneManager : MonoBehaviour
         _studenHandMenu.SetActive(false);
         _teacherHandMenu.SetActive(false);
 
+        questionManagerObject.SetActive(false);
+        questionManager.enabled = false;
 
         placementManager.ChangeManipulationAndVisualization(false);
 
@@ -76,7 +76,7 @@ public class SceneManager : MonoBehaviour
 
 
         arucoTracker.enabled = false;
-        mediaCapturer.enabled = false;
+        
 
         placementManager.ChangeManipulationAndVisualization(false);
         placementManager.ChangeDirectionalIndicator(false);
@@ -96,8 +96,11 @@ public class SceneManager : MonoBehaviour
         //Setting question manager to active, resets the question part
         questionManager.enabled = true;
         questionManagerObject.SetActive(true);
+
         startingMenu.SetActive(false);
         placementManager.ChangeManipulationAndVisualization(false);
+
+
         motorQuestions.GetComponent<Collider>().enabled = false;
         motorQuestions.GetComponent<ObjectManipulator>().enabled = false;
     }
@@ -117,17 +120,17 @@ public class SceneManager : MonoBehaviour
     }
     public void StartStudentConnection()
     {
-        //helpDialogHandler.OpenCustomOKDialogue("Διέγερση Κινητήρα", "Ξεκινήστε τη συνδεσμολογία της διέγερσης κινητήρα συνεχούς ρεύματος");
+        helpDialogHandler.OpenCustomOKDialogue("Διέγερση Κινητήρα", "Ξεκινήστε τη συνδεσμολογία της διέγερσης κινητήρα συνεχούς ρεύματος");
         arucoTracker.enabled = true;
-        mediaCapturer.enabled = true;
+        
 
     }
 
     public void StartTeacherConnection()
     {
         arucoTracker.enabled = true;
-        mediaCapturer.enabled = true;
-        //helpDialogHandler.OpenCustomOKDialogue("Διέγερση Κινητήρα", "Τοποθετήστε τα ψηφιακά εξαρτήματα ακριβώς πάνω στα πραγματικά.\n Τοποθετήστε το μοντέλο της μηχανης πάνω από το πραγματικό");
+        
+        helpDialogHandler.OpenCustomOKDialogue("Διέγερση Κινητήρα", "Τοποθετήστε τα ψηφιακά εξαρτήματα ακριβώς πάνω στα πραγματικά.\n Τοποθετήστε το μοντέλο της μηχανης πάνω από το πραγματικό");
         placementManager.ChangeManipulationAndVisualization(true);
     }
 

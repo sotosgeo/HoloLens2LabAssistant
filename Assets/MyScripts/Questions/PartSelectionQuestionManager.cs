@@ -35,6 +35,8 @@ public class PartSelectionQuestionManager : MonoBehaviour
     {
         partSelectionQuestions = new List<PartSelectionData>(Resources.LoadAll<PartSelectionData>("Questions/PartSelection"));
         Debug.Log(partSelectionQuestions.Count.ToString() + " Questions Loaded");
+        GetQuestionAssets();
+       
     }
 
 
@@ -42,7 +44,6 @@ public class PartSelectionQuestionManager : MonoBehaviour
     {
         helpDialogHandler.SetHelpText("Επιλέξτε το εξάρτημα της μηχανής που ζητείται.\nΤο επιλεγμένο εξάρτημα φαίνεται με πορτοκαλί χρώμα. \nΥποβάλετε την απάντηση σας με το κουμπί Υποβολή");
         helpDialogHandler.OpenHelpDialogSmall();
-        GetQuestionAssets();
         SelectNewQuestion();
     }
 

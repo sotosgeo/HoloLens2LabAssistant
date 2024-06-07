@@ -163,14 +163,7 @@ public class MistakeHandler : MonoBehaviour
         int missingMatIndex = 0;
 
         //Level 3 Help - Highlight the wrong connections with the same red color, and missing connections with the same random color
-        foreach (var pinConnection in connectionManager.wrongConnections)
-        {
-            pinConnection.PinA.GetComponentInChildren<MeshRenderer>().enabled = true;
-            pinConnection.PinA.GetComponentInChildren<MeshRenderer>().material = wrongPinMaterial;
-
-            pinConnection.PinB.GetComponentInChildren<MeshRenderer>().enabled = true;
-            pinConnection.PinB.GetComponentInChildren<MeshRenderer>().material = wrongPinMaterial;
-        }
+      
 
         foreach (var pinConnection in connectionManager.missingConnections)
         {
@@ -184,6 +177,14 @@ public class MistakeHandler : MonoBehaviour
             if(missingMatIndex > numOfMissingConnections) missingMatIndex = 0;
         }
 
+        foreach (var pinConnection in connectionManager.wrongConnections)
+        {
+            pinConnection.PinA.GetComponentInChildren<MeshRenderer>().enabled = true;
+            pinConnection.PinA.GetComponentInChildren<MeshRenderer>().material = wrongPinMaterial;
+
+            pinConnection.PinB.GetComponentInChildren<MeshRenderer>().enabled = true;
+            pinConnection.PinB.GetComponentInChildren<MeshRenderer>().material = wrongPinMaterial;
+        }
 
     }
 
