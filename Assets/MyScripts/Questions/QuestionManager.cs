@@ -49,6 +49,12 @@ public class QuestionManager : MonoBehaviour
     private bool PassedMultipleChoice = false;
     private bool PassedPartSelection = false;
 
+    private int multipleChoiceScore;
+    private int partSelectionScore;
+
+    private int multipleChoiceQuestionNumber;
+    private int partSelectionQuestionNumber;
+
     [SerializeField] HelpDialogHandler dialogHandler;
 
     public bool isStudent = false;
@@ -95,8 +101,10 @@ public class QuestionManager : MonoBehaviour
 
 
 
-    private void MultipleChoiceFinished(bool result)
+    private void MultipleChoiceFinished(bool result, int score)
     {
+        multipleChoiceScore = score;
+        multipleChoiceQuestionNumber = mcQuestionManager.numberOfQuestions;
         PassedMultipleChoice = result;
         if (PassedMultipleChoice)
         {
@@ -110,8 +118,10 @@ public class QuestionManager : MonoBehaviour
         psQuestionManager.enabled = true;
     }
 
-    private void PartSelectionFinished(bool result)
+    private void PartSelectionFinished(bool result, int score)
     {
+        partSelectionScore = score;
+        partSelectionQuestionNumber = psQuestionManager.numberOfQuestions;
         PassedPartSelection = result;
         if (PassedPartSelection)
         {
@@ -132,12 +142,14 @@ public class QuestionManager : MonoBehaviour
         {
             //Display Successful Screen and contine to connection
             //Debug.Log("Passed Both Parts");
-            OpenQuestionsFinishedDialogSmall("Επιτυχία", "Περάσατε επιτυχώς το κομμάτι των ερωτήσεων.\nΠατήστε ΟΚ για να συνεχίσετε με τη συνδεσμολογία.");
+            OpenQuestionsFinishedDialogSmall("Επιτυχία", $"Πολλαπλής Επιλογής {multipleChoiceScore}/{multipleChoiceQuestionNumber}\n" +
+                $"Αναγνώριση Μηχανής {partSelectionScore}/{partSelectionQuestionNumber}\nΠεράσατε επιτυχώς το κομμάτι των ερωτήσεων.\nΠατήστε ΟΚ για να συνεχίσετε με τη συνδεσμολογία.");
         }
         else
         {
             //Display Game over screen, and chance to start again
-            OpenQuestionsFinishedDialogSmall("Αποτυχία", "Δυστυχώς δεν περάσατε επιτυχώς το κομμάτι των ερωτήσεων.\nΠατήστε ΟΚ για να ξαναπροσπαθήσετε.");
+            OpenQuestionsFinishedDialogSmall("Αποτυχία", $"Πολλαπλής Επιλογής {multipleChoiceScore}/{multipleChoiceQuestionNumber}\n" +
+                $"Αναγνώριση Μηχανής {partSelectionScore}/{partSelectionQuestionNumber}\nΔυστυχώς δεν περάσατε επιτυχώς το κομμάτι των ερωτήσεων.\nΠατήστε ΟΚ για να ξαναπροσπαθήσετε.");
             // Debug.Log("Try Again!");
         }
        

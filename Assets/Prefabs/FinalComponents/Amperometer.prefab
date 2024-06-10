@@ -550,7 +550,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   componentTag: "\u0391\u03BC\u03C0\u03B5\u03C1\u03CC\u03BC\u03B5\u03C4\u03C1\u03BF"
-  GreekName: "\u0391\u03BC\u03C0\u03B5\u03C1\u03CC\u03BC\u03B5\u03C4\u03C1\u03BF"
   amperIn: {fileID: 7280182296383082196}
   amperOut: {fileID: 309189922413922008}
 --- !u!1 &2639657860262264005
@@ -618,7 +617,7 @@ MonoBehaviour:
   connectionDetectedMaterial: {fileID: 2100000, guid: d236d89f17d25f846a55e0125b3acc3a, type: 2}
   connectionFinalizedMaterial: {fileID: 2100000, guid: 3dbf937dee12f0a4294bfc0fb6d4a8dd, type: 2}
   pinTag: "\u0388\u03BE\u03BF\u03B4\u03BF\u03C2"
-  parent: {fileID: 8001599889430500940}
+  parentComponent: {fileID: 8001599889430500940}
 --- !u!54 &1649073185568014827
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -700,7 +699,7 @@ MonoBehaviour:
   connectionDetectedMaterial: {fileID: 2100000, guid: d236d89f17d25f846a55e0125b3acc3a, type: 2}
   connectionFinalizedMaterial: {fileID: 2100000, guid: 3dbf937dee12f0a4294bfc0fb6d4a8dd, type: 2}
   pinTag: "\u0395\u03AF\u03C3\u03BF\u03B4\u03BF\u03C2"
-  parent: {fileID: 8001599889430500940}
+  parentComponent: {fileID: 8001599889430500940}
 --- !u!54 &4455416612442813216
 Rigidbody:
   m_ObjectHideFlags: 0

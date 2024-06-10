@@ -267,7 +267,7 @@ MonoBehaviour:
   connectionDetectedMaterial: {fileID: 2100000, guid: d236d89f17d25f846a55e0125b3acc3a, type: 2}
   connectionFinalizedMaterial: {fileID: 2100000, guid: 3dbf937dee12f0a4294bfc0fb6d4a8dd, type: 2}
   pinTag: Pos
-  parent: {fileID: 5253491511386436434}
+  parentComponent: {fileID: 5253491511386436434}
 --- !u!54 &7074928075902046741
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -349,7 +349,7 @@ MonoBehaviour:
   connectionDetectedMaterial: {fileID: 2100000, guid: d236d89f17d25f846a55e0125b3acc3a, type: 2}
   connectionFinalizedMaterial: {fileID: 2100000, guid: 3dbf937dee12f0a4294bfc0fb6d4a8dd, type: 2}
   pinTag: Neg
-  parent: {fileID: 5253491511386436434}
+  parentComponent: {fileID: 5253491511386436434}
 --- !u!54 &9165276921567673285
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -431,7 +431,7 @@ MonoBehaviour:
   connectionDetectedMaterial: {fileID: 2100000, guid: d236d89f17d25f846a55e0125b3acc3a, type: 2}
   connectionFinalizedMaterial: {fileID: 2100000, guid: 3dbf937dee12f0a4294bfc0fb6d4a8dd, type: 2}
   pinTag: Gnd
-  parent: {fileID: 5253491511386436434}
+  parentComponent: {fileID: 5253491511386436434}
 --- !u!54 &3488475233097735229
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -498,7 +498,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   componentTag: 
-  GreekName: "\u039C\u03B5\u03C4\u03B1\u03B2\u03BB\u03B7\u03C4\u03AE \u03B1\u03BD\u03C4\u03AF\u03C3\u03C4\u03B1\u03C3\u03B7"
   resPositive: {fileID: 2414769879663748297}
   resNegative: {fileID: 3267224523083937771}
   resGround: {fileID: 1206328216508192201}

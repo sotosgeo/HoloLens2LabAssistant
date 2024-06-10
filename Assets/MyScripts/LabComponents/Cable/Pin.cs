@@ -12,14 +12,14 @@ public class Pin : MonoBehaviour
 
    
     public string pinTag;
-    public LabComponent parent;
+    public LabComponent parentComponent;
     private string fullTag;
 
     public string FullTag
     {
         get
         {
-            if (parent == null)
+            if (parentComponent == null)
                 return $"none.{pinTag}";
             return fullTag;
         }
@@ -27,7 +27,7 @@ public class Pin : MonoBehaviour
 
     private void Awake()
     {
-        fullTag = $"{parent.componentTag}.{pinTag}";
+        fullTag = $"{parentComponent.componentTag}.{pinTag}";
     }
 
 

@@ -23,18 +23,18 @@ public class MultipleChoiceQuestionManager : MonoBehaviour
 
 
     [SerializeField] private GameObject multipleChoiceAnswerCollection;
-    [SerializeField] private List<TextMesh> multipleChoiceAnswerFields;
+    [SerializeField] private List<TextMeshPro> multipleChoiceAnswerFields;
     private int submittedAnswerIndex;
     private bool isCorrect = false;
     private int correctAnswersScore = 0;
     public float percentageToBeat = 0.75f;
-    private int numberOfQuestions;
+    public int numberOfQuestions;
 
     private int currentQuestionNumberForTitle = 0;
     private bool result = false;
 
 
-    public delegate void FinishHandler(bool result);
+    public delegate void FinishHandler(bool result, int score);
     public event FinishHandler Finished;
 
 
@@ -148,7 +148,7 @@ public class MultipleChoiceQuestionManager : MonoBehaviour
     private void OnQuestionsFinished()
     {
         CalculateScore();
-        Finished?.Invoke(result);
+        Finished?.Invoke(result, correctAnswersScore);
         Console.WriteLine("Done with Multiple Choice Questions");
     }
 

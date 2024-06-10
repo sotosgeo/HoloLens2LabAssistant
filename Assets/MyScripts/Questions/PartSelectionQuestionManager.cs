@@ -22,12 +22,12 @@ public class PartSelectionQuestionManager : MonoBehaviour
   
     [SerializeField] private float percentageToBeat = 0.75f;
     private int correctAnswersScore = 0;
-    private int numberOfQuestions;
+    public int numberOfQuestions;
     private bool result =false;
 
     
 
-    public Action<bool> PartSelectionFinished;
+    public Action<bool, int> PartSelectionFinished;
 
     public bool isStudent = false;
 
@@ -81,7 +81,7 @@ public class PartSelectionQuestionManager : MonoBehaviour
     private void OnQuestionsFinished()
     {
         CalculateScore();
-        PartSelectionFinished?.Invoke(result);
+        PartSelectionFinished?.Invoke(result, correctAnswersScore);
         Console.WriteLine("Done with Part Selection Questions");
     }
 

@@ -1,6 +1,7 @@
 ﻿using Microsoft.MixedReality.Toolkit.UI;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.VirtualTexturing;
 
@@ -31,12 +32,9 @@ public class SceneManager : MonoBehaviour
     [SerializeField] PlacementManager placementManager;
 
 
-
-    public bool isStudent = false;
-
     private void Awake()
     {
-        arucoTracker.enabled = false;
+        arucoTracker.enabled = true;
         mediaCapturer.enabled = true;
 
         questionManager = questionManagerObject.GetComponent<QuestionManager>();
@@ -47,7 +45,7 @@ public class SceneManager : MonoBehaviour
     }
 
 
-
+   
     // Display starting text, and choose between student and teacher mode
     void Start()
     {
@@ -63,7 +61,7 @@ public class SceneManager : MonoBehaviour
 
         placementManager.ChangeManipulationAndVisualization(false);
 
-
+        
     }
 
     public void SceneReset()
@@ -75,7 +73,7 @@ public class SceneManager : MonoBehaviour
         questionManager.SceneReset();
 
 
-        arucoTracker.enabled = false;
+        //arucoTracker.enabled = false;
         
 
         placementManager.ChangeManipulationAndVisualization(false);

@@ -131,26 +131,32 @@ public class MistakeHandler : MonoBehaviour
         //Level 1 Help -> Enable the visualization of the wrong components
         foreach (var pinConnection in connectionManager.wrongConnections)
         {
-
-            //Turn on the Visualization of that component
-            pinConnection.PinA.parent.transform.GetChild(0).gameObject.SetActive(true);
-            pinConnection.PinB.parent.transform.GetChild(0).gameObject.SetActive(true);
-
+            if (pinConnection != null)
+            {
+                //Turn on the Visualization of that component
+                pinConnection.PinA.parentComponent.transform.GetChild(0).gameObject.SetActive(true);
+                pinConnection.PinB.parentComponent.transform.GetChild(0).gameObject.SetActive(true);
+            }
 
             //Turn on the Directional Indicator of that component
-            //pinConnection.PinA.parent.transform.GetChild(3).gameObject.SetActive(true);
-            //pinConnection.PinA.parent.transform.GetChild(3).gameObject.SetActive(true);
+            //pinConnection.PinA.parentComponent.transform.GetChild(3).gameObject.SetActive(true);
+            //pinConnection.PinA.parentComponent.transform.GetChild(3).gameObject.SetActive(true);
         }
 
         foreach (var pinConnection in connectionManager.missingConnections)
         {
             //Enable the visualization of the wrong components
-            pinConnection.PinA.parent.transform.GetChild(0).gameObject.SetActive(true);
-            pinConnection.PinB.parent.transform.GetChild(0).gameObject.SetActive(true);
+            if (pinConnection != null)
+            {
+                
+                pinConnection.PinA.parentComponent.transform.GetChild(0).gameObject.SetActive(true);
+                pinConnection.PinB.parentComponent.transform.GetChild(0).gameObject.SetActive(true);
+            }
+            
 
             //Turn on the Directional Indicator of that component
-            //pinConnection.PinA.parent.transform.GetChild(3).gameObject.SetActive(true);
-            //pinConnection.PinA.parent.transform.GetChild(3).gameObject.SetActive(true);
+            //pinConnection.PinA.parentComponent.transform.GetChild(3).gameObject.SetActive(true);
+            //pinConnection.PinA.parentComponent.transform.GetChild(3).gameObject.SetActive(true);
 
         }
 
@@ -242,7 +248,8 @@ public class MistakeHandler : MonoBehaviour
         placementManager.ChangeTooltip(false);
         placementManager.ChangeDirectionalIndicator(false);
         //This resets their material to the default one
-        placementManager.ChangePinVisualization(false);
+        
+        placementManager.ChangeComponentVisualization(false);
         timesAskedForHelp++;
 
 
@@ -250,7 +257,7 @@ public class MistakeHandler : MonoBehaviour
         numOfWrongConnections = connectionManager.wrongConnections.Count;
         numOfMissingConnections = connectionManager.missingConnections.Count;
 
-        placementManager.ChangePinVisualization(false);
+        placementManager.ChangeComponentVisualization(false);
         //Level 1 Mistakes -> Enable their tooltip components
         //Its done in HelpLevel 2
 
@@ -276,11 +283,6 @@ public class MistakeHandler : MonoBehaviour
     }
 
 
-
-    private GameObject GetComponentFromPin(GameObject pin)
-    {
-        return pin.transform.parent.parent.gameObject;
-    }
 
 
     void Start()

@@ -549,7 +549,7 @@ MonoBehaviour:
   connectionDetectedMaterial: {fileID: 2100000, guid: d236d89f17d25f846a55e0125b3acc3a, type: 2}
   connectionFinalizedMaterial: {fileID: 2100000, guid: 3dbf937dee12f0a4294bfc0fb6d4a8dd, type: 2}
   pinTag: J
-  parent: {fileID: 199313056431231218}
+  parentComponent: {fileID: 199313056431231218}
 --- !u!54 &8753265874877634201
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -616,7 +616,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   componentTag: "\u039C\u03B7\u03C7\u03B1\u03BD\u03AE"
-  GreekName: "\u039C\u03B7\u03C7\u03B1\u03BD\u03AE"
   J: {fileID: 1522677392}
   K: {fileID: 529631950}
   Ga: {fileID: 1522677394}
@@ -769,7 +768,7 @@ MonoBehaviour:
   connectionDetectedMaterial: {fileID: 2100000, guid: d236d89f17d25f846a55e0125b3acc3a, type: 2}
   connectionFinalizedMaterial: {fileID: 2100000, guid: 3dbf937dee12f0a4294bfc0fb6d4a8dd, type: 2}
   pinTag: K
-  parent: {fileID: 199313056431231218}
+  parentComponent: {fileID: 199313056431231218}
 --- !u!54 &4520646449278758675
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -934,7 +933,7 @@ MonoBehaviour:
   connectionDetectedMaterial: {fileID: 2100000, guid: d236d89f17d25f846a55e0125b3acc3a, type: 2}
   connectionFinalizedMaterial: {fileID: 2100000, guid: 3dbf937dee12f0a4294bfc0fb6d4a8dd, type: 2}
   pinTag: Ga
-  parent: {fileID: 199313056431231218}
+  parentComponent: {fileID: 199313056431231218}
 --- !u!54 &3705655247810243770
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1468,7 +1467,7 @@ MonoBehaviour:
   connectionDetectedMaterial: {fileID: 2100000, guid: d236d89f17d25f846a55e0125b3acc3a, type: 2}
   connectionFinalizedMaterial: {fileID: 2100000, guid: 3dbf937dee12f0a4294bfc0fb6d4a8dd, type: 2}
   pinTag: Hb
-  parent: {fileID: 199313056431231218}
+  parentComponent: {fileID: 199313056431231218}
 --- !u!54 &6616632290395726044
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -88,11 +88,14 @@ public class PlacementManager : MonoBehaviour
     }
 
 
-    public void ChangePinVisualization(bool mode)
+    public void ChangeComponentVisualization(bool mode)
     {
         foreach (var component in placedComponentObjects)
         {
 
+            Transform visualization = component.transform.Find("Visualization");
+
+            visualization.gameObject.SetActive(mode);
             //Turn off Pins Visual
             MeshRenderer[] pinRenderers = component.transform.Find("Pins").GetComponentsInChildren<MeshRenderer>();
             foreach (var pinRenderer in pinRenderers)
