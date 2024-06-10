@@ -1,17 +1,14 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Switch : MonoBehaviour 
+public class Switch : LabComponent
 {
-    public GameObject switchComponentInput;
-    public GameObject switchComponentOutput;
-
-    public GameObject switchInputPins;
-    public GameObject switchOutputPins;
-
-
-    [SerializeField] int switchId = 0;
-
-
+    
+    public Pin switchPosIn;
+    public Pin switchPosOut;
+    public Pin switchNegIn;
+    public Pin switchNegOut;
+    public string switchId;
+    
 }

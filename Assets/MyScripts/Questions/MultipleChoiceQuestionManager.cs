@@ -1,4 +1,4 @@
-using Microsoft.MixedReality.Toolkit.UI;
+﻿using Microsoft.MixedReality.Toolkit.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,58 +18,74 @@ public class MultipleChoiceQuestionManager : MonoBehaviour
     [SerializeField] private TextMeshPro questionText;
     [SerializeField] private TextMeshPro questionTitle;
     private List<MultipleChoiceData> multipleChoiceQuestions;
-
+    private List<MultipleChoiceData> currentQuestions;
     private MultipleChoiceData currentQuestion;
 
 
     [SerializeField] private GameObject multipleChoiceAnswerCollection;
-    [SerializeField] private List<TextMesh> multipleChoiceAnswerFields;
+    [SerializeField] private List<TextMeshPro> multipleChoiceAnswerFields;
     private int submittedAnswerIndex;
     private bool isCorrect = false;
     private int correctAnswersScore = 0;
     public float percentageToBeat = 0.75f;
-    private int numberOfQuestions;
+    public int numberOfQuestions;
 
-
+    private int currentQuestionNumberForTitle = 0;
     private bool result = false;
 
 
-    public delegate void FinishHandler(bool result);
+    public delegate void FinishHandler(bool result, int score);
     public event FinishHandler Finished;
 
+
+    public HelpDialogHandler helpDialogHandler;
 
 
     private void Awake()
     {
+        multipleChoiceQuestions = new List<MultipleChoiceData>(Resources.LoadAll<MultipleChoiceData>("Questions/MultipleChoice"));
+        Debug.Log(multipleChoiceQuestions.Count.ToString() + " questions loaded");
         
-        GetQuestionAssets();
-    }  
-    
+        
+    }
 
-    void Start()
+  
+    private void OnEnable()
     {
-        
+        GetQuestionAssets();
+        correctAnswersScore = 0;
+        helpDialogHandler.SetHelpText("Επιλέξτε την μοναδική σωστή απάντηση.\nΥποβάλετε την απάντηση σας με το κουμπί Υποβολή");
+        //helpDialogHandler.OpenHelpDialogSmall();
         SelectNewQuestion();
         SetAnswerValues();
+       
 
+    }
+
+    private void OnDisable()
+    {
+       correctAnswersScore = 0;
     }
 
 
     private void GetQuestionAssets()
     {
-        multipleChoiceQuestions = new List<MultipleChoiceData>(Resources.LoadAll<MultipleChoiceData>("Questions/MultipleChoice"));
-        numberOfQuestions = multipleChoiceQuestions.Count;
+        currentQuestions = new List<MultipleChoiceData>(multipleChoiceQuestions);
+        numberOfQuestions = currentQuestions.Count;
+        Debug.Log(currentQuestions.Count.ToString() + " questions copied");
+        currentQuestionNumberForTitle = 0;
+
     }
 
     private void SelectNewQuestion()
     {
+        currentQuestionNumberForTitle++;
         //Pick a question at random from the List
-        int randomQuestionIndex = UnityEngine.Random.Range(0, multipleChoiceQuestions.Count);
-        currentQuestion = multipleChoiceQuestions[randomQuestionIndex];
-        multipleChoiceQuestions.RemoveAt(randomQuestionIndex);
+        int randomQuestionIndex = UnityEngine.Random.Range(0, currentQuestions.Count);
+        currentQuestion = currentQuestions[randomQuestionIndex];
+        currentQuestions.RemoveAt(randomQuestionIndex);
         questionText.text = currentQuestion.question;
-        
-           
+        questionTitle.text = $"Ερώτηση  {currentQuestionNumberForTitle}";
     }
 
     //Update UI of Question
@@ -82,6 +98,8 @@ public class MultipleChoiceQuestionManager : MonoBehaviour
             multipleChoiceAnswerFields[i].text = currentQuestion.answers[i];
 
         }
+
+       
 
 
     }
@@ -114,7 +132,7 @@ public class MultipleChoiceQuestionManager : MonoBehaviour
             Debug.Log("Wrong Answer");
         }
 
-        if (multipleChoiceQuestions.Count == 0)
+        if (currentQuestions.Count == 0)
         {
 
             OnQuestionsFinished();
@@ -130,9 +148,8 @@ public class MultipleChoiceQuestionManager : MonoBehaviour
     private void OnQuestionsFinished()
     {
         CalculateScore();
-        Finished?.Invoke(result);
+        Finished?.Invoke(result, correctAnswersScore);
         Console.WriteLine("Done with Multiple Choice Questions");
-        //gameObject.SetActive(false);
     }
 
 }

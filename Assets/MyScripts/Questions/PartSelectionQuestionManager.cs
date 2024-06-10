@@ -1,4 +1,4 @@
-using Microsoft.MixedReality.Toolkit.UI;
+﻿using Microsoft.MixedReality.Toolkit.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,44 +8,57 @@ using UnityEngine.Events;
 
 public class PartSelectionQuestionManager : MonoBehaviour
 {
-    //TODO Implement score calculation and part selection
 
+    [SerializeField] HelpDialogHandler helpDialogHandler;
     public List<PartSelectionData> partSelectionQuestions;
+    private List<PartSelectionData> currentQuestions;
     [SerializeField] private GameObject PartSelectionAnswerCollection;
     [SerializeField] private TextMeshPro questionTitle;
     
     private PartSelectionData currentPartQuestion;
     private int submittedAnswerIndex;
-    private int correctAnswerChoice;
     private bool isCorrect = false;
 
   
     [SerializeField] private float percentageToBeat = 0.75f;
     private int correctAnswersScore = 0;
-    private int numberOfQuestions;
-
-
+    public int numberOfQuestions;
     private bool result =false;
 
+    
 
-    public delegate void FinishHandler(bool result);
-    public event FinishHandler Finished;
+    public Action<bool, int> PartSelectionFinished;
+
+    public bool isStudent = false;
 
     private void Awake()
     {
+        partSelectionQuestions = new List<PartSelectionData>(Resources.LoadAll<PartSelectionData>("Questions/PartSelection"));
+        Debug.Log(partSelectionQuestions.Count.ToString() + " Questions Loaded");
         GetQuestionAssets();
+       
     }
 
-    void Start()
+
+    private void OnEnable()
     {
+        helpDialogHandler.SetHelpText("Επιλέξτε το εξάρτημα της μηχανής που ζητείται.\nΤο επιλεγμένο εξάρτημα φαίνεται με πορτοκαλί χρώμα. \nΥποβάλετε την απάντηση σας με το κουμπί Υποβολή");
+        helpDialogHandler.OpenHelpDialogSmall();
         SelectNewQuestion();
     }
 
+
+    private void OnDisable()
+    {
+        correctAnswersScore = 0;   
+    }
+
+
     private void GetQuestionAssets()
     {
-        partSelectionQuestions = new List<PartSelectionData>(Resources.LoadAll<PartSelectionData>("Questions/PartSelection"));
-        numberOfQuestions = partSelectionQuestions.Count;
-        Debug.Log("Questions Selected");
+        currentQuestions = new List<PartSelectionData>(partSelectionQuestions);
+        numberOfQuestions = currentQuestions.Count;
+        Debug.Log( numberOfQuestions.ToString() + " Questions copied");
     }
 
     private void CalculateScore()
@@ -56,11 +69,11 @@ public class PartSelectionQuestionManager : MonoBehaviour
 
     private void SelectNewQuestion()
     {
-
+        
         //Pick a question at random from the List
-        int randomQuestionIndex = UnityEngine.Random.Range(0, partSelectionQuestions.Count);
-        currentPartQuestion = partSelectionQuestions[randomQuestionIndex];
-        partSelectionQuestions.RemoveAt(randomQuestionIndex);
+        int randomQuestionIndex = UnityEngine.Random.Range(0, currentQuestions.Count);
+        currentPartQuestion = currentQuestions[randomQuestionIndex];
+        currentQuestions.RemoveAt(randomQuestionIndex);
         questionTitle.text = currentPartQuestion.question;
 
 
@@ -68,9 +81,8 @@ public class PartSelectionQuestionManager : MonoBehaviour
     private void OnQuestionsFinished()
     {
         CalculateScore();
-        Finished?.Invoke(result);
+        PartSelectionFinished?.Invoke(result, correctAnswersScore);
         Console.WriteLine("Done with Part Selection Questions");
-        gameObject.SetActive(false);
     }
 
     //When Button is Pressed:
@@ -81,7 +93,7 @@ public class PartSelectionQuestionManager : MonoBehaviour
         submittedAnswerIndex = PartSelectionAnswerCollection.GetComponent<InteractableToggleCollection>().CurrentIndex;
         if (submittedAnswerIndex == currentPartQuestion.correctAnswerIndex) isCorrect = true;
         else isCorrect = false;
-
+        Debug.Log("Remaining Questions are" + currentQuestions.Count.ToString());
 
         if (isCorrect)
         {
@@ -93,7 +105,7 @@ public class PartSelectionQuestionManager : MonoBehaviour
             Debug.Log("Wrong Answer");
         }
 
-        if (partSelectionQuestions.Count == 0)
+        if (currentQuestions.Count == 0)
         {
             OnQuestionsFinished();
         }

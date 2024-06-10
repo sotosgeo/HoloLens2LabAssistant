@@ -20,6 +20,7 @@ public class MarkerFollower : MonoBehaviour
     private void OnDisable()
     {
         tracker.onDetectionFinished -= OnMarkersDetected;
+
     }
 
     private void OnMarkersDetected(IReadOnlyDictionary<int, Marker> detectedMarkers)

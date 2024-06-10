@@ -10,6 +10,13 @@ public class MultipleChoiceData : ScriptableObject
     [Tooltip("Correct answer first, and randomized next")]
     public string[] answers;
     public int correctAnswerIndex;
+
+
+
+    public override string ToString()
+    {
+        return $"Question: {question} \n Answers: {answers}";
+    }
 }
 
  

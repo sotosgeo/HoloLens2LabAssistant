@@ -1,10 +1,10 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerNetwork : MonoBehaviour
+public class PowerNetwork : LabComponent
 {
-    [SerializeField] GameObject[] networkPins;
-    [SerializeField] GameObject connectedTo; 
-
+    public Pin NetworkPos;
+    public Pin NetworkNeg;
+   
 }

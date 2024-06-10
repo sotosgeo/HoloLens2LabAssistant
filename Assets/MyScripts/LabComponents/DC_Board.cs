@@ -1,11 +1,13 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DC_Board : MonoBehaviour
+public class DC_Board : LabComponent
 {
-    [SerializeField] GameObject[] dcBoardPins;
-    [SerializeField] GameObject[] pinsVisualization;
-    
+    public Pin J;
+    public Pin K;
+    public Pin Ga;
+    public Pin Hb;
 
+    
 }

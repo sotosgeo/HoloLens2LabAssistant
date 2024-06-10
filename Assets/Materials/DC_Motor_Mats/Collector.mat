@@ -14,6 +14,7 @@ Material:
   - _DISABLE_ALBEDO_MAP
   - _HOVER_LIGHT
   - _METALLIC_TEXTURE_ALBEDO_CHANNEL_A
+  - _PROXIMITY_LIGHT
   - _REFLECTIONS
   - _SPECULAR_HIGHLIGHTS
   - _VERTEX_EXTRUSION_SMOOTH_NORMALS
@@ -135,7 +136,7 @@ Material:
     - _NormalMapScale: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _ProximityLight: 0
+    - _ProximityLight: 1
     - _ProximityLightSubtractive: 0
     - _ProximityLightTwoSided: 0
     - _Reflections: 1

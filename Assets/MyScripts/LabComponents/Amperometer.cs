@@ -1,11 +1,11 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Amperometer : MonoBehaviour
+public class Amperometer : LabComponent
 {
-    [SerializeField] GameObject[] amperometerPins;
-    [SerializeField] GameObject[] pinsVisualization;
-    
+    public Pin amperIn;
+    public Pin amperOut;
 
+    
 }

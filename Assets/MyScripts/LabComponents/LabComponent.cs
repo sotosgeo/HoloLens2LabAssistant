@@ -1,22 +1,13 @@
+using Microsoft.MixedReality.Toolkit.Examples.Demos;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.XR.CoreUtils.Datums;
 using UnityEngine;
 
-public class LabComponent : MonoBehaviour
+public abstract class LabComponent : MonoBehaviour
 {
 
+    public string componentTag;
 
-    [SerializeField] GameObject[] ComponentPins;
 
-    
-    void Start()
-    {
-        
-    }
-
-    
-    void Update()
-    {
-        
-    }
 }

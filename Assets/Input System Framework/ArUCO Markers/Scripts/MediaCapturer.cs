@@ -42,7 +42,7 @@ public class MediaCapturer : MonoBehaviour
 
     [SerializeField] MediaCaptureProfiles mediaCaptureProfiles;
     [SerializeField] MediaCaptureFPS fpsProfile;
-    //[SerializeField] TMP_Text debugTmp;
+    [SerializeField] TMP_Text debugTmp;
     [SerializeField] TMP_Text averageFpsText;
 
     Timer timer = new Timer();
@@ -59,7 +59,8 @@ public class MediaCapturer : MonoBehaviour
     {
         await StartCapture(mediaCaptureProfiles);
         hasStarted = true;
-       // debugTmp.text += debugTmp.text + "Started Capturing";        
+        if(debugTmp!=null)
+        debugTmp.text += debugTmp.text + "Started Capturing";        
     }
     private async void OnDestroy()
     {
@@ -306,16 +307,16 @@ public class MediaCapturer : MonoBehaviour
         }
 
         //Debugging the video Profiles
-        //if (debugTmp != null)
-        //{
-        //    var videoInfoList = frameSource.Info.VideoProfileMediaDescription;
-        //    string temp = "";
-        //    foreach( var videoInfo in videoInfoList){
-        //        temp += $"Width: {videoInfo.Width} Height: {videoInfo.Height} FPS:{videoInfo.FrameRate}\n";
-        //    }
-        //    debugTmp.text = temp;
+        if (debugTmp != null)
+        {
+            var videoInfoList = frameSource.Info.VideoProfileMediaDescription;
+            string temp = "";
+            foreach( var videoInfo in videoInfoList){
+                temp += $"Width: {videoInfo.Width} Height: {videoInfo.Height} FPS:{videoInfo.FrameRate}\n";
+            }
+            debugTmp.text = temp;
             
-        //}
+        }
         
         return (mediaCapture, frameSource);
     }
