@@ -1,15 +1,16 @@
 using Mirror.Examples.AdditiveLevels;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Pin : MonoBehaviour
 {
-    [SerializeField] GameObject pinVisual;
+    public GameObject pinVisual;
     [SerializeField] Material defaultMaterial;
     [SerializeField] Material connectionDetectedMaterial;
     [SerializeField] Material connectionFinalizedMaterial;
-
+    public TextMeshPro pinText;
    
     public string pinTag;
     public LabComponent parentComponent;
@@ -35,4 +36,8 @@ public class Pin : MonoBehaviour
     {
         return FullTag;
     }
+
+
+
+
 }

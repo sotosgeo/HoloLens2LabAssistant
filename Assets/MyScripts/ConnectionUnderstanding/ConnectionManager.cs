@@ -131,10 +131,10 @@ public class ConnectionManager : MonoBehaviour
     public void OnConnectionRemoved(GameObject cableStart, GameObject cableEnd, Cable connectingCable)
     {
 
-        //if (currentConnections.connections.Contains(new PinConnection(cableStart.GetComponent<Pin>(), cableEnd.GetComponent<Pin>(), connectingCable), myComparer))
-        //{
+        if (currentConnections.connections.Contains(new PinConnection(cableStart.GetComponent<Pin>(), cableEnd.GetComponent<Pin>(), connectingCable)))
+        {
             currentConnections.connections.Remove(new PinConnection(cableStart.GetComponent<Pin>(), cableEnd.GetComponent<Pin>(), connectingCable));
-        //}
+        }
 
         PrintConnections();
     }
@@ -162,6 +162,7 @@ public class ConnectionManager : MonoBehaviour
    public void ClearConnection()
     {
         currentConnections.ClearSystem();
+        PrintConnections();
     }
 
 
