@@ -133,14 +133,14 @@ public class MistakeHandler : MonoBehaviour
         {
             if (pinConnection != null)
             {
-                //Turn on the Visualization of that component
+                //Turn on the Visualization of that component parent
                 pinConnection.PinA.parentComponent.transform.GetChild(0).gameObject.SetActive(true);
                 pinConnection.PinB.parentComponent.transform.GetChild(0).gameObject.SetActive(true);
             }
 
             //Turn on the Directional Indicator of that component
-            //pinConnection.PinA.parentComponent.transform.GetChild(3).gameObject.SetActive(true);
-            //pinConnection.PinA.parentComponent.transform.GetChild(3).gameObject.SetActive(true);
+            pinConnection.PinA.parentComponent.transform.GetChild(3).gameObject.SetActive(true);
+            pinConnection.PinA.parentComponent.transform.GetChild(3).gameObject.SetActive(true);
         }
 
         foreach (var pinConnection in connectionManager.missingConnections)
@@ -148,15 +148,15 @@ public class MistakeHandler : MonoBehaviour
             //Enable the visualization of the wrong components
             if (pinConnection != null)
             {
-                
+
                 pinConnection.PinA.parentComponent.transform.GetChild(0).gameObject.SetActive(true);
                 pinConnection.PinB.parentComponent.transform.GetChild(0).gameObject.SetActive(true);
             }
-            
+
 
             //Turn on the Directional Indicator of that component
-            //pinConnection.PinA.parentComponent.transform.GetChild(3).gameObject.SetActive(true);
-            //pinConnection.PinA.parentComponent.transform.GetChild(3).gameObject.SetActive(true);
+            pinConnection.PinA.parentComponent.transform.GetChild(3).gameObject.SetActive(true);
+            pinConnection.PinA.parentComponent.transform.GetChild(3).gameObject.SetActive(true);
 
         }
 
@@ -167,29 +167,32 @@ public class MistakeHandler : MonoBehaviour
     {
         OpenHelp2Dialog();
         int missingMatIndex = 0;
+        int missingConnCount = 0;
+        //Level 3 Help - Highlight the wrong connections with the same red color
+        //For the missing connections, add a number atop each pin, the same for each wrong connection
 
-        //Level 3 Help - Highlight the wrong connections with the same red color, and missing connections with the same random color
-      
 
         foreach (var pinConnection in connectionManager.missingConnections)
         {
-            pinConnection.PinA.GetComponentInChildren<MeshRenderer>().enabled = true;
-            pinConnection.PinA.GetComponentInChildren<MeshRenderer>().material = missingPinMaterials[missingMatIndex];
+            missingConnCount++;
+            pinConnection.PinA.pinVisual.SetActive(true);
+            pinConnection.PinA.pinText.text += missingConnCount.ToString();
 
-            pinConnection.PinB.GetComponentInChildren<MeshRenderer>().enabled = true;
-            pinConnection.PinB.GetComponentInChildren<MeshRenderer>().material = missingPinMaterials[missingMatIndex];
+            pinConnection.PinB.pinVisual.SetActive(true);
+            pinConnection.PinB.pinText.text += missingConnCount.ToString();
 
-            missingMatIndex++;
-            if(missingMatIndex > numOfMissingConnections) missingMatIndex = 0;
+            // missingMatIndex++;
+           
+            // if (missingMatIndex > numOfMissingConnections) missingMatIndex = 0;
         }
 
         foreach (var pinConnection in connectionManager.wrongConnections)
         {
-            pinConnection.PinA.GetComponentInChildren<MeshRenderer>().enabled = true;
-            pinConnection.PinA.GetComponentInChildren<MeshRenderer>().material = wrongPinMaterial;
+            pinConnection.PinA.pinVisual.SetActive(true);
+            pinConnection.PinA.pinVisual.GetComponent<MeshRenderer>().material = wrongPinMaterial;
 
-            pinConnection.PinB.GetComponentInChildren<MeshRenderer>().enabled = true;
-            pinConnection.PinB.GetComponentInChildren<MeshRenderer>().material = wrongPinMaterial;
+            pinConnection.PinB.pinVisual.SetActive(true);
+            pinConnection.PinB.pinVisual.GetComponent<MeshRenderer>().material = wrongPinMaterial;
         }
 
     }
@@ -248,7 +251,7 @@ public class MistakeHandler : MonoBehaviour
         placementManager.ChangeTooltip(false);
         placementManager.ChangeDirectionalIndicator(false);
         //This resets their material to the default one
-        
+
         placementManager.ChangeComponentVisualization(false);
         timesAskedForHelp++;
 

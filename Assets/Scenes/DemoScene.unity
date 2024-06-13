@@ -11572,7 +11572,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 983388630}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.009, y: 0.31324917, z: -2.355}
+  m_LocalPosition: {x: 0.009, y: 0.31324917, z: -1.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -16373,6 +16373,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1607757112}
     m_Modifications:
+    - target: {fileID: 3640460554046086671, guid: f75d807d2af241b499eebf3b1152f18f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4955852980589446868, guid: f75d807d2af241b499eebf3b1152f18f, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -26428,6 +26432,10 @@ PrefabInstance:
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 5052129730697469982, guid: b8a3b2506ee58f844b6e13383a769911, type: 3}
+      propertyPath: iconQuadTexture
+      value: 
+      objectReference: {fileID: 2800000, guid: 114589bc5b891c3488cbb8607b6b9171, type: 3}
     - target: {fileID: 6207524331711854588, guid: b8a3b2506ee58f844b6e13383a769911, type: 3}
       propertyPath: m_RootOrder
       value: 9

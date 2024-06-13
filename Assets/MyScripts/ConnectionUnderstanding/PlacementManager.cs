@@ -40,10 +40,12 @@ public class PlacementManager : MonoBehaviour
             visualization.gameObject.SetActive(change);
 
             //Turn off Pins Visual
-            MeshRenderer[] pinRenderers = component.transform.GetChild(4).GetComponentsInChildren<MeshRenderer>();
-            foreach (var pinRenderer in pinRenderers)
+            Pin[] pins = component.transform.GetChild(4).GetComponentsInChildren<Pin>();
+
+            foreach (var pin in pins)
             {
-                pinRenderer.enabled = change;
+                pin.pinVisual.SetActive(change);
+               
             }
         }
         
@@ -98,11 +100,14 @@ public class PlacementManager : MonoBehaviour
 
             visualization.gameObject.SetActive(mode);
             //Turn off Pins Visual
-            MeshRenderer[] pinRenderers = component.transform.Find("Pins").GetComponentsInChildren<MeshRenderer>();
-            foreach (var pinRenderer in pinRenderers)
+            //Turn off Pins Visual
+            Pin[] pins = component.transform.GetChild(4).GetComponentsInChildren<Pin>();
+
+            foreach (var pin in pins)
             {
-                pinRenderer.enabled = mode;
-                pinRenderer.material = DefaultPinMaterial;
+                pin.pinVisual.SetActive(mode);
+                pin.pinVisual.GetComponent<MeshRenderer>().material = DefaultPinMaterial;
+
             }
         }
 
