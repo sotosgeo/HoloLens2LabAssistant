@@ -22,34 +22,34 @@ public class Cable : MonoBehaviour
     private bool cableStartConnected = false;
     private bool cableEndConnected = false;
 
-    public GameObject cableStartConnectedTo = null;
-    public GameObject cableEndConnectedTo = null;
+    public Pin cableStartConnectedTo = null;
+    public Pin cableEndConnectedTo = null;
 
     private bool _cableConnected = false;
 
 
-    private void OnCableStartConnected(GameObject pinConnectedTo)
+    private void OnCableStartConnected(Pin pinConnectedTo)
     {
         cableStartConnectedTo = pinConnectedTo;
         cableStartConnected = true;
         ConnectionCheck();
     }
 
-    private void OnCableEndConnected(GameObject pinConnectedTo)
+    private void OnCableEndConnected(Pin pinConnectedTo)
     {
         cableEndConnectedTo = pinConnectedTo;
         cableEndConnected = true;
         ConnectionCheck();
     }
 
-    private void OnCableStartDisconnected(GameObject pinConnectedTo)
+    private void OnCableStartDisconnected(Pin pinConnectedTo)
     {
         cableStartConnected = false;
         ConnectionCheck();
         cableStartConnectedTo = null;
     }
 
-    private void OnCableEndDisonnected(GameObject pinConnectedTo)
+    private void OnCableEndDisonnected(Pin   pinConnectedTo)
     {
         cableEndConnected = false;
         ConnectionCheck();
@@ -89,10 +89,11 @@ public class Cable : MonoBehaviour
             if (myConnectionManager != null)
             {
                 myConnectionManager.OnConnectionMade(cableStartConnectedTo, cableEndConnectedTo, this);
+                _cableConnected = true;
             }
 
 
-            _cableConnected = true;
+            
         }
 
 
@@ -103,9 +104,10 @@ public class Cable : MonoBehaviour
             if (myConnectionManager != null)
             {
                 myConnectionManager.OnConnectionRemoved(cableStartConnectedTo, cableEndConnectedTo, this);
+                _cableConnected = false;
             }
 
-            _cableConnected = false;
+            
         }
     }
 }
