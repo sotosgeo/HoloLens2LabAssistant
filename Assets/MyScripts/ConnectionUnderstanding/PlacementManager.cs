@@ -31,6 +31,7 @@ public class PlacementManager : MonoBehaviour
 
     public void ChangeManipulationAndVisualization(bool change)
     {
+        
         foreach (var component in placedComponentObjects)
         {
             Transform manipulator = component.transform.Find("Manipulation");
@@ -45,7 +46,7 @@ public class PlacementManager : MonoBehaviour
                 pinRenderer.enabled = change;
             }
         }
-        _placementToggle = change;
+        
     }
 
 

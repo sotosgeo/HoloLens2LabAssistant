@@ -159,42 +159,10 @@ public class ConnectionManager : MonoBehaviour
     }
 
 
-    /// <summary>
-    /// Checks current connection, in comparison to each connection system that the exercise has
-    /// and returns
-    /// </summary>
-    /// <param name="connectionsToCheck"></param>
-
-    //public void CheckConnection(List<PinConnection> connectionsToCheck)
-    //{
-
-    //    wrongConnections.Clear();
-    //    missingConnections.Clear();
-
-    //    //Find all the wrong Connections
-    //    foreach (var connection in connectionsToCheck)
-    //    {
-    //        if (!motorExcitementConnections.Contains(connection))
-    //        {
-    //            wrongConnections.Add(connection);
-    //        }
-
-
-    //    }
-
-    //    if (motorExcitementConnections.Any())
-
-    //        //Find the missing Connections
-    //        foreach (var connection in motorExcitementConnections)
-    //        {
-    //            if (!connectionsToCheck.Contains(connection))
-    //            {
-    //                missingConnections.Add(connection);
-    //            }
-    //        }
-
-    //    OnConnectionCheck?.Invoke(wrongConnections, missingConnections);
-    //}
+   public void ClearConnection()
+    {
+        currentConnections.ClearSystem();
+    }
 
 
 }
