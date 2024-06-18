@@ -22,6 +22,9 @@ public class CableReset : MonoBehaviour
             //Need to also activate the ArucoFollower script on each cable start and end
             cable.transform.GetChild(0).GetComponent<MarkerFollower>().enabled = true;
             cable.transform.GetChild(1).GetComponent<MarkerFollower>().enabled = true;
+
+            cable.transform.GetChild(0).GetComponent<CablePin>().pinConnectedTo = null;
+            cable.transform.GetChild(1).GetComponent<CablePin>().pinConnectedTo = null;
         }
 
         

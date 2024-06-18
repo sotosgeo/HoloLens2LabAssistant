@@ -816,8 +816,8 @@ MonoBehaviour:
   targetObject: {fileID: 3301493908051136295}
   boundsOverride: {fileID: 7732286767045982944}
   boundsCalculationMethod: 0
-  activation: 3
-  flattenAxis: 4
+  activation: 0
+  flattenAxis: 3
   uniformScaleOnFlattenedAxis: 1
   boxPadding: {x: 0, y: 0, z: 0}
   boxDisplayConfiguration: {fileID: 11400000, guid: c2b8a0ee1166d2f43a8acffd135b182c, type: 2}

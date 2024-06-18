@@ -182,6 +182,7 @@ GameObject:
   - component: {fileID: 4777325489875322619}
   - component: {fileID: 8120545700423826043}
   - component: {fileID: 2010840710259510745}
+  - component: {fileID: 6273494820126718659}
   m_Layer: 0
   m_Name: Manipulation
   m_TagString: Amperometer
@@ -500,6 +501,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6273494820126718659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268994794939930281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 603ceda77a7012a419feddd9b1fc6ac0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentCursorAction: 1
+  objectCenter: {fileID: 1509659094326994699}
 --- !u!1 &1646678037609835938
 GameObject:
   m_ObjectHideFlags: 0
