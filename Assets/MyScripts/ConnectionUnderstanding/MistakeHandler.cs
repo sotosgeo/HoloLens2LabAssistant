@@ -116,6 +116,13 @@ public class MistakeHandler : MonoBehaviour
         }
     }
 
+    private void OnClosedConnectionClearDialogEvent(DialogResult obj)
+    {
+        if(obj.Result == DialogButtonType.Yes)
+        {
+            connectionManager.ClearConnections();
+        }
+    }
 
     private void HelpLevel0()
     {
@@ -286,6 +293,14 @@ public class MistakeHandler : MonoBehaviour
     }
 
 
+    public void ClearConnectionPrompt()
+    {
+        Dialog myDialog = Dialog.Open(DialogPrefabSmall, DialogButtonType.Yes | DialogButtonType.No, "Καθαρισμός Σύνδεσης", "Είστε σίγουροι ότι θέλετε να καθαρίσετε τη σύνδεση;", true);
+        if (myDialog != null)
+        {
+            myDialog.OnClosed += OnClosedConnectionClearDialogEvent;
+        }
+    }
 
 
     void Start()

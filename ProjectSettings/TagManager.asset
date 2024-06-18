@@ -10,6 +10,7 @@ TagManager:
   - Voltimeter
   - DC_Board
   - Resistance
+  - Cable
   layers:
   - Default
   - TransparentFX

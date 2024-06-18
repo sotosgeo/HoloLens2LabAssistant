@@ -123,8 +123,8 @@ public class ConnectionManager : MonoBehaviour
         {
             currentConnections.connections.Add(newConnection);
         }
-            
-        
+
+
         PrintConnections();
     }
 
@@ -159,12 +159,10 @@ public class ConnectionManager : MonoBehaviour
     }
 
 
-   public void ClearConnection()
+    public void ClearConnections()
     {
         currentConnections.ClearSystem();
-        PrintConnections();
     }
-
 
 }
 

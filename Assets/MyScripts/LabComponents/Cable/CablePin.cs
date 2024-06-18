@@ -48,7 +48,7 @@ public class CablePin : MonoBehaviour
             distanceFromPort = Vector3.Distance(Camera.main.transform.position, pinConnectedTo.transform.position);
             
             //If the distance is bigger than something, turn off the follower
-            if (distanceFromPort <= 0.5f)
+            if (distanceFromPort <= 0.6f)
             {
                 myFollower.enabled = true;
             }

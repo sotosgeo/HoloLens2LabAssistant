@@ -1835,7 +1835,7 @@ MonoBehaviour:
   - {fileID: 14048294}
   - {fileID: 816230110}
   - {fileID: 1157929775}
-  percentageToBeat: 0.5
+  percentageToBeat: 0.3
   numberOfQuestions: 0
   helpDialogHandler: {fileID: 386741730}
 --- !u!4 &133161188
@@ -4628,6 +4628,7 @@ GameObject:
   - component: {fileID: 520184871}
   - component: {fileID: 520184870}
   - component: {fileID: 520184869}
+  - component: {fileID: 520184873}
   m_Layer: 0
   m_Name: 04-Interpoles
   m_TagString: Untagged
@@ -4831,6 +4832,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 520184867}
   m_Mesh: {fileID: 6170859950768037232, guid: 21935600881dec1439297e60248625bd, type: 3}
+--- !u!114 &520184873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520184867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98c748f3768ab714a8449b60fb9edc5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventsToReceive: 0
+  debounceThreshold: 0.01
+  localForward: {x: -0, y: -0, z: -1}
+  localUp: {x: 0, y: 1, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
+  bounds: {x: 0, y: 0}
+  touchableCollider: {fileID: 520184869}
 --- !u!1 &521277026
 GameObject:
   m_ObjectHideFlags: 0
@@ -4922,11 +4942,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 987461640783441588, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.000000007450581
       objectReference: {fileID: 0}
     - target: {fileID: 987461640783441588, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5
+      value: -0.19999999
       objectReference: {fileID: 0}
     - target: {fileID: 987461640783441588, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4975,6 +4995,10 @@ PrefabInstance:
     - target: {fileID: 987461640783441590, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
       propertyPath: m_Name
       value: cable (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 987461640783441590, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
+      propertyPath: m_TagString
+      value: Cable
       objectReference: {fileID: 0}
     - target: {fileID: 7843025675920321744, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
       propertyPath: hostTransform
@@ -5990,11 +6014,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 987461640783441588, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.000000007450581
       objectReference: {fileID: 0}
     - target: {fileID: 987461640783441588, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.000000007450581
       objectReference: {fileID: 0}
     - target: {fileID: 987461640783441588, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6043,6 +6067,10 @@ PrefabInstance:
     - target: {fileID: 987461640783441590, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
       propertyPath: m_Name
       value: cable (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 987461640783441590, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
+      propertyPath: m_TagString
+      value: Cable
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -6387,11 +6415,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 987461640783441588, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.19999999
       objectReference: {fileID: 0}
     - target: {fileID: 987461640783441588, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.19999999
       objectReference: {fileID: 0}
     - target: {fileID: 987461640783441588, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6436,6 +6464,10 @@ PrefabInstance:
     - target: {fileID: 987461640783441590, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
       propertyPath: m_Name
       value: cable (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 987461640783441590, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
+      propertyPath: m_TagString
+      value: Cable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
@@ -6726,6 +6758,7 @@ GameObject:
   - component: {fileID: 630606980}
   - component: {fileID: 630606979}
   - component: {fileID: 630606978}
+  - component: {fileID: 630606982}
   m_Layer: 0
   m_Name: 01-Collector
   m_TagString: Untagged
@@ -6965,6 +6998,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 630606976}
   m_Mesh: {fileID: -3959457890051706253, guid: 21935600881dec1439297e60248625bd, type: 3}
+--- !u!114 &630606982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630606976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98c748f3768ab714a8449b60fb9edc5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventsToReceive: 0
+  debounceThreshold: 0.01
+  localForward: {x: -0, y: -0, z: -1}
+  localUp: {x: 0, y: 1, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
+  bounds: {x: 0, y: 0}
+  touchableCollider: {fileID: 630606978}
 --- !u!1 &636099545
 GameObject:
   m_ObjectHideFlags: 0
@@ -7291,9 +7343,21 @@ MonoBehaviour:
   OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 724543311}
-        m_TargetAssemblyTypeName: ConnectionManager, Assembly-CSharp
-        m_MethodName: ClearConnection
+      - m_Target: {fileID: 724543312}
+        m_TargetAssemblyTypeName: MistakeHandler, Assembly-CSharp
+        m_MethodName: ClearConnectionPrompt
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 983388633}
+        m_TargetAssemblyTypeName: CableReset, Assembly-CSharp
+        m_MethodName: ResetCables
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10100,6 +10164,7 @@ GameObject:
   - component: {fileID: 912582149}
   - component: {fileID: 912582148}
   - component: {fileID: 912582147}
+  - component: {fileID: 912582151}
   m_Layer: 0
   m_Name: 03-Main_poles
   m_TagString: Untagged
@@ -10303,6 +10368,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 912582145}
   m_Mesh: {fileID: -6657022232585413022, guid: 21935600881dec1439297e60248625bd, type: 3}
+--- !u!114 &912582151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 912582145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98c748f3768ab714a8449b60fb9edc5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventsToReceive: 0
+  debounceThreshold: 0.01
+  localForward: {x: -0, y: -0, z: -1}
+  localUp: {x: 0, y: 1, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
+  bounds: {x: 0, y: 0}
+  touchableCollider: {fileID: 912582147}
 --- !u!1 &916935188
 GameObject:
   m_ObjectHideFlags: 0
@@ -11289,6 +11373,10 @@ PrefabInstance:
       propertyPath: markerId
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 987461640685990669, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 987461640685990673, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -11303,11 +11391,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 987461640783441588, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5
+      value: 0.19999999
       objectReference: {fileID: 0}
     - target: {fileID: 987461640783441588, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.000000007450581
       objectReference: {fileID: 0}
     - target: {fileID: 987461640783441588, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11356,6 +11444,10 @@ PrefabInstance:
     - target: {fileID: 987461640783441590, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
       propertyPath: m_Name
       value: cable (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 987461640783441590, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
+      propertyPath: m_TagString
+      value: Cable
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -11570,6 +11662,7 @@ GameObject:
   m_Component:
   - component: {fileID: 983388631}
   - component: {fileID: 983388632}
+  - component: {fileID: 983388633}
   m_Layer: 0
   m_Name: Cables
   m_TagString: Untagged
@@ -11585,7 +11678,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 983388630}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.009, y: 0.31324917, z: -1.403}
+  m_LocalPosition: {x: 0.009, y: 0.067, z: -0.286}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11654,6 +11747,11 @@ MonoBehaviour:
     Radius: 0
     Transform: {fileID: 953430333}
     Colliders: []
+  - Name: cable (8)
+    Offset: {x: 0, y: 0}
+    Radius: 0
+    Transform: {fileID: 623591015}
+    Colliders: []
   ignoreInactiveTransforms: 1
   sortType: 0
   surfaceType: 1
@@ -11668,9 +11766,31 @@ MonoBehaviour:
   distance: 0
   rows: 3
   columns: 3
-  cellWidth: 0.5
-  cellHeight: 0.5
+  cellWidth: 0.2
+  cellHeight: 0.2
   assetVersion: 1
+--- !u!114 &983388633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 983388630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cadc88c0607aec478c777fa7f44aa2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cables:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &1001308078
 GameObject:
   m_ObjectHideFlags: 0
@@ -12502,11 +12622,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 987461640783441588, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.000000007450581
       objectReference: {fileID: 0}
     - target: {fileID: 987461640783441588, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0.20000002
       objectReference: {fileID: 0}
     - target: {fileID: 987461640783441588, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12555,6 +12675,10 @@ PrefabInstance:
     - target: {fileID: 987461640783441590, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
       propertyPath: m_Name
       value: cable (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 987461640783441590, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
+      propertyPath: m_TagString
+      value: Cable
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -13292,7 +13416,7 @@ MonoBehaviour:
   partSelectionQuestions: []
   PartSelectionAnswerCollection: {fileID: 543664310}
   questionTitle: {fileID: 1106123128}
-  percentageToBeat: 0.5
+  percentageToBeat: 0.3
   numberOfQuestions: 0
   isStudent: 0
 --- !u!65 &1128767014
@@ -15448,11 +15572,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 987461640783441588, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5
+      value: 0.19999999
       objectReference: {fileID: 0}
     - target: {fileID: 987461640783441588, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0.20000002
       objectReference: {fileID: 0}
     - target: {fileID: 987461640783441588, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -15501,6 +15625,10 @@ PrefabInstance:
     - target: {fileID: 987461640783441590, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
       propertyPath: m_Name
       value: cable (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 987461640783441590, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
+      propertyPath: m_TagString
+      value: Cable
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -17690,6 +17818,7 @@ GameObject:
   - component: {fileID: 1498553434}
   - component: {fileID: 1498553433}
   - component: {fileID: 1498553432}
+  - component: {fileID: 1498553436}
   m_Layer: 0
   m_Name: 02-Brushes
   m_TagString: Untagged
@@ -17893,6 +18022,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1498553430}
   m_Mesh: {fileID: 6710033872243161939, guid: 64649edae9f4e624da2f6506a2142751, type: 3}
+--- !u!114 &1498553436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498553430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98c748f3768ab714a8449b60fb9edc5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventsToReceive: 0
+  debounceThreshold: 0.01
+  localForward: {x: -0, y: -0, z: -1}
+  localUp: {x: 0, y: 1, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
+  bounds: {x: 0, y: 0}
+  touchableCollider: {fileID: 1498553432}
 --- !u!1 &1500063875
 GameObject:
   m_ObjectHideFlags: 0
@@ -21312,11 +21460,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 987461640783441588, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.5
+      value: -0.20000002
       objectReference: {fileID: 0}
     - target: {fileID: 987461640783441588, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5
+      value: -0.19999999
       objectReference: {fileID: 0}
     - target: {fileID: 987461640783441588, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -21365,6 +21513,10 @@ PrefabInstance:
     - target: {fileID: 987461640783441590, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
       propertyPath: m_Name
       value: cable (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 987461640783441590, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
+      propertyPath: m_TagString
+      value: Cable
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -22488,7 +22640,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 987461639788991050, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.025
       objectReference: {fileID: 0}
     - target: {fileID: 987461640651757984, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -22527,16 +22679,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 987461640685990669, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 987461640685990669, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 987461640685990669, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.0335
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 987461640685990673, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
       propertyPath: m_Enabled
@@ -22552,11 +22700,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 987461640783441588, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.5
+      value: -0.20000002
       objectReference: {fileID: 0}
     - target: {fileID: 987461640783441588, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0.20000002
       objectReference: {fileID: 0}
     - target: {fileID: 987461640783441588, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -22605,6 +22753,10 @@ PrefabInstance:
     - target: {fileID: 987461640783441590, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
       propertyPath: m_Name
       value: cable
+      objectReference: {fileID: 0}
+    - target: {fileID: 987461640783441590, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
+      propertyPath: m_TagString
+      value: Cable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
@@ -25229,11 +25381,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 987461640783441588, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.5
+      value: -0.20000002
       objectReference: {fileID: 0}
     - target: {fileID: 987461640783441588, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.000000007450581
       objectReference: {fileID: 0}
     - target: {fileID: 987461640783441588, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -25278,6 +25430,10 @@ PrefabInstance:
     - target: {fileID: 987461640783441590, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
       propertyPath: m_Name
       value: cable (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 987461640783441590, guid: 9b4661c5f6f15e74185068d3f39a69fb, type: 3}
+      propertyPath: m_TagString
+      value: Cable
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
