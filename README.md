@@ -17,7 +17,7 @@ Cable Position Tracking          | Component placement
 :-------------------------:|:-------------------------:
 <img src = "https://github.com/user-attachments/assets/3b32875b-4e01-4114-874e-8ce9c58837f5">  |  <img width = "500px" src = "https://github.com/user-attachments/assets/4d929372-60a7-4d38-92fe-228d59c984ee">
 
-The project was built with Unity version 2021.3.37f1, using Microsoft's [Mixed Reality Toolkit](https://github.com/microsoft/MixedRealityToolkit-Unity), version 2.8.3.
+The project was built with Unity version 2021.3.37f1, using Microsoft's [Mixed Reality Toolkit](https://github.com/microsoft/MixedRealityToolkit-Unity) version 2.8.3.
 
 
 
