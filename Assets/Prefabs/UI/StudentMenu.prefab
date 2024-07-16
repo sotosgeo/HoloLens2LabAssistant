@@ -665,7 +665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 248664dc0e60dca4fb35d70cd0c5695b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drawBoundsGizmo: 1
+  drawBoundsGizmo: 0
   drawLocalBoundsGizmo: 0
 --- !u!114 &2146353342832190027
 MonoBehaviour:
@@ -925,7 +925,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2146353342832190030}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b31b6fc6b6a28249adae3628ec542ec, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c76b15c80c28ec42a43ab2103e0d7a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   solverHandler: {fileID: 2146353342832190027}
