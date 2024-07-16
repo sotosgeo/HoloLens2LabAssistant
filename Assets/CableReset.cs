@@ -27,7 +27,7 @@ public class CableReset : MonoBehaviour
             cable.transform.GetChild(1).GetComponent<CablePin>().pinConnectedTo = null;
         }
 
-        
+
 
     }
 

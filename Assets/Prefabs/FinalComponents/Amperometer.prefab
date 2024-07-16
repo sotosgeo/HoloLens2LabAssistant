@@ -580,7 +580,7 @@ GameObject:
   - component: {fileID: 1970033121713427443}
   m_Layer: 7
   m_Name: pinText
-  m_TagString: Untagged
+  m_TagString: pinText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2074,7 +2074,7 @@ GameObject:
   - component: {fileID: 3066759265186443092}
   m_Layer: 7
   m_Name: pinText
-  m_TagString: Untagged
+  m_TagString: pinText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

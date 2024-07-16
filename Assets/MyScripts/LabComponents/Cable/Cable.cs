@@ -32,27 +32,27 @@ public class Cable : MonoBehaviour
     {
         cableStartConnectedTo = pinConnectedTo;
         cableStartConnected = true;
-        ConnectionCheck();
+        UpdateConnectionStatus();
     }
 
     private void OnCableEndConnected(Pin pinConnectedTo)
     {
         cableEndConnectedTo = pinConnectedTo;
         cableEndConnected = true;
-        ConnectionCheck();
+        UpdateConnectionStatus();
     }
 
     private void OnCableStartDisconnected(Pin pinConnectedTo)
     {
         cableStartConnected = false;
-        ConnectionCheck();
+        UpdateConnectionStatus();
         cableStartConnectedTo = null;
     }
 
     private void OnCableEndDisonnected(Pin   pinConnectedTo)
     {
         cableEndConnected = false;
-        ConnectionCheck();
+        UpdateConnectionStatus();
         cableEndConnectedTo = null;
     }
 
@@ -62,8 +62,8 @@ public class Cable : MonoBehaviour
         myCableStart.OnConnectionMade += OnCableStartConnected;
         myCableEnd.OnConnectionMade += OnCableEndConnected;
 
-        myCableStart.OnConnectionStopped += OnCableStartDisconnected;
-        myCableEnd.OnConnectionStopped += OnCableEndDisonnected;
+        myCableStart.OnConnectionRemoved += OnCableStartDisconnected;
+        myCableEnd.OnConnectionRemoved += OnCableEndDisonnected;
 
     }
 
@@ -73,13 +73,13 @@ public class Cable : MonoBehaviour
         myCableStart.OnConnectionMade -= OnCableStartConnected;
         myCableEnd.OnConnectionMade  -= OnCableEndConnected;
 
-        myCableStart.OnConnectionStopped -= OnCableStartDisconnected;
-        myCableEnd.OnConnectionStopped -= OnCableEndDisonnected;
+        myCableStart.OnConnectionRemoved -= OnCableStartDisconnected;
+        myCableEnd.OnConnectionRemoved -= OnCableEndDisonnected;
 
     }
 
 
-    private void ConnectionCheck()
+    private void UpdateConnectionStatus()
     {
 
         if (cableStartConnected & cableEndConnected)

@@ -16,8 +16,7 @@ public class ConnectionManager : MonoBehaviour
     [SerializeField] TextMeshPro connectionText;
 
 
-
-    [SerializeField] ConnectionSystem currentConnections;
+    public ConnectionSystem currentConnections;
 
 
     [SerializeField] ConnectionSystem motorExcitementConnections;
@@ -149,14 +148,6 @@ public class ConnectionManager : MonoBehaviour
         }
     }
 
-
-    private void DebugPrintConnections(List<PinConnection> connections)
-    {
-        foreach (var connection in connections)
-        {
-            Debug.Log(connection.ToString());
-        }
-    }
 
 
     public void ClearConnections()

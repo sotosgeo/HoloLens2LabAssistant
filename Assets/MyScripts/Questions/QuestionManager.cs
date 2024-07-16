@@ -57,7 +57,6 @@ public class QuestionManager : MonoBehaviour
 
     [SerializeField] HelpDialogHandler dialogHandler;
 
-    public bool isStudent = false;
 
     public Action OnQuestionsFinished;
     private void Awake()

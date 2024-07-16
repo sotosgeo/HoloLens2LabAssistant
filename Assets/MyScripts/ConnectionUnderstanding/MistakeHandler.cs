@@ -9,6 +9,7 @@ public class MistakeHandler : MonoBehaviour
 
     [SerializeField] ConnectionManager connectionManager;
     [SerializeField] PlacementManager placementManager;
+    [SerializeField] CableReset cablesObject;
 
     private int helpLevel = 0;
     private int numOfWrongConnections = 0;
@@ -84,7 +85,7 @@ public class MistakeHandler : MonoBehaviour
     public void OpenHelp2Dialog()
     {
         Dialog myDialog = Dialog.Open(DialogPrefabMedium, DialogButtonType.OK, "Βοήθεια", $"{SingleOrMultipleMistakesText()}\n{SingleOrMultipleMissingText()}\nΟι λάθος συνδέσεις φαίνονται με κόκκινο χρώμα." +
-           "\nΟι συνδέσεις που λείπουν φαίνονται με το ίδιο χρώμα", true);
+           "\nΠάνω από τους ακροδέκτες που πρέπει να συνδεθούν για να ολοκληρωθεί η συνδεσμολογία, υπάρχει ο ίδιος αριθμός.", true);
         if (myDialog != null)
         {
             myDialog.OnClosed += OnClosedDialogEvent;
@@ -98,7 +99,7 @@ public class MistakeHandler : MonoBehaviour
 
     public void OpenFinishedDialog()
     {
-        Dialog.Open(DialogPrefabSmall, DialogButtonType.OK, "Συγχαρητήρια!", "Ολοκληρώσατε επιτυχώς την άσκηση!", true);
+        Dialog.Open(DialogPrefabSmall, DialogButtonType.OK, "Συγχαρητήρια!", $"Ολοκληρώσατε επιτυχώς την άσκηση! Ζητήθηκε βοήθεια {timesAskedForHelp} φορές από τη συσκευή", true);
     }
 
     private void OnClosedDialogEvent(DialogResult obj)
@@ -118,10 +119,12 @@ public class MistakeHandler : MonoBehaviour
 
     private void OnClosedConnectionClearDialogEvent(DialogResult obj)
     {
-        if(obj.Result == DialogButtonType.Yes)
+        if (obj.Result == DialogButtonType.Yes)
         {
             connectionManager.ClearConnections();
+            cablesObject.ResetCables();
         }
+       
     }
 
     private void HelpLevel0()
@@ -173,7 +176,6 @@ public class MistakeHandler : MonoBehaviour
     private void HelpLevel2()
     {
         OpenHelp2Dialog();
-        int missingMatIndex = 0;
         int missingConnCount = 0;
         //Level 3 Help - Highlight the wrong connections with the same red color
         //For the missing connections, add a number atop each pin, the same for each wrong connection
@@ -189,7 +191,7 @@ public class MistakeHandler : MonoBehaviour
             pinConnection.PinB.pinText.text += missingConnCount.ToString();
 
             // missingMatIndex++;
-           
+
             // if (missingMatIndex > numOfMissingConnections) missingMatIndex = 0;
         }
 
@@ -253,26 +255,18 @@ public class MistakeHandler : MonoBehaviour
         else return $"Λείπουν {numOfMissingConnections} συνδέσεις.";
     }
 
-    public void FindMistakes()
+    public void ShowMistakes()
     {
-        placementManager.ChangeTooltip(false);
-        placementManager.ChangeDirectionalIndicator(false);
-        //This resets their material to the default one
-
-        placementManager.ChangeComponentVisualization(false);
         timesAskedForHelp++;
 
-
+        
+        ClearHelpVisualisation();
         //Level 0 Mistakes
         numOfWrongConnections = connectionManager.wrongConnections.Count;
         numOfMissingConnections = connectionManager.missingConnections.Count;
 
-        placementManager.ChangeComponentVisualization(false);
-        //Level 1 Mistakes -> Enable their tooltip components
-        //Its done in HelpLevel 2
-
-        //Level 3 Mistakes
-
+     
+        
 
         if (numOfWrongConnections > 0 | numOfMissingConnections > 0)
         {
@@ -289,9 +283,17 @@ public class MistakeHandler : MonoBehaviour
         }
 
 
-
     }
 
+
+
+    private void ClearHelpVisualisation()
+    {
+        placementManager.ChangeTooltip(false);
+        placementManager.ChangeDirectionalIndicator(false);
+        placementManager.ChangeComponentVisualization(false);
+        placementManager.ClearPinText();
+    }
 
     public void ClearConnectionPrompt()
     {

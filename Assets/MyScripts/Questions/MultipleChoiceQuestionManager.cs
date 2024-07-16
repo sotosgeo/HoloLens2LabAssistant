@@ -99,11 +99,7 @@ public class MultipleChoiceQuestionManager : MonoBehaviour
 
         }
 
-       
-
-
     }
-
     private void CalculateScore()
     {
 

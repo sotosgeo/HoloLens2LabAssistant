@@ -11,6 +11,7 @@ TagManager:
   - DC_Board
   - Resistance
   - Cable
+  - pinText
   layers:
   - Default
   - TransparentFX
