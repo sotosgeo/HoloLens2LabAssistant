@@ -7,7 +7,6 @@ using UnityEngine;
 public class MultipleChoiceData : ScriptableObject
 {
     public string question;
-    [Tooltip("Correct answer first, and randomized next")]
     public string[] answers;
     public int correctAnswerIndex;
 

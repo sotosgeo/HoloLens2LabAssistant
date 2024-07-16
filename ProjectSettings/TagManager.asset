@@ -10,6 +10,8 @@ TagManager:
   - Voltimeter
   - DC_Board
   - Resistance
+  - Cable
+  - pinText
   layers:
   - Default
   - TransparentFX

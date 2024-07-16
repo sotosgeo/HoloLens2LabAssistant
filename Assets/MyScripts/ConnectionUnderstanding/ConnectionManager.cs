@@ -16,8 +16,7 @@ public class ConnectionManager : MonoBehaviour
     [SerializeField] TextMeshPro connectionText;
 
 
-
-    [SerializeField] ConnectionSystem currentConnections;
+    public ConnectionSystem currentConnections;
 
 
     [SerializeField] ConnectionSystem motorExcitementConnections;
@@ -116,24 +115,24 @@ public class ConnectionManager : MonoBehaviour
 
 
 
-    public void OnConnectionMade(GameObject cableStart, GameObject cableEnd, Cable connectingCable)
+    public void OnConnectionMade(Pin cableStart, Pin cableEnd, Cable connectingCable)
     {
-        var newConnection = new PinConnection(cableStart.GetComponent<Pin>(), cableEnd.GetComponent<Pin>(), connectingCable);
+        var newConnection = new PinConnection(cableStart, cableEnd, connectingCable);
         if (!currentConnections.connections.Contains(newConnection))
         {
             currentConnections.connections.Add(newConnection);
         }
-            
-        
+
+
         PrintConnections();
     }
 
-    public void OnConnectionRemoved(GameObject cableStart, GameObject cableEnd, Cable connectingCable)
+    public void OnConnectionRemoved(Pin cableStart, Pin cableEnd, Cable connectingCable)
     {
 
-        if (currentConnections.connections.Contains(new PinConnection(cableStart.GetComponent<Pin>(), cableEnd.GetComponent<Pin>(), connectingCable)))
+        if (currentConnections.connections.Contains(new PinConnection(cableStart, cableEnd, connectingCable)))
         {
-            currentConnections.connections.Remove(new PinConnection(cableStart.GetComponent<Pin>(), cableEnd.GetComponent<Pin>(), connectingCable));
+            currentConnections.connections.Remove(new PinConnection(cableStart, cableEnd, connectingCable));
         }
 
         PrintConnections();
@@ -150,21 +149,11 @@ public class ConnectionManager : MonoBehaviour
     }
 
 
-    private void DebugPrintConnections(List<PinConnection> connections)
-    {
-        foreach (var connection in connections)
-        {
-            Debug.Log(connection.ToString());
-        }
-    }
 
-
-   public void ClearConnection()
+    public void ClearConnections()
     {
         currentConnections.ClearSystem();
-        PrintConnections();
     }
-
 
 }
 

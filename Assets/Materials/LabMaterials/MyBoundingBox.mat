@@ -57,8 +57,8 @@ Material:
     - _BorderLightOpaqueAlpha: 1
     - _BorderLightReplacesAlbedo: 1
     - _BorderLightUsesHoverColor: 1
-    - _BorderMinValue: 0.4
-    - _BorderWidth: 0.038
+    - _BorderMinValue: 1
+    - _BorderWidth: 0.065
     - _ClippingBorder: 0
     - _ClippingBorderWidth: 0.025
     - _ClippingBox: 0
@@ -136,13 +136,13 @@ Material:
     - _ZWrite: 0
     m_Colors:
     - _ClippingBorderColor: {r: 1, g: 0.2, b: 0, a: 1}
-    - _Color: {r: 0, g: 0, b: 0, a: 0}
+    - _Color: {r: 0, g: 0, b: 0, a: 1}
     - _EmissiveColor: {r: 0, g: 0, b: 0, a: 1}
     - _EnvironmentColorX: {r: 1, g: 0, b: 0, a: 1}
     - _EnvironmentColorY: {r: 0, g: 1, b: 0, a: 1}
     - _EnvironmentColorZ: {r: 0, g: 0, b: 1, a: 1}
     - _HoverColorOpaqueOverride: {r: 1, g: 1, b: 1, a: 1}
-    - _HoverColorOverride: {r: 0, g: 0.5595665, b: 1, a: 0.50980395}
+    - _HoverColorOverride: {r: 0, g: 0.62352943, b: 1, a: 1}
     - _InnerGlowColor: {r: 0, g: 0.45917034, b: 1, a: 1}
     - _ProximityLightCenterColorOverride: {r: 1, g: 0, b: 0, a: 0}
     - _ProximityLightMiddleColorOverride: {r: 0, g: 1, b: 0, a: 0.5}

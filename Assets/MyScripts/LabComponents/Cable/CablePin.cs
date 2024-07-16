@@ -20,11 +20,11 @@ public class CablePin : MonoBehaviour
     [SerializeField] Mesh connectionDetectedShape;
     [SerializeField] Mesh defaultShape;
 
-    public GameObject pinConnectedTo = null;
+    public Pin pinConnectedTo = null;
 
     
-    public Action<GameObject> OnConnectionMade;
-    public Action<GameObject> OnConnectionStopped;
+    public Action<Pin> OnConnectionMade;
+    public Action<Pin> OnConnectionRemoved;
 
     private float distanceFromPort;
 
@@ -48,7 +48,7 @@ public class CablePin : MonoBehaviour
             distanceFromPort = Vector3.Distance(Camera.main.transform.position, pinConnectedTo.transform.position);
             
             //If the distance is bigger than something, turn off the follower
-            if (distanceFromPort <= 0.5f)
+            if (distanceFromPort <= 0.55f)
             {
                 myFollower.enabled = true;
             }
@@ -63,10 +63,13 @@ public class CablePin : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //Debug.Log(this.gameObject.ToString() + "collided with " + other.gameObject.ToString());
-        pinConnectedTo = other.gameObject;
-        pinVisual.GetComponent<MeshRenderer>().material = connectionFinalizedMaterial;
-        pinVisual.GetComponent<MeshFilter>().mesh = connectionDetectedShape;
-        OnConnectionMade?.Invoke(pinConnectedTo);
+        if (pinConnectedTo == null)
+        {
+            pinConnectedTo = other.gameObject.GetComponent<Pin>();
+            pinVisual.GetComponent<MeshRenderer>().material = connectionFinalizedMaterial;
+            pinVisual.GetComponent<MeshFilter>().mesh = connectionDetectedShape;
+            OnConnectionMade?.Invoke(pinConnectedTo);
+        }
         
     }
 
@@ -74,11 +77,13 @@ public class CablePin : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         //Debug.Log(this.gameObject.ToString() + "stop colliding with" + other.gameObject.ToString());
-
-        OnConnectionStopped?.Invoke(pinConnectedTo);
-        pinVisual.GetComponent<MeshRenderer>().material = defaultMaterial;
-        pinVisual.GetComponent<MeshFilter>().mesh = defaultShape;
-        pinConnectedTo = null;
+        if (pinConnectedTo != null)
+        {
+            OnConnectionRemoved?.Invoke(pinConnectedTo);
+            pinVisual.GetComponent<MeshRenderer>().material = defaultMaterial;
+            pinVisual.GetComponent<MeshFilter>().mesh = defaultShape;
+            pinConnectedTo = null;
+        }
     }
 
 }

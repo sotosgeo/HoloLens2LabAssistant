@@ -128,7 +128,7 @@ public class SceneManager : MonoBehaviour
     {
         arucoTracker.enabled = true;
         
-        helpDialogHandler.OpenCustomOKDialogue("Διέγερση Κινητήρα", "Τοποθετήστε τα ψηφιακά εξαρτήματα ακριβώς πάνω στα πραγματικά.\n Τοποθετήστε το μοντέλο της μηχανης πάνω από το πραγματικό");
+        helpDialogHandler.OpenCustomOKDialogue("Διέγερση Κινητήρα", "Τοποθετήστε τα ψηφιακά εξαρτήματα ακριβώς πάνω στα πραγματικά.\n Τοποθετήστε το μοντέλο της μηχανης πιο πάνω από το πραγματικό");
         placementManager.ChangeManipulationAndVisualization(true);
     }
 

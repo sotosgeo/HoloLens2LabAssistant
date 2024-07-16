@@ -23,7 +23,6 @@ public class PinConnection : IEquatable<PinConnection>
     }
 
 
-
     public bool Equals(PinConnection other)
     {
         return other != null && GetType() == other.GetType() && ((PinA == other.PinA && PinB == other.PinB) || (PinA == other.PinB && PinB == other.PinA)) && (Cable == other.Cable);

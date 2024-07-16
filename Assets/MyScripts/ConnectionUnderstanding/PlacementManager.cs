@@ -2,6 +2,7 @@ using Microsoft.MixedReality.Toolkit.Utilities.Solvers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlacementManager : MonoBehaviour
@@ -132,6 +133,22 @@ public class PlacementManager : MonoBehaviour
         {
             Transform directionalIndicator = component.transform.Find("DirectionalChevron");
             directionalIndicator.gameObject.SetActive(mode);
+        }
+    }
+
+    
+
+    public void ClearPinText()
+    {
+        foreach(var component in placedComponentObjects)
+        {
+            //Pins -> component.transform.GetChild(4);
+            TextMeshPro[] pinTexts = component.transform.GetChild(4).GetComponentsInChildren<TextMeshPro>();
+            
+            foreach(var text in pinTexts)
+            {
+                text.text = "";
+            }
         }
     }
 }
