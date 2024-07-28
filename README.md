@@ -29,5 +29,5 @@ The project was built with Unity version 2021.3.37f1, using Microsoft's [Mixed R
 # Development Goals
 
 1. Optimize OpenCV ArUCO tracking, because the current implementation is very taxing on the HoloLens 2
-2. Implement "smarter" connection understanding for finding out student's errors
-
+2. Track the location of the lab components (switches, measurement tools etc.) using ArUco markers, for faster set-up of the exercises
+3. Implement "smarter" connection understanding for finding out student's errors
